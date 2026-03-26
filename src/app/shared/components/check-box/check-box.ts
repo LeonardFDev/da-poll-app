@@ -11,3 +11,6 @@ export class CheckBox {
   isChecked = new FormControl(false);
   @Input() changeType:{'type': 'checkbox' |'radio', 'name':string} = {'type':'checkbox', 'name':''};
 }
+
+
+//html template: <app-check-box [changeType]="{'type':'radio', 'name':'Test'}"></app-check-box>
