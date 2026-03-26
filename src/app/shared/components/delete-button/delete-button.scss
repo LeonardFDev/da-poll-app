@@ -1,0 +1,15 @@
+.btn{
+    border: none;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    cursor: pointer;
+    background-image: url('/assets/img/trash.png');
+    background-repeat: no-repeat;
+    height: 26px;
+    aspect-ratio: 1 / 1;
+
+    &:hover{
+        background-image: url('/assets/img/trash-hover.png');
+    }
+}
