@@ -9,6 +9,8 @@ import { Component, Input } from '@angular/core';
 export class SurveyStatus {
   @Input() statusText:string = "";
   @Input() colorType: 'primary' | 'secondary' | '' = '';
+  @Input() isPartOfHighlightsCard:boolean = false;
+  @Input() hovered!: boolean;
 }
 
 

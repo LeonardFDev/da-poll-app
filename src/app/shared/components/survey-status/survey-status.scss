@@ -1,14 +1,26 @@
 .status{
     border-top-right-radius: 14px;
-    padding: 3px 12px;
+    padding: 3px 12px 3px 10px;
     width: fit-content;
+
+    &--highlights-card {
+        padding: 3px 6px;
+    }
 
     &--primary-bg-color{
         background-color: #FFB770;
     }
 
-    &:not(.status--secondary-bg-color, .status---bg-color):hover, &--secondary-bg-color{
+    &:not(.status--secondary-bg-color, .status---bg-color, .status--highlights-card):hover, &--secondary-bg-color{
         background-color: #FEE9D4;
+    }
+
+    &--highlights-card-bg-color{
+        background-color: #FFCFA1;
+
+        &-hover{
+            background-color: #FFB770;
+        }
     }
 
     &__text{
@@ -16,5 +28,9 @@
         font-weight: 600;
         font-size: 16px;
         color: #221227;
+
+        &--highlights-card {
+            font-size: 12px;
+        }
     }
 }
