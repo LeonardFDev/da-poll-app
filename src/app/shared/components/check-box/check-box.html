@@ -1,5 +1,5 @@
-<label class="custom-checkbox">
-  <input class="custom-checkbox__input" type="{{changeType.type}}" name="{{changeType.name}}" [formControl]="isChecked">
+<label class="custom-checkbox" [class.custom-checkbox--no-pointer-events]="isPartOfAnswear">
+  <input #customCheckboxInput class="custom-checkbox__input" [formControl]="isChecked" [checked]="checkedComputed()">
   <span class="custom-checkbox__checkmark"></span>
 </label>
 

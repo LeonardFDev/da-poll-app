@@ -1,0 +1,7 @@
+<div class="answear" (click)="onToggle()" [class.answear--hover] ="!this.isChecked()">
+    <app-check-box [isPartOfAnswear]="true" [checkedSignal]="isChecked" ></app-check-box>
+    <div class="answear__spans">
+        <span class="answear__answear__spans__enumeration">A.</span>
+        <span class="answear__answear__spans__text">27.08.2025</span>
+    </div>
+</div>

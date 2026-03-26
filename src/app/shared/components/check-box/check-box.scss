@@ -5,6 +5,10 @@
     position: relative;
     width: fit-content;
 
+    &--no-pointer-events{
+        pointer-events: none;
+    }
+
     &__input{
         display: none;
 
