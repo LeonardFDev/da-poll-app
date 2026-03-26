@@ -11,7 +11,6 @@ export class PrimaryButton {
   @Input() btnText:string = "";
   @Input() withIcon:{'isWithIcon':boolean, 'iconUrl':string} = {'isWithIcon':false, 'iconUrl':''};
   @ViewChild('btn') btnRef!:ElementRef<HTMLButtonElement>;
-  
 
   ngAfterViewInit() {
     window.addEventListener('load', () => {if(this.withIcon.isWithIcon) this.findOutImageSize()});
