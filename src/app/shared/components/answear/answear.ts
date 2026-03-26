@@ -1,4 +1,4 @@
-import { Component, signal, WritableSignal } from '@angular/core';
+import { Component, Input, signal, WritableSignal } from '@angular/core';
 import { CheckBox } from "../check-box/check-box";
 
 @Component({
@@ -8,6 +8,9 @@ import { CheckBox } from "../check-box/check-box";
   styleUrl: './answear.scss',
 })
 export class Answear {
+  @Input() spanEnumeration:string ="";
+  @Input() spanText:string =""
+
   isChecked: WritableSignal<boolean> = signal(false);
 
   onToggle() {
@@ -15,3 +18,6 @@ export class Answear {
     else this.isChecked.set((true));
   }
 }
+
+
+//html template: <app-answear [spanEnumeration]="'A.'" [spanText]="'27.08.2025'"></app-answear>
