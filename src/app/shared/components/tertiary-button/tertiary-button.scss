@@ -1,0 +1,36 @@
+.btn{
+    display: flex;
+    flex-direction: column;
+    padding: 9px 16.79px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover{
+        background-color: #FAF5FE33;
+    }
+
+    &__text-icon{
+        display: flex;
+        gap: 8px;
+        white-space: nowrap;
+
+        &__text{
+            font-family: 'Nokora';
+            font-weight: 700;
+            font-size: 16px;
+            color: #FEFDFF;
+        }
+
+        &__icon{
+            height: 16px;
+            aspect-ratio: 1/1;
+        }
+    }
+
+    &__underline {
+        height: 1px;
+        width: 100%;
+        background-color: white;
+    }
+}
