@@ -9,15 +9,19 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 })
 export class CheckBox {
   isChecked = new FormControl(false);
-  @Input() changeType:{'type': 'checkbox' |'radio', 'name':string} = {'type':'checkbox', 'name':''};
+  @Input() changeType: 'checkbox' | {'type': 'radio', 'name':string} = 'checkbox';
   @Input() isPartOfAnswear:boolean = false;
   @Input() checkedSignal!: WritableSignal<boolean>;
 
   @ViewChild('customCheckboxInput') inputRef!:ElementRef<HTMLInputElement>;
 
   ngAfterViewInit(){
-    this.inputRef.nativeElement.type = this.changeType.type;
-    this.inputRef.nativeElement.name = this.changeType.name;
+    if(typeof this.changeType == "object"){
+      this.inputRef.nativeElement.type = this.changeType.type;
+      this.inputRef.nativeElement.name = this.changeType.name;
+    }
+    
+    else this.inputRef.nativeElement.type = this.changeType;
   }
 
   checkedComputed = computed(() =>{

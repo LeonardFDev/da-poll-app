@@ -1,5 +1,5 @@
 <div class="answear" (click)="onToggle()" [class.answear--hover] ="!this.isChecked()">
-    <app-check-box [isPartOfAnswear]="true" [checkedSignal]="isChecked" ></app-check-box>
+    <app-check-box [isPartOfAnswear]="true" [checkedSignal]="isChecked" [changeType]="inputType"></app-check-box>
     <div class="answear__spans">
         <span class="answear__spans answear__spans__enumeration">{{spanEnumeration}}</span>
         <span class="answear__spans answear__spans__text">{{spanText}}</span>
