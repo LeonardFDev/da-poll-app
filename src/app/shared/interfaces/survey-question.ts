@@ -2,11 +2,10 @@ import { AnswerInterface } from "./answer";
 
 export interface SurveyQuestionInterFace {
     id: number;
-    name: string;
+    name:string
+    question: string;
     endDate?: Date;
     description?:string
-    question: string;
     answers: AnswerInterface[];
     checkboxType: 'checkbox' |'radio';
-    counter:Number,
 }

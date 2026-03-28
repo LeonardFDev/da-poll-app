@@ -1,13 +1,13 @@
 <section class="question">
         <div class="question__h1-span">
-            <h1 class="question__h1-span__h1">{{question.counter}}. {{question.name}}</h1>
+            <h1 class="question__h1-span__h1">{{question.question}}</h1>
     
             @if (question.checkboxType == 'checkbox' && question.answers.length != 0) {
                 <span class="question__h1-span__span">More than one answers are possible.</span>
             }
         </div>
         <div class="question__answear">
-            @for(item of question.answers; let i = $index; track item){
+            @for(item of question.answers; track item.id){
                 @if (question.checkboxType == 'radio') {
                     <app-answear [spanEnumeration]="item.enumeration+'.'" [spanText]="item.answer" [inputType]="{'type':'radio', name: `${question.id}`}"></app-answear>
                 }
