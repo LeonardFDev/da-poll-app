@@ -15,3 +15,6 @@ export class Results {
   @Input() questionId!:number;
   @Input() questionName!:string;
 }
+
+
+//html template: <app-results [question]="item" [questionId]="item.id" [questionName]="item.question"></app-results>
