@@ -1,0 +1,28 @@
+.btn{
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    padding: 8px 12px;
+    gap: 10px;
+    border: none;
+    background-color: #FFB7704D;
+    cursor: pointer;
+
+    &:hover{
+        background-color: #ffb87099;
+    }
+
+    &__span{
+        font-family: 'Nokora';
+        font-weight: 700;
+        font-size: 16px;
+        color: #FEFDFF;
+    }
+
+    &__img{
+
+        &.hidden{
+            display: none;
+        }
+    }
+}
