@@ -1,0 +1,33 @@
+.view{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border-radius: 5px 50px 5px 5px;
+    padding: 12px 20px;
+    background-color: #D9D9D914;
+    cursor: pointer;
+
+    &:hover{
+        background-color: #D9D9D929;
+    }
+
+    &__span{
+        font-family: 'Mulish';
+        font-weight: 500;
+        font-size: 16px;
+        color: #FFCFA1;
+    }
+
+    &__h1{
+        font-family: 'Mulish';
+        font-weight: 700;
+        font-size: 24px;
+        color: white;
+        margin: 0;
+    }
+
+    &__status{
+        justify-items: right;
+        pointer-events: none;
+    }
+}

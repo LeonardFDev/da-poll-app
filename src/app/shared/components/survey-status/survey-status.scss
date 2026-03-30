@@ -2,8 +2,9 @@
     border-top-right-radius: 14px;
     padding: 3px 12px 3px 10px;
     width: fit-content;
+    cursor: default;
 
-    &--highlights-card {
+    &--paddingTB3-LR6 {
         padding: 3px 6px;
     }
 
@@ -11,16 +12,16 @@
         background-color: #FFB770;
     }
 
-    &:not(.status--secondary-bg-color, .status---bg-color, .status--highlights-card):hover, &--secondary-bg-color{
-        background-color: #FEE9D4;
+    &--secondary-bg-color{
+        background-color: #FEE9D4;  
     }
 
-    &--highlights-card-bg-color{
+    &--tertiary-bg-color{
         background-color: #FFCFA1;
+    }
 
-        &-hover{
-            background-color: #FFB770;
-        }
+    &--hover-primary-bg-color{
+        background-color: #FFB770;
     }
 
     &__text{
@@ -29,7 +30,7 @@
         font-size: 16px;
         color: #221227;
 
-        &--highlights-card {
+        &--fs12{
             font-size: 12px;
         }
     }

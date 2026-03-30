@@ -1,3 +1,3 @@
-<div class="status status--{{colorType}}-bg-color" [class.status--highlights-card]="isPartOfHighlightsCard" [class.status--highlights-card-bg-color]="isPartOfHighlightsCard" [class.status--highlights-card-bg-color-hover]="hovered">
-    <span class="status__text" [class.status__text--highlights-card]="isPartOfHighlightsCard">{{statusText}}</span>
+<div class="status status--{{colorType}}-bg-color" [ngClass]="withHover ? ['status--hover-' + colorHoverType + '-bg-color']: []" [class.status--paddingTB3-LR6]="withpaddingTB3LR6">
+    <span class="status__text" [class.status__text--fs12]="withFontSize12">{{statusText}}</span>
 </div>

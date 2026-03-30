@@ -34,4 +34,8 @@
             width: 14ch;
         }
     }
+
+    &__status{
+        pointer-events: none;
+    }
 }
