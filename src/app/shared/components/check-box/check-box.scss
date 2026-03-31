@@ -36,6 +36,10 @@
         position: relative;
         transition: all 0.2s ease;
 
+        &--border-color-white{
+            border-color: white;
+        }
+
         &::after, &::before {
             content: "";
             position: absolute;

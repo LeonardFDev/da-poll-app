@@ -12,6 +12,7 @@ export class CheckBox {
   @Input() changeType: 'checkbox' | {'type': 'radio', 'name':string} = 'checkbox';
   @Input() isPartOfAnswear:boolean = false;
   @Input() checkedSignal!: WritableSignal<boolean>;
+  @Input() whiteBorder:boolean = false;
 
   @ViewChild('customCheckboxInput') inputRef!:ElementRef<HTMLInputElement>;
 
