@@ -1,0 +1,89 @@
+.question{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &__h1-delete-btn{
+        margin-bottom: 8px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        &__h1{
+            margin: 0;
+            font-family: 'Mulish';
+            font-weight: 700;
+            font-size: 18px;
+            color: #FEFDFF;
+        }
+    }
+
+    &__input-field{
+        margin-top: -24px;
+    }
+
+    &__h2-checkbox-wiht-text{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: -8px;
+
+        &__h2{
+            margin: 0;
+            font-family: 'Mulish';
+            font-weight: 700;
+            font-size: 18px;
+            color: #FEFDFF;
+        }
+
+        &__checkbox-wiht-text{
+            display: flex;
+            flex-direction: row;
+            gap: 4px;
+
+            &__text{
+                font-family: 'Mulish';
+                font-weight: 400;
+                font-size: 12px;
+                color: white;
+            }
+        }
+    }
+
+    &__answear-input{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+
+        &__span{
+            font-family: 'Mulish';
+            font-weight: 700;
+            font-size: 18px;
+            color: #FEFDFF;
+        }
+
+        &__input{
+            width: 100%;
+        }
+    }
+
+    &__footer{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 66px;
+
+        &__button{
+            margin-left: 26px;
+        }
+
+        &__span{
+            font-family: 'Mulish';
+            font-weight: 400;
+            font-size: 12px;
+            color: white;
+        }
+    }
+}

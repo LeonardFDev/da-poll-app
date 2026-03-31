@@ -1,0 +1,34 @@
+<section class="question">
+    <div class="question__h1-delete-btn">
+        <h1 class="question__h1-delete-btn__h1">{{'1. Question'}}</h1>
+        <app-delete-button></app-delete-button>
+    </div>
+
+    <app-input-field class="question__input-field"></app-input-field>
+
+    <div class="question__h2-checkbox-wiht-text">
+        <h2 class="question__h2-checkbox-wiht-text__h2">{{'Answears'}}</h2>
+        <div class="question__h2-checkbox-wiht-text__checkbox-wiht-text">
+            <app-check-box [whiteBorder]="true"></app-check-box>
+            <span class="question__h2-checkbox-wiht-text__checkbox-wiht-text__text">{{'Allow multiple answers.'}}</span>
+        </div>
+    </div>
+
+    @for (item of answearsList(); track $index; let i=$index;) {
+
+        <div class="question__answear-input">
+            <span class="question__answear-input__span">{{fromNumberToChar(i)}}.</span>
+            <app-input-field class="question__answear-input__input"></app-input-field>
+            <app-delete-button></app-delete-button>
+        </div>
+    }
+
+    <div class="question__footer">
+        @if (answearsList().length < 6) {
+            <app-tertiary-button class="question__footer__button" [buttonText]="'Add answer'"></app-tertiary-button>
+        }
+        @if (answearsList().length > 2) {
+            <span  class="question__footer__span">{{'You can add up to 6 answer fields.'}}</span>
+        }
+    </div>
+</section>
