@@ -4,10 +4,12 @@ import { SecondaryButton } from "../../shared/components/secondary-button/second
 import { DeleteButton } from "../../shared/components/delete-button/delete-button";
 import { InputField } from "../../shared/components/input-field/input-field";
 import { CreateQuestion } from "../../shared/components/create-question/create-question";
+import { PrimaryButton } from "../../shared/components/primary-button/primary-button";
+import { DropDownMenu } from "../../shared/components/drop-down-menu/drop-down-menu";
 
 @Component({
   selector: 'app-create-survey',
-  imports: [SurveyStatus, SecondaryButton, DeleteButton, InputField, CreateQuestion],
+  imports: [SurveyStatus, SecondaryButton, DeleteButton, InputField, CreateQuestion, PrimaryButton, DropDownMenu],
   templateUrl: './create-survey.html',
   styleUrl: './create-survey.scss',
 })

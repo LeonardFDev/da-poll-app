@@ -26,10 +26,7 @@
                                     <app-delete-button></app-delete-button>
                                 </div>
                             </div>
-                            <div>
-                                <span style="padding: 4px 6px 4px 10px;">PLATZHALTER</span><!--ersetzen-->
-                                <span style="padding: 4px 6px 4px 10px;">PLATZHALTER</span><!--ersetzen-->
-                            </div>
+                            <app-drop-down-menu [dropDownText]="'Choose category'"></app-drop-down-menu>
                         </div>
                     </div>
                     <div class="form__boxOne__right">
@@ -49,6 +46,9 @@
                     }
                     <app-secondary-button (click)="addQuestion()" [btnText]="'Add next question'" [withImg]="true" [imgUrl]="'/assets/img/add_circle_secondary-button.png'"></app-secondary-button>
                 </div>
+            </div>
+            <div class="create-survey__footer">
+                <app-primary-button [btnText]="'Publish'" [withIcon]="{'isWithIcon':true, 'iconUrl':'/assets/img/check.png'}"></app-primary-button>
             </div>
         </div>
     </div>

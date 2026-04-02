@@ -1,0 +1,16 @@
+<section class="drop-down-body">
+    <div class="drop-down" [class.drop-down--open-selected]="isOpenOrSelected()" (click)="open()">
+        <span class="drop-down__span">{{dropDownText}}</span>
+        <div class="drop-down__icon" [class.drop-down__icon--open]="isOpen()" [class.drop-down__icon--selected]="isSelected()" ></div>
+    
+        @if (isOpen()) {
+            <div class="drop-down-single-menu">
+                @for (item of sinlgeMenuList; track $index; let i = $index) {
+                    <span class="drop-down-single-menu__span" (click)="selected(i)">{{item.title}}</span>
+                }
+            </div>
+        }
+    </div>
+    
+    <span class="selected-menu">{{selectedMenu}}</span>
+</section>

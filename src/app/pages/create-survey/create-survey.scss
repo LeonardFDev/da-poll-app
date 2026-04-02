@@ -21,7 +21,6 @@
     box-sizing: border-box;
     border-radius: 5px 100px 5px 5px;
     padding: 40px 54px;
-    margin-bottom: 48px;
 
     &__h1-btn{
         display: flex;
@@ -38,6 +37,12 @@
             margin: 0;
         }
     }
+
+    &__footer{
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: row;
+    }
 }
 
 .form{
@@ -47,6 +52,7 @@
     border-radius: 5px 80px 5px 5px;
     padding: 40px 32px;
     background-color: #8E709929;
+    margin-bottom: 48px;
 }
 
 .form {
@@ -84,6 +90,7 @@
     &__extra{
         display: flex;
         flex-direction: row;
+        gap: 8px;
     }
     
     &__span{
