@@ -1,1 +1,7 @@
-<input class="input-field" type="text">
+@if(type == 'inputText'){
+    <input class="input-field" type="text">
+}
+
+@else if(type == 'textarea'){
+    <textarea class="input-field input-field--textarea"></textarea>
+}

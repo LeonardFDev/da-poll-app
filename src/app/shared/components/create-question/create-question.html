@@ -1,7 +1,8 @@
 <section class="question">
     <div class="question__h1-delete-btn">
-        <h1 class="question__h1-delete-btn__h1">{{'1. Question'}}</h1>
-        <app-delete-button></app-delete-button>
+        <h1 class="question__h1-delete-btn__h1">{{questionIndex}}. Question</h1>
+        <!-- <app-delete-button (click)="getQuestionService.removeQuestion(questionId)"></app-delete-button> -->
+        <app-delete-button (click)="removeQuestion(questionId)"></app-delete-button>
     </div>
 
     <app-input-field class="question__input-field"></app-input-field>
@@ -14,18 +15,18 @@
         </div>
     </div>
 
-    @for (item of answearsList(); track $index; let i=$index;) {
+    @for (item of answearsList(); track item.id; let i=$index;) {
 
         <div class="question__answear-input">
             <span class="question__answear-input__span">{{fromNumberToChar(i)}}.</span>
             <app-input-field class="question__answear-input__input"></app-input-field>
-            <app-delete-button></app-delete-button>
+            <app-delete-button (click)="removeAnswear(item.id)"></app-delete-button>
         </div>
     }
 
     <div class="question__footer">
         @if (answearsList().length < 6) {
-            <app-tertiary-button class="question__footer__button" [buttonText]="'Add answer'"></app-tertiary-button>
+            <app-tertiary-button (click)="addAnswear()" class="question__footer__button" [buttonText]="'Add answer'"></app-tertiary-button>
         }
         @if (answearsList().length > 2) {
             <span  class="question__footer__span">{{'You can add up to 6 answer fields.'}}</span>

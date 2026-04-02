@@ -1,1 +1,56 @@
-<p>create-survey works!</p>
+<section class="page">
+    <div class="page__body">
+        <div class="create-survey">
+            <app-survey-status [colorType]="'tertiary'" [statusText]="'Draft'"></app-survey-status>
+
+            <div class="create-survey__h1-btn">
+                <h1 class="create-survey__h1-btn__h1">Create new survey</h1>
+                <app-secondary-button [btnText]="'Cancel'" [withImg]="true" [imgUrl]="'assets/img/x-create-survey.png'"></app-secondary-button>
+            </div>
+
+            <div class="form">
+                <div class="form__boxOne">
+                    <div class="form__boxOne__left">
+                        <div class="unit">
+                            <span class="unit__span">Survey name</span>
+                            <div class="unit__input-button">
+                                <app-input-field class="unit__input-button__input"></app-input-field>
+                                <app-delete-button class="unit__input-button__button--margin-r8"></app-delete-button>
+                            </div>
+                        </div>
+                        <div class="unit__extra">
+                            <div class="unit">
+                                <span class="unit__span">Set end Date (optional)</span>
+                                <div class="unit__input-button">
+                                    <app-input-field></app-input-field>
+                                    <app-delete-button></app-delete-button>
+                                </div>
+                            </div>
+                            <div>
+                                <span style="padding: 4px 6px 4px 10px;">PLATZHALTER</span><!--ersetzen-->
+                                <span style="padding: 4px 6px 4px 10px;">PLATZHALTER</span><!--ersetzen-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form__boxOne__right">
+                        <div class="unit">
+                            <span class="unit__span">Survey name</span>
+                            <div class="unit__input-button">
+                                <app-input-field [type]="'textarea'" class="unit__input-button__input"></app-input-field>
+                                <app-delete-button class="unit__input-button__button--alignSelt-start"></app-delete-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form__boxTwo">
+                    @for (item of questionList(); track item.id; let i= $index) {
+                        <app-create-question (action)="removeQuestion($event)" [questionId]="item.id" [questionIndex]="listNumber(i)"></app-create-question>
+                    }
+                    <app-secondary-button (click)="addQuestion()" [btnText]="'Add next question'" [withImg]="true" [imgUrl]="'/assets/img/add_circle_secondary-button.png'"></app-secondary-button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

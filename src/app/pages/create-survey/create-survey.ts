@@ -1,9 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, signal, WritableSignal } from '@angular/core';
+import { SurveyStatus } from "../../shared/components/survey-status/survey-status";
+import { SecondaryButton } from "../../shared/components/secondary-button/secondary-button";
+import { DeleteButton } from "../../shared/components/delete-button/delete-button";
+import { InputField } from "../../shared/components/input-field/input-field";
+import { CreateQuestion } from "../../shared/components/create-question/create-question";
 
 @Component({
   selector: 'app-create-survey',
-  imports: [],
+  imports: [SurveyStatus, SecondaryButton, DeleteButton, InputField, CreateQuestion],
   templateUrl: './create-survey.html',
   styleUrl: './create-survey.scss',
 })
-export class CreateSurvey {}
+export class CreateSurvey {
+  questionId:number = 0;
+  questionList:WritableSignal<{id: number}[]> = signal([]);
+
+  constructor(){
+    this.addQuestion();
+  }
+
+  listNumber(i:number){
+    return i+1;
+  }
+
+  addQuestion(){
+    this.questionId++;
+    this.questionList.update(current => [...current, { 'id': this.questionId }]);
+  }
+
+  removeQuestion(id:number){
+    if(this.questionList().length >1) this.questionList.update(current => current.filter(item => item.id !== id));
+  }
+}

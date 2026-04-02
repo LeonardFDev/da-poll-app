@@ -1,0 +1,119 @@
+.page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__body{
+        width: 100%;
+        max-width: 1440px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        padding: 72px 109px;
+    }
+}
+
+.create-survey{
+    width: 1166px;
+    display: flex;
+    flex-direction: column;
+    background-color: #35273A;
+    box-sizing: border-box;
+    border-radius: 5px 100px 5px 5px;
+    padding: 40px 54px;
+    margin-bottom: 48px;
+
+    &__h1-btn{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 32px;
+
+        &__h1{
+            font-family: 'Nerko One';
+            font-weight: 400;
+            font-size: 56px;
+            color: #EE9236;
+            margin: 0;
+        }
+    }
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    border-radius: 5px 80px 5px 5px;
+    padding: 40px 32px;
+    background-color: #8E709929;
+}
+
+.form {
+    &__boxOne{
+        display: flex;
+        flex-direction: row;
+        gap: 64px;
+    
+        &__left{
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+    
+        &__right{
+            display: flex;
+            flex: 1;
+        }
+    }
+
+    &__boxTwo{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 64px;
+    }
+}
+
+.unit{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 4px;
+    
+    &__extra{
+        display: flex;
+        flex-direction: row;
+    }
+    
+    &__span{
+        font-family: 'Mulish';
+        font-weight: 700;
+        font-size: 18px;
+        color: #FEFDFF;
+    }
+    
+    &__input-button{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex: 1;
+        gap: 8px;
+    
+        &__input{
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+    
+        &__button{
+            &--margin-r8{
+                margin-right: 8px;
+            }
+
+            &--alignSelt-start{
+                align-self: start;
+            }
+        }
+    }
+}
