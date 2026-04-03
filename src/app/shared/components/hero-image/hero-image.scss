@@ -1,0 +1,54 @@
+.hero-img{
+    position: relative;
+
+    &__movement{
+        &-one{
+            position: absolute;
+            left: 60px;
+            top: 100px;
+        }
+
+        &-two{
+            position: absolute;
+            left: 343px;
+            top: 365px;
+            clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 48% 100%);
+            filter: brightness(0.8);
+        }
+
+        &-three{
+            position: absolute;
+            left: 59px;
+            top: 421px;
+        }
+
+        &-four{
+            position: absolute;
+            left: 364px;
+            top: 0px;
+            transform: rotate(15deg) translate(13px, 10px);
+        }
+    }
+}
+
+.hero-img:hover{
+    .hero-img__movement{
+        &-one{
+            transform: scale(1.2) translate(-10px, -6px);
+        }
+    
+        &-two{
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+            filter: brightness(1);
+            transform: scale(1.1) translate(60px, 0px);
+        }
+    
+        &-three{
+            transform: translate(-10px, 1px);
+        }
+    
+        &-four{
+            transform: rotate(0deg) translate(0px, 0px);
+        }
+    }
+}
