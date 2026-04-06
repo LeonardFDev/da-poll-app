@@ -1,4 +1,4 @@
 <button class="btn">
-    <span class="btn__span">{{btnText}}</span>
+    <span class="btn__span" [class.btn__span--second-color]="secondColor">{{btnText}}</span>
     <img class="btn__img" [class.hidden]="!withImg" src="{{imgUrl}}" alt="icon">
 </button>

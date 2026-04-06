@@ -1,1 +1,45 @@
-<p>view-survey works!</p>
+<section class="page">
+    <div class="page__body">
+        <header class="view-survey__header">
+            <img src="/assets/img/logo-purple-dark.png" alt="icon">
+            <app-primary-button [btnText]="'Create survey'" [withIcon]="{'isWithIcon': true, 'iconUrl': '/assets/img/add_circle_primary-button.png'}"></app-primary-button>
+        </header>
+
+        <section class="view-survey__section" [class.view-survey__section--al-it-end]="true"> <!--true / false-->
+            <article class="view-survey__section__left">
+                <app-survey-status [statusText]="'Published'"></app-survey-status>
+                <div class="view-survey__section__left__info">
+                    <div class="view-survey__section__left__info__spans">
+                        <span class="view-survey__section__left__info__spans__span">Ends on {{endDate}}</span>
+                        <span class="view-survey__section__left__info__spans__span">Category: {{category}}</span>
+                    </div>
+                    <h1 class="view-survey__section__left__info__h1">Let’s Plan the Next Team Event Together</h1>
+                    <span class="view-survey__section__left__info__span">We want to create team activities that everyone will enjoy – share your preferences and ideas in our survey to help us plan better experiences together.</span>
+                </div>
+                <div class="view-survey__section__left__questions">
+                    @for (item of list(); track item.id) {
+                        <app-question [question]="item"></app-question>
+                    }
+                </div>
+                <app-secondary-button class="view-survey__section__left__btn" [btnText]="'Complete survey'" [secondColor]="true"></app-secondary-button>
+            </article>
+
+            <article class="view-survey__section__right" [class.view-survey__section__right--ma-top200]="false"> <!--true / false-->
+                <h1 class="view-survey__section__right__h1">Survey results <span class="view-survey__section__right__h1__span">LIVE</span></h1>
+                @if(true){ <!--true / false-->
+                    <div>
+                        @for (item of list(); track $index) {
+                            <app-results [question]="item" [questionId]="item.id" [questionName]="item.question"></app-results>
+                        }
+                    </div>
+                }
+                @else{
+                    <div class="view-survey__section__right__spans">
+                        <span class="view-survey__section__right__spans__span">Results will be shown here after participants complete the survey.</span>
+                        <span class="view-survey__section__right__spans__span view-survey__section__right__spans__span--al-se-ce">There are no answears yet.</span>
+                    </div>
+                }
+            </article>
+        </section>
+    </div>
+</section>

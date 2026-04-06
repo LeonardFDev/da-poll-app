@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { Main } from './pages/main/main';
 import { CreateSurvey } from './pages/create-survey/create-survey';
+import { ViewSurvey } from './pages/view-survey/view-survey';
 
 export const routes: Routes = [
     {
@@ -10,5 +11,9 @@ export const routes: Routes = [
     {
         path: 'create-question',
         component: CreateSurvey,
+    },
+    {
+        path: 'view-survey',
+        component: ViewSurvey,
     },
 ];

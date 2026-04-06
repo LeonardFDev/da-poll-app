@@ -1,0 +1,132 @@
+.page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__body{
+        width: 100%;
+        max-width: 1440px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 40px;
+        padding: 72px 109px;
+    }
+}
+
+.view-survey{
+    &__header{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    &__section{
+        display: flex;
+        flex-direction: row;
+        
+        gap: 42px;
+
+        &--al-it-end{
+            align-items: flex-end;
+        }
+
+        &__left{
+            max-width: 702px;
+            border-top-right-radius: 160px;
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+            background-color: #8E70991A;
+
+            &__info{
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                margin-top: 8px;
+                margin-bottom: 40px;
+
+                &__spans {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    &__span{
+                        font-family: 'Mulish';
+                        font-weight: 500;
+                        font-size: 14px;
+                        color: #35273A;
+                    }
+                }
+
+                &__h1{
+                    margin: 0;
+                    font-family: 'Nerko One';
+                    font-weight: 400;
+                    font-size: 56px;
+                    color: #EE9236;
+                }
+
+                &__span{
+                    font-family: 'Mulish';
+                    font-weight: 500;
+                    font-size: 16px;
+                    color: #35273A;
+                }
+            }
+
+            &__questions{
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: row;
+                gap: 40px;
+                margin-bottom: 24px;
+            }
+
+            &__btn{
+                justify-items: right;
+            }
+        }
+
+        &__right{
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            &--ma-top200{
+                margin-top: 200px;
+            }
+
+            &__h1{
+                font-family: 'Nerko One';
+                font-weight: 400;
+                font-size: 32px;
+                color: #221227;
+                margin: 0;
+
+                &__span{
+                    color: #FFB770;
+                }
+            }
+
+            &__spans{
+                display: flex;
+                flex-direction: column;
+                gap: 146px;
+                margin-top: 8px;
+
+                &__span{
+                    font-family: 'Mulish';
+                    font-weight: 700;
+                    font-size: 18px;
+                    color: #35273A;
+    
+                    &--al-se-ce{
+                        align-self: center;
+                    }
+                }
+            }
+        }
+    }
+}
