@@ -1,0 +1,136 @@
+.page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #35273A;
+    min-height: 100vh;
+
+    &__body{
+        width: 100%;
+        max-width: 1440px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 39px 111px 0 111px;
+    }
+}
+
+.header{
+    width: 100%;
+    margin-bottom: 92px;
+}
+
+.section{};
+
+.section__top{
+    display: flex;
+    flex-direction: row;
+    
+    &__h1-span-btn {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    
+        &__h1{
+            margin: 0;
+            font-family: 'Nerko One';
+            font-weight: 400;
+            font-size: 100px;
+            color: #FFB770;
+            line-height: 89px;
+        }
+    
+        &__span{
+            font-family: 'Mulish';
+            font-weight: 600;
+            font-size: 24px;
+            color: white;
+            width: calc(100% - 5ch);
+        }
+    }
+    
+    &__hero-img{
+        zoom: 0.85;
+    }
+}
+
+.section__center{
+    margin-top: 90px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 78px;
+
+    &__h1{
+        margin: 0;
+        font-family: 'Nerko One';
+        font-weight: 400;
+        font-size: 72px;
+        color: #FFB770;
+        align-self: center;
+    }
+
+    &__span{
+        margin-top: 80px;
+        font-family: 'Mulish';
+        font-weight: 500;
+        font-size: 32px;
+        color: white;
+        margin-bottom: 32px;
+    }
+    
+    &__highlights-cards{
+        display: flex;
+        flex-direction: row;
+        gap: 32px;
+        padding: 0 10px;
+    }
+}
+
+.section__bottom{
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 78px;
+    margin-bottom: 40px;
+
+    &__filters{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        height: 60px;
+
+        &__filter-btns{
+            display: flex;
+            flex-direction: row;
+            gap: 24px;
+        }
+    }
+
+    &__survey-views{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 16px;
+        max-height: 476px;
+        overflow: auto;
+
+        @-moz-document url-prefix() {
+            scrollbar-width: thin;             
+            scrollbar-color: #FFB770 #BABABA;
+        }
+
+        &::-webkit-scrollbar {
+            width: 8px;
+            border-radius: 10px;
+            background: #BABABA;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background: #FFB770;
+            box-shadow: 3px 3px 3.2px 0 #00000040;
+        }
+    }
+}

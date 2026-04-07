@@ -1,0 +1,43 @@
+<section class="page">
+    <div class="page__body">
+        <header class="header">
+            <img src="assets/img/logo-orange.png" alt="icon">
+        </header>
+
+        <section class="section__top">
+            <div class="section__top__h1-span-btn">
+                <h1 class="section__top__h1-span-btn__h1">Collect Feedback, Unlock Ideas</h1>
+                <span class="section__top__h1-span-btn__span">Create and share surveys in minutes – from team events to workplace culture. Collect opinions, engage your audience, and turn feedback into action.</span>
+                <app-primary-button [btnText]="'New survey'" [withIcon]="{'isWithIcon': true, 'iconUrl':'assets/img/add_circle_primary-button.png'}"></app-primary-button>
+            </div>
+            <app-hero-image class="section__top__hero-img"></app-hero-image>
+        </section>
+
+        <section class="section__center">
+            <h1 class="section__center__h1">Your surveys</h1>
+            <span class="section__center__span">Ending soon surveys</span>
+            <div class="section__center__highlights-cards">
+                @for (item of [0,0,0]; track $index) {
+                    <app-highlights-card [highlightsCardH1]="'TestH1'" [highlightsCardText]="'TestSpan'"></app-highlights-card>
+                }
+            </div>
+        </section>
+        
+        <section class="section__bottom">
+            <div class="section__bottom__filters">
+                <div class="section__bottom__filters__filter-btns">
+                    <app-filter-button [btnText]="'Active survey'"></app-filter-button>
+                    <app-filter-button [btnText]="'Past survey'"></app-filter-button>
+                </div>
+                <app-drop-down-menu [dropDownText]="'Sort by categories'"></app-drop-down-menu>
+            </div>
+
+            <div class="section__bottom__survey-views">
+                @for (item of [0,0,0,0,0,0,0,0,0]; track $index) {
+                    <app-survey-view [viewH1]="'TestH1'" [viewSpan]="'TestSpan'"></app-survey-view>
+                }
+            </div>
+        </section>
+
+    </div>
+</section>
