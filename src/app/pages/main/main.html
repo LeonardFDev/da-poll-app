@@ -16,10 +16,12 @@
         <section class="section__center">
             <h1 class="section__center__h1">Your surveys</h1>
             <span class="section__center__span">Ending soon surveys</span>
-            <div class="section__center__highlights-cards">
-                @for (item of [0,0,0]; track $index) {
-                    <app-highlights-card [highlightsCardH1]="'TestH1'" [highlightsCardText]="'TestSpan'"></app-highlights-card>
-                }
+            <div style="overflow: hidden;">
+                <div #highlightsCards class="section__center__highlights-cards">
+                    @for (item of [0,0,0]; track $index; let i = $index) {
+                        <app-highlights-card [id]="i" [highlightsCardH1]="'TestH1'" [highlightsCardText]="'TestSpan'"></app-highlights-card>
+                    }
+                </div>
             </div>
         </section>
         

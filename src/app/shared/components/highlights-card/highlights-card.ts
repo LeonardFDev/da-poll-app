@@ -10,6 +10,7 @@ import { SurveyStatus } from "../survey-status/survey-status";
 export class HighlightsCard {
   @Input() highlightsCardText:string ="";
   @Input() highlightsCardH1:string = "";
+  @Input() id:number = NaN;
   hover = signal(false);
 }
 
