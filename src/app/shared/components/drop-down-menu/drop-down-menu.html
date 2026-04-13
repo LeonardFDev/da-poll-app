@@ -6,7 +6,9 @@
         @if (isOpen()) {
             <div class="drop-down-single-menu">
                 @for (item of sinlgeMenuList; track $index; let i = $index) {
-                    <span class="drop-down-single-menu__span" (click)="selected(i)">{{item.title}}</span>
+                    <div class="drop-down-single-menu__selection" (click)="selected(i)">
+                        <span class="drop-down-single-menu__selection__span" >{{item.title}}</span>
+                    </div>
                 }
             </div>
         }

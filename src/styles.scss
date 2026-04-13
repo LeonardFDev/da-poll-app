@@ -2,6 +2,13 @@ body{
   margin: 0;
 }
 
+h1, h2, span{
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
 @font-face {
   font-family: "Nokora";
   src: url("../public/assets/fonts/Nokora-VariableFont_wght.ttf") format("truetype");

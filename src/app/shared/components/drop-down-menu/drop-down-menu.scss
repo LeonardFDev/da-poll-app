@@ -59,19 +59,22 @@
     border-radius: 6px;
     background-color: white;
 
-    &__span{
+    &__selection{
         width: fit-content;
         border-radius: 6px;
         padding: 4px;
-        font-family: 'Mulish';
-        font-weight: 400;
-        font-size: 14px;
-        color: #35273A;
         cursor: pointer;
 
         &:hover{
             background-color: #F4E9FB;
         }
+    }
+
+    &__span{
+        font-family: 'Mulish';
+        font-weight: 400;
+        font-size: 14px;
+        color: #35273A;
     }
 }
 
