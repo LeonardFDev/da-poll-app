@@ -13,7 +13,7 @@ export const routes: Routes = [
         component: CreateSurvey,
     },
     {
-        path: 'view-survey',
+        path: 'view-survey/:id',
         component: ViewSurvey,
     },
 ];
