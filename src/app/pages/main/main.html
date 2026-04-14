@@ -8,7 +8,7 @@
             <div class="section__top__h1-span-btn">
                 <h1 class="section__top__h1-span-btn__h1">Collect Feedback, Unlock Ideas</h1>
                 <span class="section__top__h1-span-btn__span">Create and share surveys in minutes – from team events to workplace culture. Collect opinions, engage your audience, and turn feedback into action.</span>
-                <app-primary-button [btnText]="'New survey'" [withIcon]="{'isWithIcon': true, 'iconUrl':'assets/img/add_circle_primary-button.png'}"></app-primary-button>
+                <app-primary-button routerLink="/create-question" [btnText]="'New survey'" [withIcon]="{'isWithIcon': true, 'iconUrl':'assets/img/add_circle_primary-button.png'}"></app-primary-button>
             </div>
             <app-hero-image class="section__top__hero-img"></app-hero-image>
         </section>
@@ -36,7 +36,7 @@
 
             <div class="section__bottom__survey-views">
                 @for (item of [0,0,0,0,0,0,0,0,0]; track $index) {
-                    <app-survey-view [viewH1]="'TestH1'" [viewSpan]="'TestSpan'"></app-survey-view>
+                    <app-survey-view [routerLink]="['/view-survey', $index]" [viewH1]="'TestH1'" [viewSpan]="'TestSpan'"></app-survey-view>
                 }
             </div>
         </section>

@@ -1,18 +1,21 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { PrimaryButton } from "../../shared/components/primary-button/primary-button";
 import { HeroImage } from "../../shared/components/hero-image/hero-image";
 import { HighlightsCard } from "../../shared/components/highlights-card/highlights-card";
 import { DropDownMenu } from "../../shared/components/drop-down-menu/drop-down-menu";
 import { FilterButton } from "../../shared/components/filter-button/filter-button";
 import { SurveyView } from "../../shared/components/survey-view/survey-view";
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-main',
-  imports: [PrimaryButton, HeroImage, HighlightsCard, DropDownMenu, FilterButton, SurveyView],
+  imports: [PrimaryButton, HeroImage, HighlightsCard, DropDownMenu, FilterButton, SurveyView, RouterLink],
   templateUrl: './main.html',
   styleUrl: './main.scss',
 })
 export class Main {
+  router = inject(Router)
+
   @ViewChild('highlightsCards') highlightsCardsRef!: ElementRef<HTMLElement>;
   highlightsCards!:HTMLElement;
 
@@ -21,7 +24,6 @@ export class Main {
   lastX = 0;
   velocity = 0;
   dragging = false;
-  // moved = false;
   rafId: number | null = null;
 
   ngAfterViewInit(){
@@ -31,16 +33,12 @@ export class Main {
     this.highlightsCards.addEventListener('pointermove', (event) => this.onPointerMove(event));
     this.highlightsCards.addEventListener('pointerup', (event) => this.onPointerUp(event));
     this.highlightsCards.addEventListener('pointercancel', (event) => this.onPointerUp(event));
+    this.highlightsCards.addEventListener('pointerout', (event) => this.pointerout(event));
+    
   }
 
-  // logId(event: PointerEvent) {
-  //   const id = (event.target as HTMLElement).id;
-  //   console.log(id);
-  // }
-
   onPointerDown (e: PointerEvent) {
-    if (e.button !== 0) return;
-    // this.moved = false;
+    if (e.button != 0 || !(e.target as HTMLElement).closest('.highlights-card')) return;
 
     this.dragging = true;
     this.startX = e.clientX - this.currentX;
@@ -48,8 +46,6 @@ export class Main {
     this.lastX = e.clientX;
 
     this.velocity = 0;
-
-    this.highlightsCards.setPointerCapture(e.pointerId);
 
     if (this.rafId) {
       cancelAnimationFrame(this.rafId);
@@ -59,7 +55,6 @@ export class Main {
 
   onPointerMove(e: PointerEvent) {
     if (!this.dragging) return;
-    // this.moved = true;
 
     let newX = e.clientX - this.startX;
     let dx = e.clientX - this.lastX;
@@ -74,8 +69,17 @@ export class Main {
     this.highlightsCards.style.transform = `translateX(${this.currentX}px)`;
   }
 
+  pointerout(e: PointerEvent){
+    if (!this.dragging) return;
+    this.dragging = false;
+    this.animate();
+  }
+
   onPointerUp(e: PointerEvent){
-    // if(this.velocity == 0) this.logId(e);
+    if(this.velocity == 0 && e.button == 0){
+      let id = (e.target as HTMLElement).closest('.highlights-card')?.id
+      if(id) this.router.navigate(['/view-survey', id]);
+    }
 
     if (!this.dragging) return;
     this.dragging = false;

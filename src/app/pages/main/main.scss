@@ -82,6 +82,8 @@
         flex-direction: row;
         gap: 32px;
         padding: 0 10px;
+
+        touch-action: none;
     }
 }
 
