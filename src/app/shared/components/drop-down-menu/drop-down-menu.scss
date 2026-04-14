@@ -68,14 +68,15 @@
         &:hover{
             background-color: #F4E9FB;
         }
+        
+        &__span{
+            font-family: 'Mulish';
+            font-weight: 400;
+            font-size: 14px;
+            color: #35273A;
+        }
     }
 
-    &__span{
-        font-family: 'Mulish';
-        font-weight: 400;
-        font-size: 14px;
-        color: #35273A;
-    }
 }
 
 .selected-menu{
