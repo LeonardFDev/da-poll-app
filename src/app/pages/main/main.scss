@@ -195,7 +195,9 @@
         }
 
         &__app{
-            margin-right: 12px
+            @media (max-width:1388px) {
+                margin-right: 12px
+            }
         }
     }
 }

@@ -3,7 +3,6 @@ import { DeleteButton } from "../delete-button/delete-button";
 import { InputField } from "../input-field/input-field";
 import { CheckBox } from "../check-box/check-box";
 import { TertiaryButton } from "../tertiary-button/tertiary-button";
-import { GetQuestionsServices } from '../../services/get-questions/get-questions';
 
 
 @Component({
@@ -17,8 +16,6 @@ export class CreateQuestion {
   @Input() questionIndex:number = NaN;
 
   @Output() action = new EventEmitter<number>();
-
-  // getQuestionService = inject(GetQuestionsServices);
 
   answearId:number = 0;
   answearsList:WritableSignal<{'id':number}[]> = signal([]);
