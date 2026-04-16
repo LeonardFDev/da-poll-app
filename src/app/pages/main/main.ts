@@ -1,11 +1,11 @@
-import { Component, ElementRef, inject, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, inject, signal, ViewChild, WritableSignal } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { PrimaryButton } from "../../shared/components/primary-button/primary-button";
 import { HeroImage } from "../../shared/components/hero-image/hero-image";
 import { HighlightsCard } from "../../shared/components/highlights-card/highlights-card";
 import { DropDownMenu } from "../../shared/components/drop-down-menu/drop-down-menu";
 import { FilterButton } from "../../shared/components/filter-button/filter-button";
 import { SurveyView } from "../../shared/components/survey-view/survey-view";
-import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -14,7 +14,7 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './main.scss',
 })
 export class Main {
-  router = inject(Router)
+  router = inject(Router);
 
   @ViewChild('highlightsCards') highlightsCardsRef!: ElementRef<HTMLElement>;
   highlightsCards!:HTMLElement;
@@ -26,15 +26,39 @@ export class Main {
   dragging = false;
   rafId: number | null = null;
 
+  mq = window.matchMedia('(max-width: 1312px)');
+  mq2 = window.matchMedia('(max-width: 1440px)');
+
+  mobil:WritableSignal<boolean> = signal(false);
+  scrollActiv:WritableSignal<boolean> = signal(false);
+
+
+  ngOnInit(){
+    this.mobil.set(this.mq.matches);
+    this.scrollActiv.set(this.mq2.matches);
+
+    this.mq.addEventListener('change', e => {
+      this.mobil.set(e.matches);
+    });
+
+    this.mq2.addEventListener('change', e => {
+      this.scrollActiv.set(e.matches);
+    });
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.currentX = 0;
+    this.highlightsCards.style.removeProperty('transform');
+  }
+
   ngAfterViewInit(){
     this.highlightsCards = this.highlightsCardsRef.nativeElement;
 
     this.highlightsCards.addEventListener('pointerdown', (event) => this.onPointerDown(event));
     this.highlightsCards.addEventListener('pointermove', (event) => this.onPointerMove(event));
-    this.highlightsCards.addEventListener('pointerup', (event) => this.onPointerUp(event));
+    window.addEventListener('pointerup', (event) => this.onPointerUp(event));
     this.highlightsCards.addEventListener('pointercancel', (event) => this.onPointerUp(event));
-    this.highlightsCards.addEventListener('pointerout', (event) => this.pointerout(event));
-    
   }
 
   onPointerDown (e: PointerEvent) {
@@ -42,9 +66,7 @@ export class Main {
 
     this.dragging = true;
     this.startX = e.clientX - this.currentX;
-    
     this.lastX = e.clientX;
-
     this.velocity = 0;
 
     if (this.rafId) {
@@ -54,25 +76,28 @@ export class Main {
   }
 
   onPointerMove(e: PointerEvent) {
-    if (!this.dragging) return;
-
+    if (!this.dragging || !this.scrollActiv()) return;
+    
     let newX = e.clientX - this.startX;
     let dx = e.clientX - this.lastX;
+
     this.velocity = dx / 10;
     this.lastX = e.clientX;
 
-    const max = this.highlightsCards.offsetWidth - this.highlightsCards.children[0].clientWidth -12
-    newX = Math.max(-572, Math.min(newX, max));
+    newX = Math.max(-this.maxCalculate(), Math.min(newX, 0));
 
     this.currentX = newX;
-
     this.highlightsCards.style.transform = `translateX(${this.currentX}px)`;
   }
 
-  pointerout(e: PointerEvent){
-    if (!this.dragging) return;
-    this.dragging = false;
-    this.animate();
+  maxCalculate(){
+    const totalCalculationGap = Number(parseFloat(getComputedStyle(this.highlightsCards).gap)) *2;
+    const totalCalculationCards = Number(parseFloat(getComputedStyle(this.highlightsCards.children[0]).width)) *3
+    const totalCalculationGapCards = totalCalculationGap + totalCalculationCards;
+    const visibleArea = Number(parseFloat(getComputedStyle(this.highlightsCards).width));
+    const max = totalCalculationGapCards - visibleArea;
+
+    return max
   }
 
   onPointerUp(e: PointerEvent){
@@ -87,7 +112,7 @@ export class Main {
   }
 
   animate(){
-    this.velocity *= 0.85; //0.95;
+    this.velocity *= 0.85;
 
     if (Math.abs(this.velocity) < 0.02) {
       this.velocity = 0;
@@ -95,20 +120,15 @@ export class Main {
     }
 
     this.currentX += this.velocity * 16;
-
-    const max = this.highlightsCards.offsetWidth - this.highlightsCards.children[0].clientWidth -12
-
-    this.currentX = Math.max(-572, Math.min(this.currentX, max));
-
+    this.currentX = Math.max(-this.maxCalculate(), Math.min(this.currentX, 0));
     this.highlightsCards.style.transform = `translateX(${this.currentX}px)`;
-
     this.rafId = requestAnimationFrame(this.animate.bind(this));
   }
 
   ngOnDestroy() {
     this.highlightsCards.removeEventListener('pointerdown', this.onPointerDown);
-    window.removeEventListener('pointermove', this.onPointerMove);
-    window.removeEventListener('pointerup', this.onPointerUp);
+    this.highlightsCards.removeEventListener('pointermove', this.onPointerMove);
+    this.highlightsCards.removeEventListener('pointerup', this.onPointerUp);
 
     if (this.rafId) cancelAnimationFrame(this.rafId);
   }

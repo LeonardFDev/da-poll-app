@@ -13,13 +13,13 @@ export class PrimaryButton {
   @ViewChild('btn') btnRef!:ElementRef<HTMLButtonElement>;
 
   ngAfterViewInit() {
-    window.addEventListener('load', () => {if(this.withIcon.isWithIcon) this.findOutImageSize()});
+    if(this.withIcon.isWithIcon) this.findOutImageSize();
   }
 
   findOutImageSize(){
     const img = document.createElement("img");
     if(!this.withIcon.iconUrl) return;
-    img.src = this.withIcon.iconUrl;    
+    img.src = this.withIcon.iconUrl;
 
     img.onload = () =>{
       let btnStyle = this.btnRef.nativeElement.style
@@ -27,11 +27,10 @@ export class PrimaryButton {
       btnStyle.setProperty('--img-height', img.height + 'px');
       btnStyle.setProperty('--img-url', `url('${this.withIcon.iconUrl}')`);
   
-  
       const btn:HTMLButtonElement = this.btnRef.nativeElement;
       const btnWidth = btn.getBoundingClientRect().width;
-      this.btnRef.nativeElement.style.setProperty('--btn-width', btnWidth  + 'px');
-      this.btnRef.nativeElement.style.setProperty('--btn-width-hover', (btnWidth + img.width + 10)  + 'px');
+      btn.style.setProperty('--btn-width', btnWidth  + 'px');
+      btn.style.setProperty('--btn-width-hover', (btnWidth + img.width + 10)  + 'px');
     }
   }
 }

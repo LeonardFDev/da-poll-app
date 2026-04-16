@@ -12,31 +12,48 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 39px 111px 0 111px;
+        padding: 
+        clamp(39px, calc(50.57px - 0.8036vw), 48px) 
+        clamp(16px, 8.48vw - 11.1px, 111px) 
+        clamp(40px, calc(50.29px - 0.7143vw), 48px) 
+        clamp(16px, 8.48vw - 11.1px, 111px);
+        
     }
 }
 
 .header{
     width: 100%;
-    margin-bottom: 92px;
+    margin-bottom: clamp(54px, 3.39vw + 43.1px, 92px);
 }
 
 .section__top{
     display: flex;
     flex-direction: row;
+
+    @media (max-width:1312px) {
+        flex-direction: column;
+        align-items: center;
+        
+    }
     
     &__h1-span-btn {
         display: flex;
         flex-direction: column;
         gap: 40px;
+
+        @media (max-width:1312px) {
+            gap: 24px;
+            margin-bottom: 24px;
+            align-items: center;
+        }
     
         &__h1{
             margin: 0;
             font-family: 'Nerko One';
             font-weight: 400;
-            font-size: 100px;
+            font-size: clamp(62px, 3.39vw + 51.1px, 100px);
             color: #FFB770;
-            line-height: 89px;
+            line-height: clamp(50px, 3.48vw + 38.9px, 89px);
         }
     
         &__span{
@@ -45,61 +62,98 @@
             font-size: 24px;
             color: white;
             width: calc(100% - 5ch);
+
+            @media (max-width:1312px) {
+                margin-bottom: 54px;
+                width: auto;
+            }
         }
     }
     
     &__hero-img{
         zoom: 0.85;
+
+        @media (max-width:490px) {
+            zoom: 0.8;
+        }
+
+        @media (max-width:460px) {
+            zoom: 0.75;
+        }
+
+        @media (max-width:430px) {
+            zoom: 0.7;
+        }
+
+        @media (max-width:401px) {
+            zoom: 0.65;
+        }
+
+        @media (max-width:373px) {
+            zoom: 0.6;
+        }
+
+        @media (max-width:344px) {
+            zoom: 0.55;
+        }
     }
 }
 
 .section__center{
-    margin-top: 90px;
+    margin-top: clamp(80px, 0.89vw + 77.1px, 90px);
     display: flex;
     flex-direction: column;
-    padding: 0 78px;
+    padding: 0 clamp(0px, 7vw - 22.3px, 78px);
 
     &__h1{
         margin: 0;
         font-family: 'Nerko One';
         font-weight: 400;
-        font-size: 72px;
+        font-size: clamp(54px, 1.61vw + 48.9px, 72px);
         color: #FFB770;
         align-self: center;
+        
+         @media (max-width:343px) {
+            line-height: 48px;
+         }
     }
 
     &__span{
-        margin-top: 80px;
+        margin-top: clamp(48px, 2.86vw + 38.9px, 80px);
         font-family: 'Mulish';
         font-weight: 500;
-        font-size: 32px;
+        font-size: clamp(24px, 0.71vw + 21.7px, 32px);
         color: white;
-        margin-bottom: 32px;
+        margin-bottom: clamp(16px, 1.43vw + 11.4px, 32px);
     }
     
     &__highlights-cards{
-        display: flex;
-        flex-direction: row;
-        gap: 32px;
-        padding: 0 10px;
+        overflow: hidden; 
+        margin: 0 clamp(0px, 0.89vw - 2.9px, 10px);
 
-        touch-action: none;
+        &__inner{
+            display: flex;
+            flex-direction: row;
+            gap: clamp(16px, 1.43vw + 11.4px, 32px);
+            touch-action: none;
+        }
     }
 }
 
 .section__bottom{
-    margin-top: 32px;
+    margin-top: clamp(32px, calc(52.57px - 1.4286vw), 48px);
     display: flex;
     flex-direction: column;
     padding: 0 78px;
-    margin-bottom: 40px;
+    padding: 0 clamp(0px, 7vw - 22.3px, 78px);
 
     &__filters{
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         justify-content: space-between;
         width: 100%;
-        height: 60px;
+        gap: 40px 48px;
 
         &__filter-btns{
             display: flex;
@@ -115,6 +169,13 @@
         gap: 16px;
         max-height: 476px;
         overflow: auto;
+        margin-right: -16px;
+        
+        @media (max-width:1388px) {
+            margin-right: 0;
+            width: min-content;
+            align-self: center;
+        }
 
         @-moz-document url-prefix() {
             scrollbar-width: thin;             
@@ -131,6 +192,10 @@
             border-radius: 10px;
             background: #FFB770;
             box-shadow: 3px 3px 3.2px 0 #00000040;
+        }
+
+        &__app{
+            margin-right: 12px
         }
     }
 }

@@ -5,19 +5,31 @@
         </header>
 
         <section class="section__top">
-            <div class="section__top__h1-span-btn">
-                <h1 class="section__top__h1-span-btn__h1">Collect Feedback, Unlock Ideas</h1>
+            @if (!mobil()) {
+                <div class="section__top__h1-span-btn">
+                    <h1 class="section__top__h1-span-btn__h1">Collect Feedback, Unlock Ideas</h1>
+                    <span class="section__top__h1-span-btn__span">Create and share surveys in minutes – from team events to workplace culture. Collect opinions, engage your audience, and turn feedback into action.</span>
+                    <app-primary-button routerLink="/create-question" [btnText]="'New survey'" [withIcon]="{'isWithIcon': true, 'iconUrl':'assets/img/add_circle_primary-button.png'}"></app-primary-button>
+                </div>
+                <app-hero-image class="section__top__hero-img"></app-hero-image>
+            }
+
+            @else{
+                <div class="section__top__h1-span-btn">
+                    <h1 class="section__top__h1-span-btn__h1">Collect Feedback, Unlock Ideas</h1>
+                    <app-hero-image class="section__top__hero-img"></app-hero-image>
+                </div>
                 <span class="section__top__h1-span-btn__span">Create and share surveys in minutes – from team events to workplace culture. Collect opinions, engage your audience, and turn feedback into action.</span>
                 <app-primary-button routerLink="/create-question" [btnText]="'New survey'" [withIcon]="{'isWithIcon': true, 'iconUrl':'assets/img/add_circle_primary-button.png'}"></app-primary-button>
-            </div>
-            <app-hero-image class="section__top__hero-img"></app-hero-image>
+            }
+
         </section>
 
         <section class="section__center">
             <h1 class="section__center__h1">Your surveys</h1>
             <span class="section__center__span">Ending soon surveys</span>
-            <div style="overflow: hidden;">
-                <div #highlightsCards class="section__center__highlights-cards">
+            <div class="section__center__highlights-cards">
+                <div #highlightsCards class="section__center__highlights-cards__inner">
                     @for (item of [0,0,0]; track $index; let i = $index) {
                         <app-highlights-card [id]="i" [highlightsCardH1]="'TestH1'" [highlightsCardText]="'TestSpan'"></app-highlights-card>
                     }
@@ -36,7 +48,7 @@
 
             <div class="section__bottom__survey-views">
                 @for (item of [0,0,0,0,0,0,0,0,0]; track $index) {
-                    <app-survey-view [routerLink]="['/view-survey', $index]" [viewH1]="'TestH1'" [viewSpan]="'TestSpan'"></app-survey-view>
+                    <app-survey-view class="section__bottom__survey-views__app" [routerLink]="['/view-survey', $index]" [viewH1]="'TestH1'" [viewSpan]="'TestSpan'"></app-survey-view>
                 }
             </div>
         </section>

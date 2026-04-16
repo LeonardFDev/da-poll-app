@@ -1,11 +1,14 @@
 .view{
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    justify-content: space-between;
     border-radius: 5px 50px 5px 5px;
-    padding: 12px 20px;
+    padding: 12px clamp(16px, 0.36vw + 14.86px, 20px);
+    width: clamp(248px, 23.66vw + 172.3px, 513px);
+    height: clamp(127px, calc(152.71px - 1.7857vw), 147px);
     background-color: #D9D9D914;
     cursor: pointer;
+    box-sizing: border-box;
 
     &:hover{
         background-color: #D9D9D929;
@@ -21,9 +24,10 @@
     &__h1{
         font-family: 'Mulish';
         font-weight: 700;
-        font-size: 24px;
+        font-size: clamp(20px, 0.36vw + 18.86px, 24px);
         color: white;
         margin: 0;
+        margin-top: 8px;
     }
 
     &__status{

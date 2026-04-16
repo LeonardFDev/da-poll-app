@@ -1,12 +1,11 @@
 .highlights-card {
     display: flex;
     border-top-right-radius: 80px;
-    padding: 40px 18px;
-    width: 100%;
-    max-width: 321px;
-    height: 100%;
-    max-height: 310px;
-    gap: 81px;
+    padding: clamp(24px, 1.43vw + 19.43px, 40px) clamp(24px, 1.43vw + 19.43px, 40px);
+    padding-bottom: clamp(24px, 3.57vw + 12.57px, 64px);
+    width: clamp(250px, 6.34vw + 229.71px, 321px);
+    height: clamp(233px, 6.875vw + 211px, 310px);
+    gap: 10px;
     background-color: #FAF5FE;
     flex-direction: column;
     box-sizing: border-box;
@@ -29,7 +28,7 @@
             margin-top: 8px;
             font-family: 'Mulish';
             font-weight: 700;
-            font-size: 26px;
+            font-size: clamp(24px, 0.18vw + 23.4px, 26px);
             margin-bottom: 0px;
             width: 14ch;
         }

@@ -14,10 +14,21 @@
         &:hover{
             width: var(--btn-width-hover);
         }
+
+        @media (hover: none), (pointer: coarse) {
+            width: var(--btn-width-hover);
+        }
     }
     
-
     &:hover{
+        background-color: #FFB770;
+
+        .btn__text--with-icon::after{
+            opacity: 1;
+        }
+    }
+
+    @media (hover: none), (pointer: coarse) {
         background-color: #FFB770;
 
         .btn__text--with-icon::after{

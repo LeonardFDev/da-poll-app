@@ -54,3 +54,25 @@
         }
     }
 }
+
+@media (hover: none), (pointer: coarse) {
+    .hero-img__movement{
+        &-one{
+            transform: scale(1.2) translate(-10px, -6px);
+        }
+    
+        &-two{
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+            filter: brightness(1);
+            transform: scale(1.1) translate(60px, 0px);
+        }
+    
+        &-three{
+            transform: translate(-10px, 1px);
+        }
+    
+        &-four{
+            transform: rotate(0deg) translate(0px, 0px);
+        }
+    }
+} 
