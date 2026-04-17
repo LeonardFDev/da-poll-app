@@ -136,6 +136,7 @@
             flex-direction: row;
             gap: clamp(16px, 1.43vw + 11.4px, 32px);
             touch-action: none;
+            min-width: fit-content;
         }
     }
 }

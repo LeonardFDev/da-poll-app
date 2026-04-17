@@ -6,6 +6,7 @@ import { HighlightsCard } from "../../shared/components/highlights-card/highligh
 import { DropDownMenu } from "../../shared/components/drop-down-menu/drop-down-menu";
 import { FilterButton } from "../../shared/components/filter-button/filter-button";
 import { SurveyView } from "../../shared/components/survey-view/survey-view";
+import { SetQuestionsServices } from '../../shared/services/set-questions/set-questions';
 
 @Component({
   selector: 'app-main',
@@ -15,6 +16,7 @@ import { SurveyView } from "../../shared/components/survey-view/survey-view";
 })
 export class Main {
   router = inject(Router);
+  setQuestion = inject(SetQuestionsServices);
 
   @ViewChild('highlightsCards') highlightsCardsRef!: ElementRef<HTMLElement>;
   highlightsCards!:HTMLElement;
@@ -26,30 +28,29 @@ export class Main {
   dragging = false;
   rafId: number | null = null;
 
-  mq = window.matchMedia('(max-width: 1312px)');
-  mq2 = window.matchMedia('(max-width: 1440px)');
+  mqMaxW1312 = window.matchMedia('(max-width: 1312px)');
+  mqMaxW1440 = window.matchMedia('(max-width: 1440px)');
 
-  mobil:WritableSignal<boolean> = signal(false);
+  heroSwitch:WritableSignal<boolean> = signal(false);
   scrollActiv:WritableSignal<boolean> = signal(false);
-
-
-  ngOnInit(){
-    this.mobil.set(this.mq.matches);
-    this.scrollActiv.set(this.mq2.matches);
-
-    this.mq.addEventListener('change', e => {
-      this.mobil.set(e.matches);
-    });
-
-    this.mq2.addEventListener('change', e => {
-      this.scrollActiv.set(e.matches);
-    });
-  }
 
   @HostListener('window:resize')
   onResize() {
     this.currentX = 0;
     this.highlightsCards.style.removeProperty('transform');
+  }
+
+  ngOnInit(){
+    this.heroSwitch.set(this.mqMaxW1312.matches);
+    this.scrollActiv.set(this.mqMaxW1440.matches);
+
+    this.mqMaxW1312.addEventListener('change', e => {
+      this.heroSwitch.set(e.matches);
+    });
+
+    this.mqMaxW1440.addEventListener('change', e => {
+      this.scrollActiv.set(e.matches);
+    });
   }
 
   ngAfterViewInit(){
@@ -58,6 +59,7 @@ export class Main {
     this.highlightsCards.addEventListener('pointerdown', (event) => this.onPointerDown(event));
     this.highlightsCards.addEventListener('pointermove', (event) => this.onPointerMove(event));
     window.addEventListener('pointerup', (event) => this.onPointerUp(event));
+    this.highlightsCards.addEventListener('wheel', (event) => this.onWhell(event));
     this.highlightsCards.addEventListener('pointercancel', (event) => this.onPointerUp(event));
   }
 
@@ -90,11 +92,30 @@ export class Main {
     this.highlightsCards.style.transform = `translateX(${this.currentX}px)`;
   }
 
+  onWhell(event: WheelEvent){
+    if (!this.scrollActiv()) return;
+    event.preventDefault();
+    
+    if (event.deltaY > 0) {
+      this.currentX += 20;
+      if(this.currentX > 0) this.currentX = 0;
+    } 
+    else if (event.deltaY < 0) {
+      this.currentX -= 20;
+      if(this.currentX < -this.maxCalculate()) this.currentX = -this.maxCalculate();
+    }
+
+    this.highlightsCards.style.transform = `translateX(${this.currentX}px)`;
+  }
+
   maxCalculate(){
-    const totalCalculationGap = Number(parseFloat(getComputedStyle(this.highlightsCards).gap)) *2;
-    const totalCalculationCards = Number(parseFloat(getComputedStyle(this.highlightsCards.children[0]).width)) *3
+    const totalCalculationGap = parseFloat(getComputedStyle(this.highlightsCards).gap) *2;
+    const totalCalculationCards = parseFloat(getComputedStyle(this.highlightsCards.children[0]).width) *3
+
     const totalCalculationGapCards = totalCalculationGap + totalCalculationCards;
-    const visibleArea = Number(parseFloat(getComputedStyle(this.highlightsCards).width));
+        
+    const visibleArea = Number(this.highlightsCards.parentElement?.getBoundingClientRect().width.toFixed(3));
+
     const max = totalCalculationGapCards - visibleArea;
 
     return max
@@ -128,8 +149,14 @@ export class Main {
   ngOnDestroy() {
     this.highlightsCards.removeEventListener('pointerdown', this.onPointerDown);
     this.highlightsCards.removeEventListener('pointermove', this.onPointerMove);
-    this.highlightsCards.removeEventListener('pointerup', this.onPointerUp);
+    window.removeEventListener('pointerup', this.onPointerUp);
+    this.highlightsCards.removeEventListener('wheel', this.onWhell);
+    this.highlightsCards.removeEventListener('pointercancel', this.onPointerUp);
 
     if (this.rafId) cancelAnimationFrame(this.rafId);
+  }
+
+  threeEndingSoon(){
+    // coming soon
   }
 }
