@@ -131,3 +131,17 @@
         }
     }
 }
+
+.button-disable-body{
+    position: relative;
+    width: fit-content;
+    align-self: flex-end;
+    cursor: no-drop;
+    
+    &__box{
+        position: absolute;
+        inset: 0;
+        background-color: #80808054;
+        border-radius: 10px;
+    }
+}

@@ -1,6 +1,6 @@
 import { Component, ElementRef, inject, Input, ViewChild } from '@angular/core';
-import { SurveyQuestionInterFace } from '../../interfaces/survey-question';
-import { SurveyQuestionServices } from '../../services/survey-question';
+import { SetQuestionsServices } from '../../services/set-questions/set-questions';
+import { QuestionInterFace } from '../../interfaces/question';
 
 @Component({
   selector: 'app-results',
@@ -9,11 +9,11 @@ import { SurveyQuestionServices } from '../../services/survey-question';
   styleUrl: './results.scss',
 })
 export class Results {
-  serviesSQ = inject(SurveyQuestionServices)
+  serviesSQ = inject(SetQuestionsServices)
   
-  @Input() question!:SurveyQuestionInterFace;
+  @Input() question!:QuestionInterFace;
   @Input() questionId!:number;
-  @Input() questionName!:string;
+  @Input() questionName!:QuestionInterFace[];
 }
 
 

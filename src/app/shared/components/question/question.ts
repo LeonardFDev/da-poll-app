@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Answear } from "../answear/answear";
-import { SurveyQuestionInterFace } from '../../interfaces/survey-question';
+import { QuestionInterFace } from '../../interfaces/question';
 
 @Component({
   selector: 'app-question',
@@ -9,5 +9,5 @@ import { SurveyQuestionInterFace } from '../../interfaces/survey-question';
   styleUrl: './question.scss',
 })
 export class Question {
-  @Input() question!:SurveyQuestionInterFace
+  @Input() question!:QuestionInterFace
 }

@@ -10,26 +10,35 @@
                 <app-survey-status [statusText]="'Published'"></app-survey-status>
                 <div class="view-survey__section__left__info">
                     <div class="view-survey__section__left__info__spans">
-                        <span class="view-survey__section__left__info__spans__span">Ends on {{endDate}}</span>
-                        <span class="view-survey__section__left__info__spans__span">Category: {{category}}</span>
+                        <span class="view-survey__section__left__info__spans__span">Ends on {{currentQuesten().endDate}}</span>
+                        <span class="view-survey__section__left__info__spans__span">Category: {{currentQuesten().category}}</span>
                     </div>
-                    <h1 class="view-survey__section__left__info__h1">Let’s Plan the Next Team Event Together</h1>
-                    <span class="view-survey__section__left__info__span">We want to create team activities that everyone will enjoy – share your preferences and ideas in our survey to help us plan better experiences together.</span>
+                    <h1 class="view-survey__section__left__info__h1">{{currentQuesten().name}}</h1>
+                    <span class="view-survey__section__left__info__span">{{currentQuesten().description}}</span>
                 </div>
                 <div class="view-survey__section__left__questions">
-                    @for (item of list(); track item.id) {
+                    @for (item of currentQuesten().questions; track item.id) {
                         <app-question [question]="item"></app-question>
                     }
                 </div>
-                <app-secondary-button class="view-survey__section__left__btn" [btnText]="'Complete survey'" [secondColor]="true"></app-secondary-button>
+                @if(!isPlaceholder()){
+                    <app-secondary-button class="view-survey__section__left__btn" [btnText]="'Complete survey'" [secondColor]="true"></app-secondary-button>
+                }
+                @if(isPlaceholder()) {
+                    <div class="button-disable-body">
+                        <app-secondary-button class="view-survey__section__left__btn" [btnText]="'Complete survey'" [secondColor]="true"></app-secondary-button>
+                        <div class="button-disable-body__box"></div>
+                    </div>
+                }
+
             </article>
 
             <article class="view-survey__section__right" [class.view-survey__section__right--ma-top200]="false"> <!--true / false-->
                 <h1 class="view-survey__section__right__h1">Survey results <span class="view-survey__section__right__h1__span">LIVE</span></h1>
                 @if(true){ <!--true / false-->
                     <div>
-                        @for (item of list(); track $index) {
-                            <app-results [question]="item" [questionId]="item.id" [questionName]="item.question"></app-results>
+                        @for (item of currentQuesten().questions; track $index) {
+                            <app-results [question]="item"></app-results>
                         }
                     </div>
                 }
