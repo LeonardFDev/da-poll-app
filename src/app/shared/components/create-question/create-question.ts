@@ -4,7 +4,6 @@ import { InputField } from "../input-field/input-field";
 import { CheckBox } from "../check-box/check-box";
 import { TertiaryButton } from "../tertiary-button/tertiary-button";
 
-
 @Component({
   selector: 'app-create-question',
   imports: [DeleteButton, InputField, CheckBox, TertiaryButton],

@@ -5,7 +5,7 @@
 
             <div class="create-survey__h1-btn">
                 <h1 class="create-survey__h1-btn__h1">Create new survey</h1>
-                <app-secondary-button [btnText]="'Cancel'" [withImg]="true" [imgUrl]="'assets/img/x-create-survey.png'"></app-secondary-button>
+                <app-secondary-button routerLink="" [btnText]="'Cancel'" [withImg]="true" [imgUrl]="'assets/img/x-create-survey.png'"></app-secondary-button>
             </div>
 
             <div class="form">
@@ -22,7 +22,7 @@
                             <div class="unit">
                                 <span class="unit__span">Set end Date (optional)</span>
                                 <div class="unit__input-button">
-                                    <app-input-field></app-input-field>
+                                    <app-input-field [type]="'inputDate'"></app-input-field>
                                     <app-delete-button></app-delete-button>
                                 </div>
                             </div>
@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="form__boxTwo">
-                    @for (item of questionList(); track item.id; let i= $index) {
+                    @for (item of questionNumberList(); track item.id; let i= $index) {
                         <app-create-question (action)="removeQuestion($event)" [questionId]="item.id" [questionIndex]="listNumber(i)"></app-create-question>
                     }
                     <app-secondary-button (click)="addQuestion()" [btnText]="'Add next question'" [withImg]="true" [imgUrl]="'/assets/img/add_circle_secondary-button.png'"></app-secondary-button>

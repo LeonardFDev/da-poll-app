@@ -24,7 +24,7 @@
         </div>
     }
 
-    <div class="question__footer">
+    <div class="question__footer" [class.question__footer--just-cont-flex-end]="answearsList().length >= 6">
         @if (answearsList().length < 6) {
             <app-tertiary-button (click)="addAnswear()" class="question__footer__button" [buttonText]="'Add answer'"></app-tertiary-button>
         }

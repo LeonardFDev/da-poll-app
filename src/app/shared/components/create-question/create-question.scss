@@ -74,7 +74,11 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        gap: 66px;
+        // gap: 66px;
+        
+        &--just-cont-flex-end{
+            justify-content: flex-end;
+        }
 
         &__button{
             margin-left: 26px;

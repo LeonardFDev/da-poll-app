@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './input-field.scss',
 })
 export class InputField {
-  @Input() type:'inputText' | 'textarea' = 'inputText';
+  @Input() type:'inputText' | 'textarea' | 'inputDate'= 'inputText';
 }
