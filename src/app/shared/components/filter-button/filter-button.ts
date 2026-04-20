@@ -8,18 +8,7 @@ import { Component, ElementRef, Input, QueryList, ViewChild, ViewChildren } from
 })
 export class FilterButton {
   @Input() btnText:string = "";
-  @Input() active = false; 
+  @Input() active = false;
 }
 
 // html template: <app-filter-button [active]="activeIndex == 1" (click)="onClick(1)" [btnText]="'Active survey'"></app-filter-button>
-// Past survey
-
-//###################ts template#######################
-
-// activeIndex = -1;
-
-//   onClick(index: number) {
-//     this.activeIndex = index;
-//   }
-
-//###################ts template#######################

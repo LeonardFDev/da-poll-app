@@ -24,6 +24,11 @@
 .header{
     width: 100%;
     margin-bottom: clamp(54px, 3.39vw + 43.1px, 92px);
+
+    &__img-box{
+        width: fit-content;
+        cursor: pointer;
+    }
 }
 
 .section__top{

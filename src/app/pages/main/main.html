@@ -1,7 +1,9 @@
 <section class="page">
     <div class="page__body">
         <header class="header">
-            <img src="assets/img/logo-orange.png" alt="icon">
+            <div routerLink="" class="header__img-box">
+                <img src="assets/img/logo-orange.png" alt="icon">
+            </div>
         </header>
 
         <section class="section__top">
@@ -40,8 +42,8 @@
         <section class="section__bottom">
             <div class="section__bottom__filters">
                 <div class="section__bottom__filters__filter-btns">
-                    <app-filter-button [btnText]="'Active survey'"></app-filter-button>
-                    <app-filter-button [btnText]="'Past survey'"></app-filter-button>
+                    <app-filter-button [active]="activeFilterBtn == 'active_survey'" (click)="changeActive('active_survey')" [btnText]="'Active survey'"></app-filter-button>
+                    <app-filter-button [active]="activeFilterBtn == 'past_survey'" (click)="changeActive('past_survey')" [btnText]="'Past survey'"></app-filter-button>
                 </div>
                 <app-drop-down-menu [dropDownText]="'Sort by categories'"></app-drop-down-menu>
             </div>

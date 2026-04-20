@@ -34,6 +34,8 @@ export class Main {
   heroSwitch:WritableSignal<boolean> = signal(false);
   scrollActiv:WritableSignal<boolean> = signal(false);
 
+  activeFilterBtn:'active_survey' | 'past_survey' | 'all' = 'all';
+
   @HostListener('window:resize')
   onResize() {
     this.currentX = 0;
@@ -154,6 +156,11 @@ export class Main {
     this.highlightsCards.removeEventListener('pointercancel', this.onPointerUp);
 
     if (this.rafId) cancelAnimationFrame(this.rafId);
+  }
+
+  changeActive(btn: 'active_survey' | 'past_survey' | 'all') {
+    if(btn == this.activeFilterBtn) this.activeFilterBtn = 'all';
+    else this.activeFilterBtn = btn;
   }
 
   threeEndingSoon(){
