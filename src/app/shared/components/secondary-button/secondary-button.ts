@@ -11,6 +11,8 @@ export class SecondaryButton {
   @Input() imgUrl: string = '';
   @Input() withImg: boolean = false;
   @Input() secondColor:boolean = false;
+
+  @Input() withoutSpan: boolean = false;
 }
 
 //html template (with img): <app-secondary-button [btnText]="'Add next question'" [withImg]="true" [imgUrl]="'/assets/img/add_circle_secondary_button.png'"></app-secondary-button>

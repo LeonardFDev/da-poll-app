@@ -1,7 +1,6 @@
 <section class="question">
     <div class="question__h1-delete-btn">
         <h1 class="question__h1-delete-btn__h1">{{questionIndex}}. Question</h1>
-        <!-- <app-delete-button (click)="getQuestionService.removeQuestion(questionId)"></app-delete-button> -->
         <app-delete-button (click)="removeQuestion(questionId)"></app-delete-button>
     </div>
 
@@ -17,10 +16,18 @@
 
     @for (item of answearsList(); track item.id; let i=$index;) {
 
-        <div class="question__answear-input">
-            <span class="question__answear-input__span">{{fromNumberToChar(i)}}.</span>
-            <app-input-field class="question__answear-input__input"></app-input-field>
+        <div class="question__answear-input-desktop">
+            <span class="question__answear-input-desktop__span">{{fromNumberToChar(i)}}.</span>
+            <app-input-field class="question__answear-input-desktop__input"></app-input-field>
             <app-delete-button (click)="removeAnswear(item.id)"></app-delete-button>
+        </div>
+
+        <div class="question__answear-input-mobile">
+            <div class="question__answear-input-mobile__span-button">
+                <span class="question__answear-input-mobile__span-button__span">{{fromNumberToChar(i)}}.</span>
+                <app-delete-button class="question__answear-input-mobile__span-button__button" (click)="removeAnswear(item.id)"></app-delete-button>
+            </div>
+            <app-input-field class="question__answear-input-mobile__input"></app-input-field>
         </div>
     }
 

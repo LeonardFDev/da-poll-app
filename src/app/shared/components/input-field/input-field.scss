@@ -18,6 +18,10 @@
 
     &--textarea{
         resize: none;
+
+        @media (max-width:1324px) { 
+            height: 108px;
+        }
     }
 
     &--date{
@@ -26,6 +30,11 @@
         width: 223px;
         height: 34px;
         cursor: pointer;
+
+        @media (max-width:1324px) {
+            width: 100%;
+        }
+        
 
         &::-webkit-calendar-picker-indicator { 
             position: absolute;

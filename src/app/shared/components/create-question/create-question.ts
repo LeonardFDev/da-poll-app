@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, Output, signal, WritableSignal } from '@angular/core';
+import { Component, EventEmitter, Input, Output, signal, WritableSignal } from '@angular/core';
 import { DeleteButton } from "../delete-button/delete-button";
 import { InputField } from "../input-field/input-field";
 import { CheckBox } from "../check-box/check-box";
@@ -15,6 +15,8 @@ export class CreateQuestion {
   @Input() questionIndex:number = NaN;
 
   @Output() action = new EventEmitter<number>();
+
+  value:string = '';
 
   answearId:number = 0;
   answearsList:WritableSignal<{'id':number}[]> = signal([]);

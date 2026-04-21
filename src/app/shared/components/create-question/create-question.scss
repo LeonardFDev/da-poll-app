@@ -4,12 +4,20 @@
     gap: 24px;
     width: 428px;
 
+    @media (max-width:1324px) {
+        width: 100%;
+    }
+
     &__h1-delete-btn{
         margin-bottom: 8px;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+
+        @media (max-width:1324px) {
+            margin-right: 16px;
+        }
 
         &__h1{
             margin: 0;
@@ -28,6 +36,11 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: -8px;
+
+        @media (max-width:340px) {
+            flex-direction: column-reverse;
+            gap: 4px;
+        }
 
         &__h2{
             margin: 0;
@@ -51,21 +64,57 @@
         }
     }
 
-    &__answear-input{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 8px;
+    &__answear-input-desktop{
+        display: none;
 
-        &__span{
-            font-family: 'Mulish';
-            font-weight: 700;
-            font-size: 18px;
-            color: #FEFDFF;
+        @media (min-width:1324px) {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+    
+            &__span{
+                font-family: 'Mulish';
+                font-weight: 700;
+                font-size: 18px;
+                color: #FEFDFF;
+            }
+    
+            &__input{
+                width: 100%;
+            }
         }
+    }
 
-        &__input{
-            width: 100%;
+    &__answear-input-mobile{
+        display: none;
+
+        @media (max-width:1323px) {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+
+            &__span-button{
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+
+                &__span{
+                    font-family: 'Mulish';
+                    font-weight: 700;
+                    font-size: 18px;
+                    color: #FEFDFF;
+                }
+
+                &__button{
+                    padding-right: 16px;
+                }
+            }
+    
+            &__input{
+                width: 100%;
+            }
         }
     }
 
@@ -74,7 +123,6 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        // gap: 66px;
         
         &--just-cont-flex-end{
             justify-content: flex-end;
@@ -82,6 +130,10 @@
 
         &__button{
             margin-left: 26px;
+
+            @media (max-width:1323px) {
+                margin-left: 0;
+            }
         }
 
         &__span{
