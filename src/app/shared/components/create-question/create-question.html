@@ -15,19 +15,14 @@
     </div>
 
     @for (item of answearsList(); track item.id; let i=$index;) {
-
-        <div class="question__answear-input-desktop">
-            <span class="question__answear-input-desktop__span">{{fromNumberToChar(i)}}.</span>
-            <app-input-field class="question__answear-input-desktop__input"></app-input-field>
-            <app-delete-button (click)="removeAnswear(item.id)"></app-delete-button>
-        </div>
-
-        <div class="question__answear-input-mobile">
-            <div class="question__answear-input-mobile__span-button">
-                <span class="question__answear-input-mobile__span-button__span">{{fromNumberToChar(i)}}.</span>
-                <app-delete-button class="question__answear-input-mobile__span-button__button" (click)="removeAnswear(item.id)"></app-delete-button>
+        <div class="question__answear-input">
+            <div class="question__answear-input__span-button-mobile">
+                <span class="question__answear-input__span-button-mobile__span">{{fromNumberToChar(i)}}.</span>
+                <app-delete-button class="question__answear-input__span-button-mobile__button" (click)="removeAnswear(item.id)"></app-delete-button>
             </div>
-            <app-input-field class="question__answear-input-mobile__input"></app-input-field>
+            <span class="question__answear-input__span-desktop">{{fromNumberToChar(i)}}.</span>
+            <app-input-field class="question__answear-input__input"></app-input-field>
+            <app-delete-button class="question__answear-input__button-desktop" (click)="removeAnswear(item.id)"></app-delete-button>
         </div>
     }
 

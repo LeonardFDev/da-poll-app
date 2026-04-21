@@ -64,56 +64,59 @@
         }
     }
 
-    &__answear-input-desktop{
-        display: none;
+    &__answear-input{
+        display: flex;
 
         @media (min-width:1324px) {
-            display: flex;
             flex-direction: row;
-            align-items: center;
-            gap: 8px;
-    
-            &__span{
-                font-family: 'Mulish';
-                font-weight: 700;
-                font-size: 18px;
-                color: #FEFDFF;
-            }
-    
-            &__input{
-                width: 100%;
-            }
         }
-    }
-
-    &__answear-input-mobile{
-        display: none;
 
         @media (max-width:1323px) {
-            display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            gap: 4px;
+        }
 
-            &__span-button{
+        align-items: center;
+        gap: 8px;
+
+        &__span-button-mobile{
+            display: none;
+            
+            @media (max-width:1323px) {
                 display: flex;
                 justify-content: space-between;
                 width: 100%;
-
+        
                 &__span{
                     font-family: 'Mulish';
                     font-weight: 700;
                     font-size: 18px;
                     color: #FEFDFF;
                 }
-
+        
                 &__button{
                     padding-right: 16px;
                 }
             }
+        }
     
-            &__input{
-                width: 100%;
+        &__span-desktop{
+            @media (max-width:1323px) {
+                display: none;
+            }
+
+            font-family: 'Mulish';
+            font-weight: 700;
+            font-size: 18px;
+            color: #FEFDFF;
+        }
+        
+        &__input{
+            width: 100%;
+        }
+
+        &__button-desktop{
+            @media (max-width:1323px) {
+                display: none;
             }
         }
     }
