@@ -28,9 +28,7 @@ export class ViewSurvey {
     this.currentId = Number(this.route.snapshot.paramMap.get('id'));
 
     this.isPlaceholder.set(!this.questionslist().some(item => item.id === this.currentId));
-    console.log(this.isPlaceholder());
     
-
     this.questionslist().find(item => {
       if(item.id == this.currentId) this.currentQuesten.set(item);
     })
