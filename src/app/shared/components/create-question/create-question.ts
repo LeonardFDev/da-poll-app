@@ -16,8 +16,6 @@ export class CreateQuestion {
 
   @Output() action = new EventEmitter<number>();
 
-  value:string = '';
-
   answearId:number = 0;
   answearsList:WritableSignal<{'id':number}[]> = signal([]);
 
