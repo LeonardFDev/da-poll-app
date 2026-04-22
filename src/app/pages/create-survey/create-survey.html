@@ -24,7 +24,7 @@
                                 <app-delete-button class="unit__span-button__button"></app-delete-button>
                             </div>
                             <div class="unit__input-button">
-                                <app-input-field class="unit__input-button__input"></app-input-field>
+                                <app-input-field [nameControl]="qvService.nameControl('name')" class="unit__input-button__input"></app-input-field>
                                 <app-delete-button class="unit__input-button__button unit__input-button__button--margin-r8"></app-delete-button>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                                     <app-delete-button class="unit__span-button__button"></app-delete-button>
                                 </div>
                                 <div class="unit__input-button">
-                                    <app-input-field [type]="'inputDate'" class="unit__input-button__input"></app-input-field>
+                                    <app-input-field [nameControl]="qvService.nameControl('endDate')" [type]="'inputDate'" class="unit__input-button__input"></app-input-field>
                                     <app-delete-button class="unit__input-button__button"></app-delete-button>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                                 <app-delete-button class="unit__span-button__button"></app-delete-button>
                             </div>
                             <div class="unit__input-button">
-                                <app-input-field [type]="'textarea'" class="unit__input-button__input"></app-input-field>
+                                <app-input-field [nameControl]="qvService.nameControl('describing')" [type]="'textarea'" class="unit__input-button__input"></app-input-field>
                                 <app-delete-button class="unit__input-button__button unit__input-button__button--alignSelt-start"></app-delete-button>
                             </div>
                         </div>
@@ -58,7 +58,7 @@
 
                 <div class="form__boxTwo">
                     @for (item of questionNumberList(); track item.id; let i= $index) {
-                        <app-create-question (action)="removeQuestion($event)" [questionId]="item.id" [questionIndex]="listNumber(i)"></app-create-question>
+                        <app-create-question [nameControl]="qvService.nameControl('answear{{item.id}}')" (action)="removeQuestion($event)" [questionId]="item.id" [questionNumber]="listNumber(i)"></app-create-question>
                     }
                     <app-secondary-button (click)="addQuestion()" [btnText]="'Add next question'" [withImg]="true" [imgUrl]="'/assets/img/add_circle_secondary-button.png'"></app-secondary-button>
                 </div>

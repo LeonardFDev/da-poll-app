@@ -1,11 +1,11 @@
 @if(type == 'inputText'){
-    <input class="input-field" type="text">
+    <input [formControl]="nameControl" class="input-field" type="text">
 }
 
 @else if(type == 'textarea'){
-    <textarea class="input-field input-field--textarea"></textarea>
+    <textarea [formControl]="nameControl" class="input-field input-field--textarea"></textarea>
 }
 
 @else if(type == 'inputDate'){
-    <input class="input-field input-field--date" type="date">
+    <input [formControl]="nameControl" class="input-field input-field--date" type="date">
 }

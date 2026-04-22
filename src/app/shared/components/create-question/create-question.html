@@ -1,10 +1,10 @@
 <section class="question">
     <div class="question__h1-delete-btn">
-        <h1 class="question__h1-delete-btn__h1">{{questionIndex}}. Question</h1>
+        <h1 class="question__h1-delete-btn__h1">{{questionNumber}}. Question</h1>
         <app-delete-button (click)="removeQuestion(questionId)"></app-delete-button>
     </div>
 
-    <app-input-field class="question__input-field"></app-input-field>
+    <app-input-field [nameControl]="qvService.nameControl(`question${questionId}`)" class="question__input-field"></app-input-field>
 
     <div class="question__h2-checkbox-wiht-text">
         <h2 class="question__h2-checkbox-wiht-text__h2">{{'Answears'}}</h2>
@@ -21,7 +21,7 @@
                 <app-delete-button class="question__answear-input__span-button-mobile__button" (click)="removeAnswear(item.id)"></app-delete-button>
             </div>
             <span class="question__answear-input__span-desktop">{{fromNumberToChar(i)}}.</span>
-            <app-input-field class="question__answear-input__input"></app-input-field>
+            <app-input-field [nameControl]="qvService.nameControl(`answear${questionId}${fromNumberToChar(i)}`)" class="question__answear-input__input"></app-input-field>
             <app-delete-button class="question__answear-input__button-desktop" (click)="removeAnswear(item.id)"></app-delete-button>
         </div>
     }
