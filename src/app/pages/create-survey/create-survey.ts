@@ -29,10 +29,6 @@ export class CreateSurvey {
     this.addQuestion();
   }
 
-  // ngAfterViewInit(){
-  //   // this.addQuestion();
-  // }
-
   listNumber(i:number){
     return i+1;
   }
@@ -40,23 +36,20 @@ export class CreateSurvey {
   addQuestion(){
     this.questionNumber++;
     this.qvService.questionform.addControl(`question${this.questionNumber}`, new FormControl(`question${this.questionNumber}`));
+    this.qvService.questionform.addControl(`multipleAnswers${this.questionNumber}`, new FormControl(false));
     
     this.questionNumberList.update(current => [...current, { 'id': this.questionNumber }]);
-
   }
 
   removeQuestion(id:number){
     if(this.questionNumberList().length >1){
-      this.questionNumber--;
       this.qvService.questionform.removeControl(`question${id}`);
-      this.qvService.questionform.removeControl(`answear${id}A`);
-      this.qvService.questionform.removeControl(`answear${id}B`);
-      this.qvService.questionform.removeControl(`answear${id}C`);
-      this.qvService.questionform.removeControl(`answear${id}D`);
-      this.qvService.questionform.removeControl(`answear${id}E`);
-      this.qvService.questionform.removeControl(`answear${id}F`);
+      this.qvService.questionform.removeControl(`multipleAnswers${id}`);
+      Object.keys(this.qvService.questionform.controls).forEach(name => {
+        if (name.startsWith(`answear${id}`)) this.qvService.questionform.removeControl(name);
+      });
+
       this.questionNumberList.update(current => current.filter(item => item.id != id));
-      console.log(this.qvService.questionform);
     } 
   }
 }

@@ -26,8 +26,6 @@ export class CreateQuestion {
 
   ngAfterViewInit(){
     while (this.answearsList().length < 2){
-      console.log(this.questionNumber);
-      
       this.addAnswear();
     }
   }
@@ -37,25 +35,22 @@ export class CreateQuestion {
   }
 
   addAnswear(){
-    this.qvService.questionform.addControl(`answear${this.questionNumber}${this.fromNumberToChar(this.answearId)}`, new FormControl(`answear${this.questionNumber}${this.fromNumberToChar(this.answearId)}`));
     this.answearId++;
+    this.qvService.questionform.addControl(`answear${this.questionId}${this.answearId}`, new FormControl(`test ${this.answearId}`));
     this.answearsList.update(current => [...current, { 'id': this.answearId }]);
-    console.log(this.qvService.questionform.value);
-    console.log(this.questionId);
-    console.log(this.questionNumber);
+    if(this.answearId == 1) console.log(this.qvService.questionform.value);
+    
   }
 
   removeAnswear(id:number){
     if(this.answearsList().length >2){
-      this.answearId--;
-      this.qvService.questionform.removeControl(`answear${this.questionNumber}${this.fromNumberToChar(this.answearId)}`);
+      this.qvService.questionform.removeControl(`answear${this.questionNumber}${id}`);
       this.answearsList.update(current => current.filter(item => item.id != id));
-      console.log(this.qvService.questionform.value);
     } 
   }
 
-  removeQuestion(questionId:number){
+  removeQuestion(){
     this.answearId = 0;
-    this.action.emit(questionId);
+    this.action.emit(this.questionId);
   }
 }

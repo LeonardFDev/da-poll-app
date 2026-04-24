@@ -11,7 +11,7 @@ export class QuestionValuesServices {
     describing: new FormControl('describing'),
     // question1: new FormControl('question1'),
     // question2: new FormControl('question2'),
-    multipleAnswers1: new FormControl(true),
+    // multipleAnswers1: new FormControl(true),
     // answear1A: new FormControl('answear1A'),
     // answear1B: new FormControl('answear1B'),
     // answear2A: new FormControl('answear2A'),

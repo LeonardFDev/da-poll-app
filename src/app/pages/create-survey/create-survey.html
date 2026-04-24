@@ -58,7 +58,7 @@
 
                 <div class="form__boxTwo">
                     @for (item of questionNumberList(); track item.id; let i= $index) {
-                        <app-create-question [nameControl]="qvService.nameControl('answear{{item.id}}')" (action)="removeQuestion($event)" [questionId]="item.id" [questionNumber]="listNumber(i)"></app-create-question>
+                        <app-create-question (action)="removeQuestion($event)" [questionId]="item.id" [questionNumber]="listNumber(i)"></app-create-question>
                     }
                     <app-secondary-button (click)="addQuestion()" [btnText]="'Add next question'" [withImg]="true" [imgUrl]="'/assets/img/add_circle_secondary-button.png'"></app-secondary-button>
                 </div>
