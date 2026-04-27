@@ -17,7 +17,6 @@ export class CreateQuestion {
 
   @Input() questionId:number = NaN;
   @Input() questionNumber:number = NaN;
-  @Input() nameControl:FormControl = this.qvService.nameControl('name');
 
   @Output() action = new EventEmitter<number>();
 
@@ -38,8 +37,6 @@ export class CreateQuestion {
     this.answearId++;
     this.qvService.questionform.addControl(`answear${this.questionId}${this.answearId}`, new FormControl(`test ${this.answearId}`));
     this.answearsList.update(current => [...current, { 'id': this.answearId }]);
-    if(this.answearId == 1) console.log(this.qvService.questionform.value);
-    
   }
 
   removeAnswear(id:number){

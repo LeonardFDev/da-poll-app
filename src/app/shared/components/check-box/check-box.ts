@@ -9,8 +9,10 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 })
 export class CheckBox {
   isChecked = new FormControl(false);
+  @Input() nameControl!:FormControl;
   @Input() changeType: 'checkbox' | {'type': 'radio', 'name':string} = 'checkbox';
   @Input() isPartOfAnswear:boolean = false;
+  @Input() isPartOfCreateSurvey:boolean = false;
   @Input() checkedSignal!: WritableSignal<boolean>;
   @Input() whiteBorder:boolean = false;
 
@@ -23,6 +25,12 @@ export class CheckBox {
     }
     
     else this.inputRef.nativeElement.type = this.changeType;
+
+    this.inputRef.nativeElement.addEventListener('change', this.setValueNameControl);
+  }
+
+  setValueNameControl(){
+    this.nameControl.setValue(this.inputRef.nativeElement.checked)
   }
 
   checkedComputed = computed(() =>{

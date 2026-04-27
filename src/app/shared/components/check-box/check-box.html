@@ -1,5 +1,10 @@
 <label class="custom-checkbox" [class.custom-checkbox--no-pointer-events]="isPartOfAnswear">
-  <input #customCheckboxInput class="custom-checkbox__input" [formControl]="isChecked" [checked]="checkedComputed()">
+  @if(isPartOfCreateSurvey){
+    <input #customCheckboxInput class="custom-checkbox__input" [formControl]="nameControl">
+  }
+  @else {
+    <input #customCheckboxInput class="custom-checkbox__input" [formControl]="isChecked" [checked]="checkedComputed()">
+  }
   <span class="custom-checkbox__checkmark" [class.custom-checkbox__checkmark--border-color-white]="whiteBorder"></span>
 </label>
 
