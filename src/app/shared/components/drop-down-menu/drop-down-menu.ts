@@ -1,4 +1,5 @@
-import { Component, computed, Input, signal } from '@angular/core';
+import { Component, computed, inject, Input, signal } from '@angular/core';
+import { QuestionValuesServices } from '../../services/question-values/question-values';
 
 @Component({
   selector: 'app-drop-down-menu',
@@ -7,14 +8,16 @@ import { Component, computed, Input, signal } from '@angular/core';
   styleUrl: './drop-down-menu.scss',
 })
 export class DropDownMenu {
+  qvService = inject(QuestionValuesServices);
+
   @Input() dropDownText='';
+  @Input() isPartOfCreateSurvey:boolean = false;
 
   isOpen = signal(false);
   isSelected = signal(false);
   isOpenOrSelected = computed(() => this.isOpen() || this.isSelected());
 
   selectedMenu:string = '';
-
 
   open(){
     if(this.isOpen()) this.isOpen.set(false);
@@ -34,7 +37,7 @@ export class DropDownMenu {
     if(this.sinlgeMenuList[index].isSelected == true){
       this.sinlgeMenuList[index].isSelected = false;
       this.selectedMenu = ''
-      this.isSelected.set(false);;
+      this.isSelected.set(false);
     }
 
     else{
@@ -45,6 +48,15 @@ export class DropDownMenu {
       this.sinlgeMenuList[index].isSelected = true;
       this.selectedMenu = this.sinlgeMenuList[index].title;
       this.isSelected.set(true);
+    }
+
+    this.getCategory();
+  }
+
+  getCategory(){
+    if(this.isPartOfCreateSurvey){
+      if(!this.selectedMenu) this.qvService.questionform.value.category = this.qvService.questionform.get('category')?.setValue('No category');
+      else this.qvService.questionform.get('category')?.setValue(this.selectedMenu);
     }
   }
 }

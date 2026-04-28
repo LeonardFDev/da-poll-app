@@ -1,5 +1,5 @@
 import { Component, inject, signal, WritableSignal } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from "@angular/router";
 import { SurveyStatus } from "../../shared/components/survey-status/survey-status";
 import { SecondaryButton } from "../../shared/components/secondary-button/secondary-button";
@@ -35,21 +35,34 @@ export class CreateSurvey {
 
   addQuestion(){
     this.questionNumber++;
-    this.qvService.questionform.addControl(`question${this.questionNumber}`, new FormControl(`question${this.questionNumber}`));
-    this.qvService.questionform.addControl(`multipleAnswers${this.questionNumber}`, new FormControl(false));
+
+    this.qvService.questionform.addControl(`questionsAndAnswers${this.questionNumber}`, new FormGroup({}));
+
+    const questionsAndAnswers = this.qvService.questionform.get(`questionsAndAnswers${this.questionNumber}`) as FormGroup;
+    if(questionsAndAnswers){
+      questionsAndAnswers.addControl(`id`, new FormControl(`${this.questionNumber}`));
+      questionsAndAnswers.addControl(`question`, new FormControl(`question${this.questionNumber}`));
+      questionsAndAnswers.addControl(`multipleAnswers`, new FormControl(false));
+    }
     
     this.questionNumberList.update(current => [...current, { 'id': this.questionNumber }]);
+
+    setTimeout(() => {
+      console.log(this.qvService.questionform.value);
+    }, 200);
+    
   }
 
   removeQuestion(id:number){
     if(this.questionNumberList().length >1){
-      this.qvService.questionform.removeControl(`question${id}`);
-      this.qvService.questionform.removeControl(`multipleAnswers${id}`);
-      Object.keys(this.qvService.questionform.controls).forEach(name => {
-        if (name.startsWith(`answear${id}`)) this.qvService.questionform.removeControl(name);
-      });
+
+      this.qvService.questionform.removeControl(`questionsAndAnswers${id}`);
 
       this.questionNumberList.update(current => current.filter(item => item.id != id));
+
+      setTimeout(() => {
+        console.log(this.qvService.questionform.value);
+      }, 200);
     } 
   }
 }

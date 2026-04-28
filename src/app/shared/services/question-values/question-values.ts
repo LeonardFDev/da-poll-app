@@ -6,17 +6,14 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class QuestionValuesServices {
   questionform:FormGroup = new FormGroup({
+    id: new FormControl(0),
     name: new FormControl('name'),
     endDate: new FormControl('2000-02-02'),
-    describing: new FormControl('describing'),
-    questionsAndAnswers: new FormGroup({
-      // answers: new FormGroup({})
-    })
+    description: new FormControl('describing'),
+    category: new FormControl('No category')
   });
 
   nameControl(value:string): FormControl {
     return this.questionform.get(value) as FormControl;
   }
-
-  // this.form.get('settings.myCheckbox') as FormControl
 }

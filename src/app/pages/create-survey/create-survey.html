@@ -39,7 +39,7 @@
                                     <app-delete-button class="unit__input-button__button"></app-delete-button>
                                 </div>
                             </div>
-                            <app-drop-down-menu [dropDownText]="'Choose category'"></app-drop-down-menu>
+                            <app-drop-down-menu [isPartOfCreateSurvey]="true" [dropDownText]="'Choose category'"></app-drop-down-menu>
                         </div>
                     </div>
                     <div class="form__boxOne__right">
@@ -49,7 +49,7 @@
                                 <app-delete-button class="unit__span-button__button"></app-delete-button>
                             </div>
                             <div class="unit__input-button">
-                                <app-input-field [nameControl]="qvService.nameControl('describing')" [type]="'textarea'" class="unit__input-button__input"></app-input-field>
+                                <app-input-field [nameControl]="qvService.nameControl('description')" [type]="'textarea'" class="unit__input-button__input"></app-input-field>
                                 <app-delete-button class="unit__input-button__button unit__input-button__button--alignSelt-start"></app-delete-button>
                             </div>
                         </div>

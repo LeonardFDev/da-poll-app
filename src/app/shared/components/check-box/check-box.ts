@@ -26,7 +26,7 @@ export class CheckBox {
     
     else this.inputRef.nativeElement.type = this.changeType;
 
-    this.inputRef.nativeElement.addEventListener('change', this.setValueNameControl);
+    this.inputRef.nativeElement.addEventListener('change', () => this.setValueNameControl());
   }
 
   setValueNameControl(){

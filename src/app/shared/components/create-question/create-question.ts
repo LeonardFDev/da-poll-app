@@ -3,7 +3,7 @@ import { DeleteButton } from "../delete-button/delete-button";
 import { InputField } from "../input-field/input-field";
 import { CheckBox } from "../check-box/check-box";
 import { TertiaryButton } from "../tertiary-button/tertiary-button";
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { QuestionValuesServices } from '../../services/question-values/question-values';
 
 @Component({
@@ -35,13 +35,22 @@ export class CreateQuestion {
 
   addAnswear(){
     this.answearId++;
-    this.qvService.questionform.addControl(`answear${this.questionId}${this.answearId}`, new FormControl(`test ${this.answearId}`));
+
+    const questionsAndAnswers = this.qvService.questionform.get(`questionsAndAnswers${this.questionId}`) as FormGroup;
+    if(questionsAndAnswers){
+      questionsAndAnswers.addControl(`answear${this.answearId}`, new FormControl(`test ${this.answearId}`));
+    }
+
     this.answearsList.update(current => [...current, { 'id': this.answearId }]);
   }
 
   removeAnswear(id:number){
     if(this.answearsList().length >2){
-      this.qvService.questionform.removeControl(`answear${this.questionNumber}${id}`);
+
+
+      const questionsAndAnswers = this.qvService.questionform.get(`questionsAndAnswers${this.questionId}`) as FormGroup;
+      if(questionsAndAnswers) questionsAndAnswers.removeControl(`answear${id}`);
+
       this.answearsList.update(current => current.filter(item => item.id != id));
     } 
   }

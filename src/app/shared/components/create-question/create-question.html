@@ -4,12 +4,12 @@
         <app-delete-button (click)="removeQuestion()"></app-delete-button>
     </div>
 
-    <app-input-field [nameControl]="qvService.nameControl(`question${questionId}`)" class="question__input-field"></app-input-field>
+    <app-input-field [nameControl]="qvService.nameControl(`questionsAndAnswers${questionId}.question`)" class="question__input-field"></app-input-field>
 
     <div class="question__h2-checkbox-wiht-text">
         <h2 class="question__h2-checkbox-wiht-text__h2">{{'Answears'}}</h2>
         <div class="question__h2-checkbox-wiht-text__checkbox-wiht-text">
-            <app-check-box [whiteBorder]="true" [isPartOfCreateSurvey]="true" [nameControl]="qvService.nameControl(`multipleAnswers${questionId}`)"></app-check-box>
+            <app-check-box [whiteBorder]="true" [isPartOfCreateSurvey]="true" [nameControl]="qvService.nameControl(`questionsAndAnswers${questionId}.multipleAnswers`)"></app-check-box>
             <span class="question__h2-checkbox-wiht-text__checkbox-wiht-text__text">{{'Allow multiple answers.'}}</span>
         </div>
     </div>
@@ -21,7 +21,7 @@
                 <app-delete-button class="question__answear-input__span-button-mobile__button" (click)="removeAnswear(item.id)"></app-delete-button>
             </div>
             <span class="question__answear-input__span-desktop">{{fromNumberToChar(i)}}.</span>
-            <app-input-field [nameControl]="qvService.nameControl(`answear${questionId}${item.id}`)" class="question__answear-input__input"></app-input-field>
+            <app-input-field [nameControl]="qvService.nameControl(`questionsAndAnswers${questionId}.answear${item.id}`)" class="question__answear-input__input"></app-input-field>
             <app-delete-button class="question__answear-input__button-desktop" (click)="removeAnswear(item.id)"></app-delete-button>
         </div>
     }
