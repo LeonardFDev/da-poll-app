@@ -21,7 +21,7 @@
                 <app-delete-button class="question__answear-input__span-button-mobile__button" (click)="removeAnswear(item.id)"></app-delete-button>
             </div>
             <span class="question__answear-input__span-desktop">{{fromNumberToChar(i)}}.</span>
-            <app-input-field [nameControl]="qvService.nameControl(`questionsAndAnswers${questionId}.answear${item.id}`)" class="question__answear-input__input"></app-input-field>
+            <app-input-field [nameControl]="qvService.nameControl(`questionsAndAnswers${questionId}.answears${item.id}.answear`)" class="question__answear-input__input"></app-input-field>
             <app-delete-button class="question__answear-input__button-desktop" (click)="removeAnswear(item.id)"></app-delete-button>
         </div>
     }

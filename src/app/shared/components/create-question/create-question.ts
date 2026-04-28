@@ -38,7 +38,15 @@ export class CreateQuestion {
 
     const questionsAndAnswers = this.qvService.questionform.get(`questionsAndAnswers${this.questionId}`) as FormGroup;
     if(questionsAndAnswers){
-      questionsAndAnswers.addControl(`answear${this.answearId}`, new FormControl(`test ${this.answearId}`));
+      
+      questionsAndAnswers.addControl(`answears${this.answearId}`, new FormGroup({}));
+      const answers = questionsAndAnswers.get(`answears${this.answearId}`) as FormGroup;
+      if(answers){
+        answers.addControl(`id`, new FormControl(`${this.answearId}`));
+        answers.addControl(`answear`, new FormControl(`test ${this.answearId}`));
+        answers.addControl(`counter`, new FormControl(0));
+        answers.addControl(`percentValue`, new FormControl(0));
+      }
     }
 
     this.answearsList.update(current => [...current, { 'id': this.answearId }]);
@@ -46,10 +54,8 @@ export class CreateQuestion {
 
   removeAnswear(id:number){
     if(this.answearsList().length >2){
-
-
       const questionsAndAnswers = this.qvService.questionform.get(`questionsAndAnswers${this.questionId}`) as FormGroup;
-      if(questionsAndAnswers) questionsAndAnswers.removeControl(`answear${id}`);
+      if(questionsAndAnswers) questionsAndAnswers.removeControl(`answears${id}`);
 
       this.answearsList.update(current => current.filter(item => item.id != id));
     } 
