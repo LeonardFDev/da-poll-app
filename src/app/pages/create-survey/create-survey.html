@@ -21,22 +21,22 @@
                         <div class="unit">
                             <div class="unit__span-button">
                                 <span class="unit__span-button__span">Survey name</span>
-                                <app-delete-button class="unit__span-button__button"></app-delete-button>
+                                <app-delete-button (click)="deleteInputFeld('name')" class="unit__span-button__button"></app-delete-button>
                             </div>
                             <div class="unit__input-button">
                                 <app-input-field [nameControl]="qvService.nameControl('name')" class="unit__input-button__input"></app-input-field>
-                                <app-delete-button class="unit__input-button__button unit__input-button__button--margin-r8"></app-delete-button>
+                                <app-delete-button (click)="deleteInputFeld('name')" class="unit__input-button__button unit__input-button__button--margin-r8"></app-delete-button>
                             </div>
                         </div>
                         <div class="unit__extra">
                             <div class="unit">
                                 <div class="unit__span-button">
                                     <span class="unit__span-button__span">Set end Date (optional)</span>
-                                    <app-delete-button class="unit__span-button__button"></app-delete-button>
+                                    <app-delete-button (click)="deleteInputFeld('endDate')" class="unit__span-button__button"></app-delete-button>
                                 </div>
                                 <div class="unit__input-button">
                                     <app-input-field [nameControl]="qvService.nameControl('endDate')" [type]="'inputDate'" class="unit__input-button__input"></app-input-field>
-                                    <app-delete-button class="unit__input-button__button"></app-delete-button>
+                                    <app-delete-button (click)="deleteInputFeld('endDate')" class="unit__input-button__button"></app-delete-button>
                                 </div>
                             </div>
                             <app-drop-down-menu [isPartOfCreateSurvey]="true" [dropDownText]="'Choose category'"></app-drop-down-menu>
@@ -46,11 +46,11 @@
                         <div class="unit">
                             <div class="unit__span-button">
                                 <span class="unit__span-button__span">Describing text (optional)</span>
-                                <app-delete-button class="unit__span-button__button"></app-delete-button>
+                                <app-delete-button (click)="deleteInputFeld('description')" class="unit__span-button__button"></app-delete-button>
                             </div>
                             <div class="unit__input-button">
                                 <app-input-field [nameControl]="qvService.nameControl('description')" [type]="'textarea'" class="unit__input-button__input"></app-input-field>
-                                <app-delete-button class="unit__input-button__button unit__input-button__button--alignSelt-start"></app-delete-button>
+                                <app-delete-button (click)="deleteInputFeld('description')" class="unit__input-button__button unit__input-button__button--alignSelt-start"></app-delete-button>
                             </div>
                         </div>
                     </div>

@@ -26,11 +26,12 @@ export class CheckBox {
     
     else this.inputRef.nativeElement.type = this.changeType;
 
-    this.inputRef.nativeElement.addEventListener('change', () => this.setValueNameControl());
+    if(this.nameControl) this.nameControl.valueChanges.subscribe(() => this.setValueNameControl());
   }
 
   setValueNameControl(){
-    this.nameControl.setValue(this.inputRef.nativeElement.checked)
+    if(this.nameControl.value == false) this.inputRef.nativeElement.checked = false;
+    else this.nameControl.setValue(this.inputRef.nativeElement.checked, {emitEvent: false});
   }
 
   checkedComputed = computed(() =>{

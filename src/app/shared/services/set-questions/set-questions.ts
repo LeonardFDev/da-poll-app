@@ -20,7 +20,7 @@ export class SetQuestionsServices {
       {
         'id': 1,
         'question': '1. PLACEHOLDER_QUESTION',
-        'checkboxType': 'checkbox',
+        'multipleAnswers': 'checkbox',
         'answers': [
           { id: 1, 'enumeration': 'A', 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 0, 'percentValue': 0 },
           { id: 2, 'enumeration': 'B', 'answer': 'PLACEHOLDER_ANSWER_2', 'counter': 0, 'percentValue': 0 },
@@ -31,7 +31,7 @@ export class SetQuestionsServices {
       {
         'id': 2,
         'question': '2. PLACEHOLDER_QUESTION',
-        'checkboxType': 'checkbox',
+        'multipleAnswers': 'checkbox',
         'answers': [
           { id: 1, 'enumeration': 'A', 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 0, 'percentValue': 0 },
           { id: 2, 'enumeration': 'B', 'answer': 'PLACEHOLDER_ANSWER_2', 'counter': 0, 'percentValue': 0 },
@@ -42,7 +42,7 @@ export class SetQuestionsServices {
       {
         'id': 3,
         'question': '3. PLACEHOLDER_QUESTION',
-        'checkboxType': 'radio',
+        'multipleAnswers': 'radio',
         'answers': [
           { id: 1, 'enumeration': 'A', 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 0, 'percentValue': 0 },
           { id: 2, 'enumeration': 'B', 'answer': 'PLACEHOLDER_ANSWER_2', 'counter': 0, 'percentValue': 0 },
@@ -53,7 +53,7 @@ export class SetQuestionsServices {
       {
         'id': 4,
         'question': '4. PLACEHOLDER_QUESTION',
-        'checkboxType': 'radio',
+        'multipleAnswers': 'radio',
         'answers': [
           { id: 1, 'enumeration': 'A', 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 0, 'percentValue': 0 },
           { id: 2, 'enumeration': 'B', 'answer': 'PLACEHOLDER_ANSWER_2', 'counter': 0, 'percentValue': 0 },
@@ -76,7 +76,7 @@ export class SetQuestionsServices {
           {
             'id': 1,
             'question': '1. Which date would work best for you?',
-            'checkboxType': 'checkbox',
+            'multipleAnswers': 'checkbox',
             'answers': [
               {id:1, 'enumeration': 'A', 'answer':'19.09.2025, Friday', 'counter': 27, 'percentValue': 0},
               {id:2, 'enumeration': 'B', 'answer':'10.10.2025, Friday', 'counter': 44, 'percentValue': 0},
@@ -87,7 +87,7 @@ export class SetQuestionsServices {
           {
             'id': 2,
             'question': '2. Choose the activities you prefer',
-            'checkboxType': 'checkbox',
+            'multipleAnswers': 'checkbox',
             'answers': [
               {id:1, 'enumeration': 'A', 'answer':'Outdoor adventure like kayaking', 'counter': 60, 'percentValue': 0},
               {id:2, 'enumeration': 'B', 'answer':'Office Costume Party', 'counter': 0, 'percentValue': 0},
@@ -99,7 +99,7 @@ export class SetQuestionsServices {
           {
             'id': 3,
             'question': '3. What\'s most important to you in a team event?',
-            'checkboxType': 'radio',
+            'multipleAnswers': 'radio',
             'answers': [
               {id:1, 'enumeration': 'A', 'answer':'Team bonding', 'counter': 44, 'percentValue': 0},
               {id:2, 'enumeration': 'B', 'answer':'Food and drinks, Friday', 'counter': 3, 'percentValue': 0},
@@ -110,7 +110,7 @@ export class SetQuestionsServices {
           {
             'id': 4,
             'question': '4. How long would you prefer the event to last?',
-            'checkboxType': 'radio',
+            'multipleAnswers': 'radio',
             'answers': [
               {id:1, 'enumeration': 'A', 'answer':'Half a day', 'counter': 14, 'percentValue': 0},
               {id:2, 'enumeration': 'B', 'answer':'Full day', 'counter': 86, 'percentValue': 0},
@@ -129,7 +129,7 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. What should we improve first?",
-            "checkboxType": "radio",
+            "multipleAnswers": "radio",
             "answers": [
               {"id":1,"enumeration":"A","answer":"Office equipment","counter":12,"percentValue":0},
               {"id":2,"enumeration":"B","answer":"Communication","counter":34,"percentValue":0},
@@ -139,7 +139,7 @@ export class SetQuestionsServices {
           {
             "id": 2,
             "question": "2. Which benefits would you like?",
-            "checkboxType": "checkbox",
+            "multipleAnswers": "checkbox",
             "answers": [
               {"id":1,"enumeration":"A","answer":"Gym membership","counter":15,"percentValue":0},
               {"id":2,"enumeration":"B","answer":"Remote work options","counter":45,"percentValue":0},
@@ -159,7 +159,7 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. Preferred cuisine?",
-            "checkboxType": "checkbox",
+            "multipleAnswers": "checkbox",
             "answers": [
               {"id":1,"enumeration":"A","answer":"Italian","counter":20,"percentValue":0},
               {"id":2,"enumeration":"B","answer":"Asian","counter":35,"percentValue":0},
@@ -170,7 +170,7 @@ export class SetQuestionsServices {
           {
             "id": 2,
             "question": "2. How often should we organize team lunches?",
-            "checkboxType": "radio",
+            "multipleAnswers": "radio",
             "answers": [
               {"id":1,"enumeration":"A","answer":"Weekly","counter":15,"percentValue":0},
               {"id":2,"enumeration":"B","answer":"Monthly","counter":50,"percentValue":0}
@@ -188,7 +188,7 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. How many days per week do you prefer to work remotely?",
-            "checkboxType": "radio",
+            "multipleAnswers": "radio",
             "answers": [
               {"id":1,"enumeration":"A","answer":"1-2 days","counter":20,"percentValue":0},
               {"id":2,"enumeration":"B","answer":"3-4 days","counter":40,"percentValue":0},
@@ -198,7 +198,7 @@ export class SetQuestionsServices {
           {
             "id": 2,
             "question": "2. What challenges do you face working remotely?",
-            "checkboxType": "checkbox",
+            "multipleAnswers": "checkbox",
             "answers": [
               {"id":1,"enumeration":"A","answer":"Communication","counter":30,"percentValue":0},
               {"id":2,"enumeration":"B","answer":"Isolation","counter":15,"percentValue":0},
@@ -219,7 +219,7 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. Which topics interest you most?",
-            "checkboxType": "checkbox",
+            "multipleAnswers": "checkbox",
             "answers": [
               {"id":1,"enumeration":"A","answer":"Leadership","counter":18,"percentValue":0},
               {"id":2,"enumeration":"B","answer":"Technical skills","counter":42,"percentValue":0},
@@ -231,7 +231,7 @@ export class SetQuestionsServices {
           {
             "id": 2,
             "question": "2. Preferred learning format?",
-            "checkboxType": "radio",
+            "multipleAnswers": "radio",
             "answers": [
               {"id":1,"enumeration":"A","answer":"Workshops","counter":30,"percentValue":0},
               {"id":2,"enumeration":"B","answer":"Online courses","counter":40,"percentValue":0},
@@ -250,7 +250,7 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. Which events would you enjoy?",
-            "checkboxType": "checkbox",
+            "multipleAnswers": "checkbox",
             "answers": [
               {"id":1,"enumeration":"A","answer":"Holiday parties","counter":35,"percentValue":0},
               {"id":2,"enumeration":"B","answer":"Team dinners","counter":28,"percentValue":0},
@@ -263,7 +263,7 @@ export class SetQuestionsServices {
           {
             "id": 2,
             "question": "2. Preferred timing?",
-            "checkboxType": "radio",
+            "multipleAnswers": "radio",
             "answers": [
               {"id":1,"enumeration":"A","answer":"During work hours","counter":20,"percentValue":0},
               {"id":2,"enumeration":"B","answer":"After work","counter":50,"percentValue":0},

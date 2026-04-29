@@ -8,7 +8,7 @@ export class QuestionValuesServices {
   questionform:FormGroup = new FormGroup({
     id: new FormControl(0),
     name: new FormControl('name'),
-    endDate: new FormControl('2000-02-02'),
+    endDate: new FormControl('No end date'),
     description: new FormControl('describing'),
     category: new FormControl('No category')
   });

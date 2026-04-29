@@ -50,6 +50,10 @@ export class CreateQuestion {
     }
 
     this.answearsList.update(current => [...current, { 'id': this.answearId }]);
+
+    setTimeout(() => {
+      console.log(this.qvService.questionform.value);
+    }, 200);
   }
 
   removeAnswear(id:number){
@@ -65,7 +69,6 @@ export class CreateQuestion {
   }
 
   removeQuestion(){
-    this.answearId = 0;
     this.action.emit(this.questionId);
   }
 }

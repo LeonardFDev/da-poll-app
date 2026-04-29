@@ -8,7 +8,6 @@ import { InputField } from "../../shared/components/input-field/input-field";
 import { CreateQuestion } from "../../shared/components/create-question/create-question";
 import { PrimaryButton } from "../../shared/components/primary-button/primary-button";
 import { DropDownMenu } from "../../shared/components/drop-down-menu/drop-down-menu";
-import { ISODate } from '../../shared/components/types/date.type';
 import { QuestionValuesServices } from '../../shared/services/question-values/question-values';
 
 @Component({
@@ -22,8 +21,6 @@ export class CreateSurvey {
 
   questionNumber:number = 0;
   questionNumberList:WritableSignal<{id: number}[]> = signal([]);
-
-  endDate: 'No end date' | ISODate = 'No end date';
 
   constructor(){
     this.addQuestion();
@@ -54,35 +51,46 @@ export class CreateSurvey {
   }
 
   removeQuestion(id:number){
-    if(this.qvService.questionform.get(`questionsAndAnswers${id}.question`)?.value || this.qvService.questionform.get(`questionsAndAnswers${id}.multipleAnswers`)?.value || this.haveAnswersValue(id)){
+    if(this.qvService.questionform.get(`questionsAndAnswers${id}.question`)?.value || this.qvService.questionform.get(`questionsAndAnswers${id}.multipleAnswers`)?.value){
       console.log('yes');
 
-        this.qvService.questionform.get(`questionsAndAnswers${id}.question`)?.setValue('');
-        this.qvService.questionform.get(`questionsAndAnswers${id}.multipleAnswers`)?.setValue(false);
+      this.qvService.questionform.get(`questionsAndAnswers${id}.question`)?.setValue('');
+      this.qvService.questionform.get(`questionsAndAnswers${id}.multipleAnswers`)?.setValue(false);
     } 
 
     else if(this.questionNumberList().length >1){
-
       this.qvService.questionform.removeControl(`questionsAndAnswers${id}`);
-
       this.questionNumberList.update(current => current.filter(item => item.id != id));
 
       setTimeout(() => {
         console.log(this.qvService.questionform.value);
       }, 200);
     } 
+
+    this.haveAnswersValue(id);
   }
 
   haveAnswersValue(id:number){
     const currentQuestion = this.qvService.questionform.get(`questionsAndAnswers${id}`);
-    const answersList = Object.keys(currentQuestion?.value)
-    .filter(key => key.startsWith('answear'));
-    
-    answersList.forEach(key => {
-      const value = currentQuestion?.get(`${key}.answear`)?.value;
+    if(currentQuestion){
+      const answersList = Object.keys(currentQuestion?.value)
+      .filter(key => key.startsWith('answear'));
+      
+      answersList.forEach(key => {
+        const value = currentQuestion?.get(`${key}.answear`);
+        if (value?.value) value.setValue('');
+      });
+    }
 
-      if (value) return true
-      else return false
-    });
+    setTimeout(() => {
+      console.log(this.qvService.questionform.value);
+    }, 200);
+  }
+
+  deleteInputFeld(value:string){
+    if(this.qvService.nameControl(value).value){
+      if(value == 'endDate') this.qvService.nameControl(value).setValue('No end date');
+      else this.qvService.nameControl(value).setValue('');
+    }
   }
 }

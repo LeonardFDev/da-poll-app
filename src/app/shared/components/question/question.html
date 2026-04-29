@@ -2,13 +2,13 @@
         <div class="question__h1-span">
             <h1 class="question__h1-span__h1">{{question.question}}</h1>
     
-            @if (question.checkboxType == 'checkbox' && question.question.length != 0) {
+            @if (question.multipleAnswers == 'checkbox' && question.question.length != 0) {
                 <span class="question__h1-span__span">More than one answers are possible.</span>
             }
         </div>
         <div class="question__answear">
             @for(item of question.answers; track item.id){
-                @if (question.checkboxType == 'radio') {
+                @if (question.multipleAnswers == 'radio') {
                     <app-answear [spanEnumeration]="item.enumeration + '.'" [spanText]="item.answer" [inputType]="{'type':'radio', name: `${question.id}`}"></app-answear>
                 }
                 @else {
