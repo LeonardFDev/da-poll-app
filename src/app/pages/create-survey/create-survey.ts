@@ -54,7 +54,14 @@ export class CreateSurvey {
   }
 
   removeQuestion(id:number){
-    if(this.questionNumberList().length >1){
+    if(this.qvService.questionform.get(`questionsAndAnswers${id}.question`)?.value || this.qvService.questionform.get(`questionsAndAnswers${id}.multipleAnswers`)?.value || this.haveAnswersValue(id)){
+      console.log('yes');
+
+        this.qvService.questionform.get(`questionsAndAnswers${id}.question`)?.setValue('');
+        this.qvService.questionform.get(`questionsAndAnswers${id}.multipleAnswers`)?.setValue(false);
+    } 
+
+    else if(this.questionNumberList().length >1){
 
       this.qvService.questionform.removeControl(`questionsAndAnswers${id}`);
 
@@ -64,5 +71,18 @@ export class CreateSurvey {
         console.log(this.qvService.questionform.value);
       }, 200);
     } 
+  }
+
+  haveAnswersValue(id:number){
+    const currentQuestion = this.qvService.questionform.get(`questionsAndAnswers${id}`);
+    const answersList = Object.keys(currentQuestion?.value)
+    .filter(key => key.startsWith('answear'));
+    
+    answersList.forEach(key => {
+      const value = currentQuestion?.get(`${key}.answear`)?.value;
+
+      if (value) return true
+      else return false
+    });
   }
 }

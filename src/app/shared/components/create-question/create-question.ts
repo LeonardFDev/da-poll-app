@@ -53,12 +53,15 @@ export class CreateQuestion {
   }
 
   removeAnswear(id:number){
-    if(this.answearsList().length >2){
-      const questionsAndAnswers = this.qvService.questionform.get(`questionsAndAnswers${this.questionId}`) as FormGroup;
+    const questionsAndAnswers = this.qvService.questionform.get(`questionsAndAnswers${this.questionId}`) as FormGroup;
+
+    if(questionsAndAnswers.get(`answears${id}.answear`)?.value) questionsAndAnswers.get(`answears${id}.answear`)?.setValue('');
+
+    else if(this.answearsList().length >2){
       if(questionsAndAnswers) questionsAndAnswers.removeControl(`answears${id}`);
 
       this.answearsList.update(current => current.filter(item => item.id != id));
-    } 
+    }
   }
 
   removeQuestion(){
