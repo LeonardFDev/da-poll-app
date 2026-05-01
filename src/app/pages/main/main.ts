@@ -19,9 +19,12 @@ export class Main {
   router = inject(Router);
   setQuestion = inject(SetQuestionsServices);
 
-  threeEndNextList = signal<SurveyQuestionInterFace[]>([]);
   fullList = signal<SurveyQuestionInterFace[]>([]);
+  threeEndNextList = signal<SurveyQuestionInterFace[]>([]);
   filterList = signal<SurveyQuestionInterFace[]>([]);
+  heroSwitch:WritableSignal<boolean> = signal(false);
+  scrollActiv:WritableSignal<boolean> = signal(false);
+  activeFilterBtn = signal<'active_survey' | 'past_survey' | 'all'>('all');
 
   @ViewChild('highlightsCards') highlightsCardsRef!: ElementRef<HTMLElement>;
   highlightsCards!:HTMLElement;
@@ -35,11 +38,6 @@ export class Main {
 
   mqMaxW1312 = window.matchMedia('(max-width: 1312px)');
   mqMaxW1440 = window.matchMedia('(max-width: 1440px)');
-
-  heroSwitch:WritableSignal<boolean> = signal(false);
-  scrollActiv:WritableSignal<boolean> = signal(false);
-
-  activeFilterBtn = signal<'active_survey' | 'past_survey' | 'all'>('all');
 
   @HostListener('window:resize')
   onResize() {
