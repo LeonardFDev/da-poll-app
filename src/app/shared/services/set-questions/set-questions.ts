@@ -14,7 +14,7 @@ export class SetQuestionsServices {
     'id': 0,
     'name': 'PLACEHOLDER_TITLE',
     'description': 'PLACEHOLDER_DESCRIPTION',
-    'endDate': '01.01.2000',
+    'endDate': '2000-01-01',
     'category': 'PLACEHOLDER_CATEGORY',
     'questions': [
       {
@@ -70,7 +70,7 @@ export class SetQuestionsServices {
         'id': 1,
         'name':'Let’s Plan the Next Team Event Together',
         'description': 'We want to create team activities that everyone will enjoy – share your preferences and ideas in our survey to help us plan better experiences together.',
-        'endDate': `${new Date().getDay()}.${new Date().getMonth()}.${new Date().getFullYear()}` ,
+        'endDate': `${new Intl.DateTimeFormat('en-CA').format(new Date())}`,
         'category': 'Team Activities',
         'questions': [
           {
@@ -123,7 +123,7 @@ export class SetQuestionsServices {
         "id": 2,
         "name": "Improve Our Workplace Environment",
         "description": "Help us understand what changes would make your daily work experience better.",
-        "endDate": "17.4.2026",
+        "endDate": "no end date",
         "category": "Workplace",
         "questions": [
           {
@@ -153,7 +153,7 @@ export class SetQuestionsServices {
         "id": 3,
         "name": "Company Lunch Preferences",
         "description": "Tell us what kind of meals you prefer for team lunches.",
-        "endDate": "17.4.2026",
+        "endDate": "2028-04-17",
         "category": "Food",
         "questions": [
           {
@@ -182,7 +182,7 @@ export class SetQuestionsServices {
         "id": 4,
         "name": "Remote Work Feedback",
         "description": "We want to optimize our remote work policy based on your feedback.",
-        "endDate": "17.4.2026",
+        "endDate": "2026-07-17",
         "category": "Remote Work",
         "questions": [
           {
@@ -213,7 +213,7 @@ export class SetQuestionsServices {
         "id": 5,
         "name": "Learning & Development Survey",
         "description": "Help us shape future training and development opportunities.",
-        "endDate": "17.4.2026",
+        "endDate": "2013-04-17",
         "category": "Education",
         "questions": [
           {
@@ -244,7 +244,7 @@ export class SetQuestionsServices {
         "id": 6,
         "name": "Office Events & Celebrations",
         "description": "Share your ideas for future office celebrations and events.",
-        "endDate": "17.4.2026",
+        "endDate": "2006-04-17",
         "category": "Events",
         "questions": [
           {

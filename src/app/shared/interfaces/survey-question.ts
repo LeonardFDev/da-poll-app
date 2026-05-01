@@ -4,7 +4,7 @@ export interface SurveyQuestionInterFace {
     id: number;
     name:string
     description?:string
-    endDate?: Date | number | string;
+    endDate: string;
     category:string;
     questions: QuestionInterFace[];
 }

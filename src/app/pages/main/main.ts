@@ -7,6 +7,7 @@ import { DropDownMenu } from "../../shared/components/drop-down-menu/drop-down-m
 import { FilterButton } from "../../shared/components/filter-button/filter-button";
 import { SurveyView } from "../../shared/components/survey-view/survey-view";
 import { SetQuestionsServices } from '../../shared/services/set-questions/set-questions';
+import { SurveyQuestionInterFace } from '../../shared/interfaces/survey-question';
 
 @Component({
   selector: 'app-main',
@@ -17,6 +18,10 @@ import { SetQuestionsServices } from '../../shared/services/set-questions/set-qu
 export class Main {
   router = inject(Router);
   setQuestion = inject(SetQuestionsServices);
+
+  threeEndNextList = signal<SurveyQuestionInterFace[]>([]);
+  fullList = signal<SurveyQuestionInterFace[]>([]);
+  filterList = signal<SurveyQuestionInterFace[]>([]);
 
   @ViewChild('highlightsCards') highlightsCardsRef!: ElementRef<HTMLElement>;
   highlightsCards!:HTMLElement;
@@ -34,7 +39,7 @@ export class Main {
   heroSwitch:WritableSignal<boolean> = signal(false);
   scrollActiv:WritableSignal<boolean> = signal(false);
 
-  activeFilterBtn:'active_survey' | 'past_survey' | 'all' = 'all';
+  activeFilterBtn = signal<'active_survey' | 'past_survey' | 'all'>('all');
 
   @HostListener('window:resize')
   onResize() {
@@ -53,6 +58,11 @@ export class Main {
     this.mqMaxW1440.addEventListener('change', e => {
       this.scrollActiv.set(e.matches);
     });
+
+    this.threeEndingSoon();
+
+    this.fullList.set(this.setQuestion.questionsList());
+    this.filterList.set(this.fullList());
   }
 
   ngAfterViewInit(){
@@ -159,11 +169,38 @@ export class Main {
   }
 
   changeActive(btn: 'active_survey' | 'past_survey' | 'all') {
-    if(btn == this.activeFilterBtn) this.activeFilterBtn = 'all';
-    else this.activeFilterBtn = btn;
+    if(btn == this.activeFilterBtn()) this.activeFilterBtn.set('all');
+    else this.activeFilterBtn.set(btn);
+
+    this.outputList();
   }
 
   threeEndingSoon(){
-    // coming soon
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    this.threeEndNextList.set([...this.setQuestion.questionsList()]
+    .filter(question => new Date(question.endDate) >= today || question.endDate == 'no end date')
+    .sort((a, b) => {
+      if (a.endDate == 'no end date') return 1;
+      if (b.endDate == 'no end date') return -1;
+      return new Date(a.endDate).getTime() - new Date(b.endDate).getTime();
+    })
+    .slice(0, 3))
+  }
+
+  outputList(){
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    if(this.activeFilterBtn() == 'active_survey'){
+      this.filterList.update(() => this.fullList().filter(question => new Date(question.endDate) >= today || question.endDate == 'no end date'));
+    }
+    else if(this.activeFilterBtn() == 'past_survey'){
+      this.filterList.update(() => this.fullList().filter(question => new Date(question.endDate) < today));
+    }
+    else{
+      this.filterList.update(() => this.fullList());
+    }
   }
 }

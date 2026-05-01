@@ -32,8 +32,8 @@
             <span class="section__center__span">Ending soon surveys</span>
             <div class="section__center__highlights-cards">
                 <div #highlightsCards class="section__center__highlights-cards__inner">
-                    @for (item of [0,0,0]; track $index; let i = $index) {
-                        <app-highlights-card [id]="i" [highlightsCardH1]="'TestH1'" [highlightsCardText]="'TestSpan'"></app-highlights-card>
+                    @for (item of threeEndNextList(); track item.id) {
+                        <app-highlights-card [routerLink]="['/view-survey', item.id]" [highlightsCardText]="item.category" [highlightsCardH1]="item.name" [surveyStatus]="item.endDate"></app-highlights-card>
                     }
                 </div>
             </div>
@@ -42,15 +42,15 @@
         <section class="section__bottom">
             <div class="section__bottom__filters">
                 <div class="section__bottom__filters__filter-btns">
-                    <app-filter-button [active]="activeFilterBtn == 'active_survey'" (click)="changeActive('active_survey')" [btnText]="'Active survey'"></app-filter-button>
-                    <app-filter-button [active]="activeFilterBtn == 'past_survey'" (click)="changeActive('past_survey')" [btnText]="'Past survey'"></app-filter-button>
+                    <app-filter-button [active]="activeFilterBtn() == 'active_survey'" (click)="changeActive('active_survey')" [btnText]="'Active survey'"></app-filter-button>
+                    <app-filter-button [active]="activeFilterBtn() == 'past_survey'" (click)="changeActive('past_survey')" [btnText]="'Past survey'"></app-filter-button>
                 </div>
                 <app-drop-down-menu [dropDownText]="'Sort by categories'"></app-drop-down-menu>
             </div>
 
             <div class="section__bottom__survey-views">
-                @for (item of [0,0,0,0,0,0,0,0,0]; track $index) {
-                    <app-survey-view class="section__bottom__survey-views__app" [routerLink]="['/view-survey', $index]" [viewH1]="'TestH1'" [viewSpan]="'TestSpan'"></app-survey-view>
+                @for (item of filterList(); track item.id) {
+                    <app-survey-view class="section__bottom__survey-views__app" [routerLink]="['/view-survey', item.id]" [viewSpan]="item.category" [viewH1]="item.name" [surveyStatus]="item.endDate"></app-survey-view>
                 }
             </div>
         </section>
