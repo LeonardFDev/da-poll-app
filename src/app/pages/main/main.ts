@@ -107,11 +107,11 @@ export class Main {
     if (!this.scrollActiv()) return;
     event.preventDefault();
     
-    if (event.deltaY > 0) {
+    if (event.deltaY < 0) {
       this.currentX += 20;
       if(this.currentX > 0) this.currentX = 0;
     } 
-    else if (event.deltaY < 0) {
+    else if (event.deltaY > 0) {
       this.currentX -= 20;
       if(this.currentX < -this.maxCalculate()) this.currentX = -this.maxCalculate();
     }
