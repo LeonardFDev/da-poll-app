@@ -1,5 +1,5 @@
 <section class="drop-down-body">
-    <div class="drop-down" [class.drop-down--open-selected]="isOpenOrSelected()" (click)="open()">
+    <div class="drop-down" [class.drop-down--open-selected]="isOpenOrSelected()" (click)="open($event)">
         <span class="drop-down__span">{{dropDownText}}</span>
         <div class="drop-down__icon" [class.drop-down__icon--open]="isOpen()" [class.drop-down__icon--selected]="isSelected()" ></div>
     

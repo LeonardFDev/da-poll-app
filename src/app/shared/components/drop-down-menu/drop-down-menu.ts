@@ -15,14 +15,27 @@ export class DropDownMenu {
   @Input() isPartOfMainPage:boolean = false;
   
   @Output() getSelectedMenu = new EventEmitter<string>();
-  
+
   isOpen = signal(false);
   isSelected = signal(false);
   isOpenOrSelected = computed(() => this.isOpen() || this.isSelected());
 
   selectedMenu:string = '';
 
-  open(){
+  ngAfterViewInit(){
+    window.addEventListener('click', () => this.closeMenu());
+  }
+
+  closeMenu(){
+    if(this.isOpen()) this.isOpen.set(false);
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('click', this.closeMenu);
+  }
+
+  open(event:PointerEvent){
+    event.stopPropagation();
     if(this.isOpen()) this.isOpen.set(false);
     else this.isOpen.set(true);
   }
