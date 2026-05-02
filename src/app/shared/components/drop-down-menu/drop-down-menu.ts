@@ -1,4 +1,4 @@
-import { Component, computed, inject, Input, signal } from '@angular/core';
+import { Component, computed, EventEmitter, inject, Input, Output, signal } from '@angular/core';
 import { QuestionValuesServices } from '../../services/question-values/question-values';
 
 @Component({
@@ -12,7 +12,10 @@ export class DropDownMenu {
 
   @Input() dropDownText='';
   @Input() isPartOfCreateSurvey:boolean = false;
-
+  @Input() isPartOfMainPage:boolean = false;
+  
+  @Output() getSelectedMenu = new EventEmitter<string>();
+  
   isOpen = signal(false);
   isSelected = signal(false);
   isOpenOrSelected = computed(() => this.isOpen() || this.isSelected());
@@ -51,6 +54,7 @@ export class DropDownMenu {
     }
 
     this.getCategory();
+    this.passOnSelectedMenu();
   }
 
   getCategory(){
@@ -58,5 +62,9 @@ export class DropDownMenu {
       if(!this.selectedMenu) this.qvService.questionform.value.category = this.qvService.questionform.get('category')?.setValue('No category');
       else this.qvService.questionform.get('category')?.setValue(this.selectedMenu);
     }
+  }
+
+  passOnSelectedMenu(){
+    if(this.isPartOfMainPage) this.getSelectedMenu.emit(this.selectedMenu);
   }
 }

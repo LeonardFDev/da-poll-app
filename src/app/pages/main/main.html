@@ -45,12 +45,17 @@
                     <app-filter-button [active]="activeFilterBtn() == 'active_survey'" (click)="changeActive('active_survey')" [btnText]="'Active survey'"></app-filter-button>
                     <app-filter-button [active]="activeFilterBtn() == 'past_survey'" (click)="changeActive('past_survey')" [btnText]="'Past survey'"></app-filter-button>
                 </div>
-                <app-drop-down-menu [dropDownText]="'Sort by categories'"></app-drop-down-menu>
+                <app-drop-down-menu [isPartOfMainPage]="true" (getSelectedMenu)="processDataSelectedMenu($event)" [dropDownText]="'Sort by categories'"></app-drop-down-menu>
             </div>
 
             <div class="section__bottom__survey-views">
                 @for (item of filterList(); track item.id) {
                     <app-survey-view class="section__bottom__survey-views__app" [routerLink]="['/view-survey', item.id]" [viewSpan]="item.category" [viewH1]="item.name" [surveyStatus]="item.endDate"></app-survey-view>
+                }
+                @empty {
+                    <div class="section__bottom__survey-views-empty">
+                        <span class="section__bottom__survey-views-empty__span">No matching items found</span>
+                    </div>
                 }
             </div>
         </section>
