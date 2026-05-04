@@ -1,5 +1,5 @@
 @if(type == 'inputText'){
-    <input [formControl]="nameControl" class="input-field" type="text">
+    <input [class.input-field--error]="dateInvalid" [formControl]="nameControl" class="input-field" type="text">
 }
 
 @else if(type == 'textarea'){
@@ -7,5 +7,5 @@
 }
 
 @else if(type == 'inputDate'){
-    <input [formControl]="nameControl" class="input-field input-field--date" type="date">
+    <input [formControl]="nameControl" (input)="calendarValueChange()" class="input-field input-field--date" type="date">
 }

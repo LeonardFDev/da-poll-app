@@ -11,6 +11,10 @@
     box-sizing: border-box;
     border: none;
 
+    &--error{
+        box-shadow: inset 0 0 0 2px red;
+    }
+
     &:focus{
         outline: none;
         background-color: #FEE9D4;
