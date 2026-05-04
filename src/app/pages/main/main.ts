@@ -179,10 +179,10 @@ export class Main {
     today.setHours(0, 0, 0, 0);
 
     this.threeEndNextList.set([...this.setQuestion.questionsList()]
-    .filter(question => new Date(question.endDate) >= today || question.endDate == 'no end date')
+    .filter(question => new Date(question.endDate) >= today || question.endDate.toLocaleLowerCase() == 'no end date')
     .sort((a, b) => {
-      if (a.endDate == 'no end date') return 1;
-      if (b.endDate == 'no end date') return -1;
+      if (a.endDate.toLocaleLowerCase() == 'no end date') return 1;
+      if (b.endDate.toLocaleLowerCase() == 'no end date') return -1;
       return new Date(a.endDate).getTime() - new Date(b.endDate).getTime();
     })
     .slice(0, 3))
@@ -193,7 +193,7 @@ export class Main {
     today.setHours(0, 0, 0, 0);
 
     if(this.activeFilterBtn() == 'active_survey'){
-      this.filterList.update(() => this.fullList().filter(question => this.categoryFilter(question) && (new Date(question.endDate) >= today || question.endDate == 'no end date')));
+      this.filterList.update(() => this.fullList().filter(question => this.categoryFilter(question) && (new Date(question.endDate) >= today || question.endDate.toLocaleLowerCase() == 'no end date')));
     }
     else if(this.activeFilterBtn() == 'past_survey'){
       this.filterList.update(() => this.fullList().filter(question => new Date(question.endDate) < today && this.categoryFilter(question)));
@@ -204,7 +204,7 @@ export class Main {
   }
 
   categoryFilter(question:SurveyQuestionInterFace){
-    if(this.currentCategory() == "" || this.currentCategory() =="no category") return question;
+    if(this.currentCategory() == "" || this.currentCategory().toLocaleLowerCase() =="no category") return question;
     else{
       return question.category == this.currentCategory()
     }

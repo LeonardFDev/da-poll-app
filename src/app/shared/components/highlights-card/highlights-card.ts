@@ -16,7 +16,7 @@ export class HighlightsCard {
   endingInOutput:string =''
 
   ngOnInit(){
-    if(this.surveyStatus == 'no end date') this.endingInOutput = '∞';
+    if(this.surveyStatus.toLocaleLowerCase() == 'no end date') this.endingInOutput = '∞';
 
     else{
       const date = new Date(this.surveyStatus)
