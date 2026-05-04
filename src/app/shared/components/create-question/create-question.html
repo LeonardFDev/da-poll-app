@@ -4,33 +4,33 @@
         <app-delete-button (click)="removeQuestion()"></app-delete-button>
     </div>
 
-    <app-input-field [nameControl]="qvService.nameControl(`questionsAndAnswers${questionId}.question`)" class="question__input-field"></app-input-field>
+    <app-input-field [nameControl]="qvService.getNameControlFromArray('questions', questionId, 'question')" class="question__input-field"></app-input-field>
 
     <div class="question__h2-checkbox-wiht-text">
         <h2 class="question__h2-checkbox-wiht-text__h2">{{'Answears'}}</h2>
         <div class="question__h2-checkbox-wiht-text__checkbox-wiht-text">
-            <app-check-box [whiteBorder]="true" [isPartOfCreateSurvey]="true" [nameControl]="qvService.nameControl(`questionsAndAnswers${questionId}.multipleAnswers`)"></app-check-box>
+            <app-check-box [whiteBorder]="true" [isPartOfCreateSurvey]="true" [nameControl]="qvService.getNameControlFromArray(`questions`, questionId, 'multipleAnswers')"></app-check-box>
             <span class="question__h2-checkbox-wiht-text__checkbox-wiht-text__text">{{'Allow multiple answers.'}}</span>
         </div>
     </div>
 
-    @for (item of answearsList(); track item.id; let i=$index;) {
+    @for (item of answersList(); track item.id; let i=$index;) {
         <div class="question__answear-input">
             <div class="question__answear-input__span-button-mobile">
                 <span class="question__answear-input__span-button-mobile__span">{{fromNumberToChar(i)}}.</span>
                 <app-delete-button class="question__answear-input__span-button-mobile__button" (click)="removeAnswear(item.id)"></app-delete-button>
             </div>
             <span class="question__answear-input__span-desktop">{{fromNumberToChar(i)}}.</span>
-            <app-input-field [nameControl]="qvService.nameControl(`questionsAndAnswers${questionId}.answears${item.id}.answear`)" class="question__answear-input__input"></app-input-field>
+            <app-input-field [nameControl]="qvService.getNameControlFromNestedArray(`questions`, questionId, 'answers', item.id, 'answer')" class="question__answear-input__input"></app-input-field>
             <app-delete-button class="question__answear-input__button-desktop" (click)="removeAnswear(item.id)"></app-delete-button>
         </div>
     }
 
-    <div class="question__footer" [class.question__footer--just-cont-flex-end]="answearsList().length >= 6">
-        @if (answearsList().length < 6) {
+    <div class="question__footer" [class.question__footer--just-cont-flex-end]="answersList().length >= 6">
+        @if (answersList().length < 6) {
             <app-tertiary-button (click)="addAnswear()" class="question__footer__button" [buttonText]="'Add answer'"></app-tertiary-button>
         }
-        @if (answearsList().length > 2) {
+        @if (answersList().length > 2) {
             <span  class="question__footer__span">{{'You can add up to 6 answer fields.'}}</span>
         }
     </div>

@@ -1,6 +1,6 @@
 export interface AnswerInterface {
     id:number;
-    enumeration:string;
+    enumeration?:string;
     answer: string;
     counter: number;
     percentValue:number;

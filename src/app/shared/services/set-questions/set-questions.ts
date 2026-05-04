@@ -123,7 +123,7 @@ export class SetQuestionsServices {
         "id": 2,
         "name": "Improve Our Workplace Environment",
         "description": "Help us understand what changes would make your daily work experience better.",
-        "endDate": "no end date",
+        "endDate": "No end date",
         "category": "Lifestyle & Preferences",
         "questions": [
           {
@@ -431,7 +431,7 @@ export class SetQuestionsServices {
         "id": 2,
         "name": "Improve Our Workplace Environment",
         "description": "Help us understand what changes would make your daily work experience better.",
-        "endDate": "no end date",
+        "endDate": "No end date",
         "category": "Lifestyle & Preferences",
         "questions": [
           {
@@ -530,8 +530,8 @@ export class SetQuestionsServices {
         "id": 14,
         "name": "General Feedback",
         "description": "Any other feedback or suggestions?",
-        "endDate": "no end date",
-        "category": "no category",
+        "endDate": "No end date",
+        "category": "No category",
         "questions": [
           {
             "id": 1,
@@ -545,8 +545,8 @@ export class SetQuestionsServices {
         "id": 15,
         "name": "Miscellaneous Ideas",
         "description": "Share any ideas you have for the company.",
-        "endDate": "no end date",
-        "category": "no category",
+        "endDate": "No end date",
+        "category": "No category",
         "questions": [
           {
             "id": 1,
@@ -555,7 +555,25 @@ export class SetQuestionsServices {
             "answers": []
           }
         ]
-      }
+      },
+      // {
+      //   category: "No category",
+      //   description: "test describing",
+      //   endDate: "No end date",
+      //   id: 100,
+      //   name: "test name",
+      //   questions: [
+      //     {
+      //       answers: [
+      //         {answer: "Answears A", counter: 0, id: 1, percentValue: 0},
+      //         {answer: "Answears B", counter: 0, id: 2, percentValue: 0}
+      //       ],
+      //       id: 1,
+      //       multipleAnswers: false,
+      //       question: "question 1"
+      //     }
+      //   ]
+      // }
       ]);
       
     this.calculatePercent();

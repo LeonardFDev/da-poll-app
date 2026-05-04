@@ -3,7 +3,7 @@ import { DeleteButton } from "../delete-button/delete-button";
 import { InputField } from "../input-field/input-field";
 import { CheckBox } from "../check-box/check-box";
 import { TertiaryButton } from "../tertiary-button/tertiary-button";
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { QuestionValuesServices } from '../../services/question-values/question-values';
 
 @Component({
@@ -20,11 +20,11 @@ export class CreateQuestion {
 
   @Output() action = new EventEmitter<number>();
 
-  answearId:number = 0;
-  answearsList:WritableSignal<{'id':number}[]> = signal([]);
+  answerId:number = 0;
+  answersList:WritableSignal<{'id':number}[]> = signal([]);
 
   ngAfterViewInit(){
-    while (this.answearsList().length < 2){
+    while (this.answersList().length < 2){
       this.addAnswear();
     }
   }
@@ -34,41 +34,42 @@ export class CreateQuestion {
   }
 
   addAnswear(){
-    this.answearId++;
+    this.answerId++;
 
-    const questionsAndAnswers = this.qvService.questionform.get(`questionsAndAnswers${this.questionId}`) as FormGroup;
-    if(questionsAndAnswers){
-      
-      questionsAndAnswers.addControl(`answears${this.answearId}`, new FormGroup({}));
-      const answers = questionsAndAnswers.get(`answears${this.answearId}`) as FormGroup;
-      if(answers){
-        answers.addControl(`id`, new FormControl(`${this.answearId}`));
-        answers.addControl(`answear`, new FormControl(`test ${this.answearId}`));
-        answers.addControl(`counter`, new FormControl(0));
-        answers.addControl(`percentValue`, new FormControl(0));
-      }
-    }
+    const questions = this.qvService.questionform.get('questions') as FormArray;
 
-    this.answearsList.update(current => [...current, { 'id': this.answearId }]);
+    const question = questions.at(this.qvService.findOutIndex('questions', this.questionId)) as FormGroup;
+    const answers = question.get('answers') as FormArray;
 
-    setTimeout(() => {
-      console.log(this.qvService.questionform.value);
-    }, 200);
+    answers.push(
+      new FormGroup({
+        'id': new FormControl(this.answerId),
+        'answer': new FormControl('', [Validators.required]),
+        'counter': new FormControl(0),
+        'percentValue': new FormControl(0)
+      })
+    );
+
+    console.log(answers.value);
+    console.log(this.qvService.questionform.value);
+    
+
+    this.answersList.update(current => [...current, { 'id': this.answerId }]);
   }
 
   removeAnswear(id:number){
-    const questionsAndAnswers = this.qvService.questionform.get(`questionsAndAnswers${this.questionId}`) as FormGroup;
+    // const questionsAndAnswers = this.qvService.questionform.get(`questionsAndAnswers${this.questionId}`) as FormGroup;
 
-    if(questionsAndAnswers.get(`answears${id}.answear`)?.value) questionsAndAnswers.get(`answears${id}.answear`)?.setValue('');
+    // if(questionsAndAnswers.get(`answears${id}.answear`)?.value) questionsAndAnswers.get(`answears${id}.answear`)?.setValue('');
 
-    else if(this.answearsList().length >2){
-      if(questionsAndAnswers) questionsAndAnswers.removeControl(`answears${id}`);
+    // else if(this.answersList().length >2){
+    //   if(questionsAndAnswers) questionsAndAnswers.removeControl(`answears${id}`);
 
-      this.answearsList.update(current => current.filter(item => item.id != id));
-    }
+    //   this.answersList.update(current => current.filter(item => item.id != id));
+    // }
   }
 
   removeQuestion(){
-    this.action.emit(this.questionId);
+    // this.action.emit(this.questionId);
   }
 }

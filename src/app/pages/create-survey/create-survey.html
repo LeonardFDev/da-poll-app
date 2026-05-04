@@ -64,7 +64,7 @@
                 </div>
             </div>
             <div class="create-survey__footer">
-                <app-primary-button [btnText]="'Publish'" [withIcon]="{'isWithIcon':true, 'iconUrl':'/assets/img/check.png'}"></app-primary-button>
+                <app-primary-button (click)="saveSurvey()" [btnText]="'Publish'" [withIcon]="{'isWithIcon':true, 'iconUrl':'/assets/img/check.png'}"></app-primary-button>
             </div>
         </div>
     </div>
