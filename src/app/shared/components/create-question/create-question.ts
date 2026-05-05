@@ -50,26 +50,26 @@ export class CreateQuestion {
       })
     );
 
-    console.log(answers.value);
-    console.log(this.qvService.questionform.value);
-    
-
     this.answersList.update(current => [...current, { 'id': this.answerId }]);
   }
 
   removeAnswear(id:number){
-    // const questionsAndAnswers = this.qvService.questionform.get(`questionsAndAnswers${this.questionId}`) as FormGroup;
+    const questionArray = this.qvService.getFromArray('questions', this.questionId, 'answers');
+    const answersArray = this.qvService.getFromNestedArray('questions', this.questionId, 'answers', id) as FormArray;
+    const index = this.qvService.findOutIndexFromNestedArray('questions', this.questionId, 'answers', id)
 
-    // if(questionsAndAnswers.get(`answears${id}.answear`)?.value) questionsAndAnswers.get(`answears${id}.answear`)?.setValue('');
+    if(answersArray.get('answer')?.value){
+      answersArray.get('answer')?.setValue('');
+      answersArray.get('answer')?.markAsUntouched();
+    }
 
-    // else if(this.answersList().length >2){
-    //   if(questionsAndAnswers) questionsAndAnswers.removeControl(`answears${id}`);
-
-    //   this.answersList.update(current => current.filter(item => item.id != id));
-    // }
+    else if(this.answersList().length >2){
+      questionArray.removeAt(index)
+      this.answersList.update(current => current.filter(item => item.id != id));
+    }
   }
 
   removeQuestion(){
-    // this.action.emit(this.questionId);
+    this.action.emit(this.questionId);
   }
 }

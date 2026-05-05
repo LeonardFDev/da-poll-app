@@ -10,6 +10,7 @@ import { PrimaryButton } from "../../shared/components/primary-button/primary-bu
 import { DropDownMenu } from "../../shared/components/drop-down-menu/drop-down-menu";
 import { QuestionValuesServices } from '../../shared/services/question-values/question-values';
 import { SetQuestionsServices } from '../../shared/services/set-questions/set-questions';
+import { AnswerInterface } from '../../shared/interfaces/answer';
 
 @Component({
   selector: 'app-create-survey',
@@ -49,38 +50,39 @@ export class CreateSurvey {
     }
     
     this.questionNumberList.update(current => [...current, { 'id': this.questionNumber }]);
-
-    console.log(this.qvService.questionform.value);
   }
 
   removeQuestion(id:number){
-    // if(this.qvService.questionform.get(`questionsAndAnswers${id}.question`)?.value || this.qvService.questionform.get(`questionsAndAnswers${id}.multipleAnswers`)?.value){
-    //   this.qvService.questionform.get(`questionsAndAnswers${id}.question`)?.setValue('');
-    //   this.qvService.questionform.get(`questionsAndAnswers${id}.multipleAnswers`)?.setValue(false);
-    // } 
+    const question = this.qvService.getNameControlFromArray('questions', id, 'question');
+    const multipleAnswers =this.qvService.getNameControlFromArray('questions', id, 'multipleAnswers');
 
-    // else if(this.questionNumberList().length >1){
-    //   this.qvService.questionform.removeControl(`questionsAndAnswers${id}`);
-    //   this.questionNumberList.update(current => current.filter(item => item.id != id));
-    // } 
+    const answers = this.qvService.getFromArray('questions', id, 'answers');
+    const isAnyAnswers = answers.value.some((group: AnswerInterface) => !!group.answer);
 
-    // this.haveAnswersValue(id);
+    if(question.value || multipleAnswers.value || isAnyAnswers) this.resetFields(question, multipleAnswers, answers);
+    else if(this.questionNumberList().length >1) this.deleteFields(id);
   }
 
-  // haveAnswersValue(id:number){
-  //   const currentQuestion = this.qvService.questionform.get(`questionsAndAnswers${id}`);
-  //   if(currentQuestion){
-  //     const answersList = Object.keys(currentQuestion?.value)
-  //     .filter(key => key.startsWith('answear'));
+  resetFields(question:FormControl, multipleAnswers:FormControl, answers:FormArray){
+    question.setValue('');
+    question.markAsUntouched();
+    multipleAnswers.setValue(false);
       
-  //     answersList.forEach(key => {
-  //       const value = currentQuestion?.get(`${key}.answer`);
-  //       if (value?.value)value.setValue('');
-  //     });
-  //   }
-  // }
+    answers.controls.forEach(item => {
+      item.get('answer')?.setValue('');
+      item.get('answer')?.markAsUntouched();
+    });
+  }
 
-  deleteInputFeld(value:string){
+  deleteFields(id:number){
+    const questionsArray = this.qvService.questionform.get('questions') as FormArray;
+    const index = this.qvService.findOutIndex('questions',id);
+    questionsArray.removeAt(index);
+
+    this.questionNumberList.update(current => current.filter(item => item.id != id));
+  }
+
+  deleteInputField(value:string){
     if(this.qvService.nameControl(value).value){
       if(value == 'endDate') this.qvService.nameControl(value).setValue('No end date');
       else this.qvService.nameControl(value).setValue('');
@@ -90,17 +92,12 @@ export class CreateSurvey {
   saveSurvey(){
     if (this.qvService.questionform.invalid) {
       this.qvService.questionform.markAllAsTouched();
-      console.log('Formular ungültig!');
     }
     else{
       if(!this.qvService.nameControl('description').value) this.qvService.nameControl('description').setValue('No description');
       this.qvService.nameControl('id').setValue(100);
       const test = this.qvService.questionform.value
       this.setQService.questionsList.update(questionsList =>({...questionsList, 19: test}))
-      console.log(this.setQService.questionsList()[0]);
-      console.log(this.setQService.questionsList()[19]);
-      
-      console.log('Alles gültig:', this.qvService.questionform.value);
     }
   }
 }
