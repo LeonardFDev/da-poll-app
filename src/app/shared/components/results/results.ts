@@ -1,5 +1,4 @@
-import { Component, ElementRef, inject, Input, ViewChild } from '@angular/core';
-import { SetQuestionsServices } from '../../services/set-questions/set-questions';
+import { Component, inject, Input } from '@angular/core';
 import { QuestionInterFace } from '../../interfaces/question';
 import { QuestionValuesServices } from '../../services/question-values/question-values';
 
