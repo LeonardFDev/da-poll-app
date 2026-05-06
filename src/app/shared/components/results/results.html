@@ -3,7 +3,7 @@
      <div class="results__answers">
          @for (item of question.answers; track item.id) {
             <div class="results__answers__answer">
-                <span class="results__answers__answer__span results__answers__answer__span--enumeration">{{item.enumeration}}</span>
+                <span class="results__answers__answer__span results__answers__answer__span--enumeration">{{qvService.convertToChar($index)}}</span>
                 <div class="results__answers__answer__bar-body">
                     <div class="results__answers__answer__bar-body__bar" [style.width.%]="item.percentValue"></div>
                 </div>

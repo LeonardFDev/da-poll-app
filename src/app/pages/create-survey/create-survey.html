@@ -64,9 +64,19 @@
                 </div>
             </div>
             <div class="create-survey__footer">
+                <span [class.create-survey__footer__span--error-on]="isErrorMessage" class="create-survey__footer__span">*The fields with the red box must be filled in.</span>
                 <app-primary-button (click)="saveSurvey()" [btnText]="'Publish'" [withIcon]="{'isWithIcon':true, 'iconUrl':'/assets/img/check.png'}"></app-primary-button>
             </div>
         </div>
     </div>
 
+</section>
+
+<section [class.overlay--show]="wasSurveyAccepted" class="overlay">
+    <div [class.overlay__body--show]="wasSurveyAccepted" class="overlay__body">
+        <div class="overlay__body__box">
+            <span class="overlay__body__box__span">Your survey is now published</span>
+            <img [routerLink]="['/view-survey', surveyId]" class="overlay__body__box__img" src="assets/img/overlay-close.png" alt="close icon">
+        </div>
+    </div>
 </section>

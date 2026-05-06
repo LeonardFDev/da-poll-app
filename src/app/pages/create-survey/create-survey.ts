@@ -22,8 +22,16 @@ export class CreateSurvey {
   qvService = inject(QuestionValuesServices);
   setQService = inject(SetQuestionsServices);
 
+  surveyId = 100 //<-- muss noch angepasst werden
+
   questionNumber:number = 0;
   questionNumberList:WritableSignal<{id: number}[]> = signal([]);
+
+  wasSurveyAccepted = false;
+
+  get isErrorMessage(): boolean {
+    return this.qvService.questionform.invalid && this.qvService.questionform.touched;
+  }
 
   constructor(){
     this.addQuestion();
@@ -95,9 +103,11 @@ export class CreateSurvey {
     }
     else{
       if(!this.qvService.nameControl('description').value) this.qvService.nameControl('description').setValue('No description');
-      this.qvService.nameControl('id').setValue(100);
+      this.qvService.nameControl('id').setValue(this.surveyId);
       const test = this.qvService.questionform.value
-      this.setQService.questionsList.update(questionsList =>({...questionsList, 19: test}))
+      this.setQService.questionsList.update(questionsList =>({...questionsList, 19: test}));
+
+      this.wasSurveyAccepted = true
     }
   }
 }

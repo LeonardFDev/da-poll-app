@@ -1,6 +1,7 @@
 import { Component, ElementRef, inject, Input, ViewChild } from '@angular/core';
 import { SetQuestionsServices } from '../../services/set-questions/set-questions';
 import { QuestionInterFace } from '../../interfaces/question';
+import { QuestionValuesServices } from '../../services/question-values/question-values';
 
 @Component({
   selector: 'app-results',
@@ -9,7 +10,7 @@ import { QuestionInterFace } from '../../interfaces/question';
   styleUrl: './results.scss',
 })
 export class Results {
-  serviesSQ = inject(SetQuestionsServices)
+  qvService = inject(QuestionValuesServices);
   
   @Input() question!:QuestionInterFace;
   @Input() questionId!:number;

@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Answear } from "../answear/answear";
 import { QuestionInterFace } from '../../interfaces/question';
+import { QuestionValuesServices } from '../../services/question-values/question-values';
 
 @Component({
   selector: 'app-question',
@@ -9,5 +10,6 @@ import { QuestionInterFace } from '../../interfaces/question';
   styleUrl: './question.scss',
 })
 export class Question {
+  qvService = inject(QuestionValuesServices);
   @Input() question!:QuestionInterFace
 }

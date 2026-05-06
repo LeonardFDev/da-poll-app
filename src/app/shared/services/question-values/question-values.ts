@@ -64,4 +64,8 @@ export class QuestionValuesServices {
       element.get('id')?.value == answearId
     );
   }
+
+  convertToChar(number:number){
+    return String.fromCharCode(65+number);
+  }
 }

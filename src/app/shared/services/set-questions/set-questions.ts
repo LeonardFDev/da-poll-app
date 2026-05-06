@@ -20,45 +20,45 @@ export class SetQuestionsServices {
       {
         'id': 1,
         'question': '1. PLACEHOLDER_QUESTION',
-        'multipleAnswers': 'checkbox',
+        'multipleAnswers': true,
         'answers': [
-          { id: 1, 'enumeration': 'A', 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 0, 'percentValue': 0 },
-          { id: 2, 'enumeration': 'B', 'answer': 'PLACEHOLDER_ANSWER_2', 'counter': 0, 'percentValue': 0 },
-          { id: 3, 'enumeration': 'C', 'answer': 'PLACEHOLDER_ANSWER_3', 'counter': 0, 'percentValue': 0 },
-          { id: 4, 'enumeration': 'D', 'answer': 'PLACEHOLDER_ANSWER_4', 'counter': 0, 'percentValue': 0 },
+          { id: 1, 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 0, 'percentValue': 0 },
+          { id: 2, 'answer': 'PLACEHOLDER_ANSWER_2', 'counter': 0, 'percentValue': 0 },
+          { id: 3, 'answer': 'PLACEHOLDER_ANSWER_3', 'counter': 0, 'percentValue': 0 },
+          { id: 4, 'answer': 'PLACEHOLDER_ANSWER_4', 'counter': 0, 'percentValue': 0 },
         ],
       },
       {
         'id': 2,
         'question': '2. PLACEHOLDER_QUESTION',
-        'multipleAnswers': 'checkbox',
+        'multipleAnswers': true,
         'answers': [
-          { id: 1, 'enumeration': 'A', 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 0, 'percentValue': 0 },
-          { id: 2, 'enumeration': 'B', 'answer': 'PLACEHOLDER_ANSWER_2', 'counter': 0, 'percentValue': 0 },
-          { id: 3, 'enumeration': 'C', 'answer': 'PLACEHOLDER_ANSWER_3', 'counter': 0, 'percentValue': 0 },
-          { id: 4, 'enumeration': 'D', 'answer': 'PLACEHOLDER_ANSWER_4', 'counter': 0, 'percentValue': 0 },
+          { id: 1, 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 0, 'percentValue': 0 },
+          { id: 2, 'answer': 'PLACEHOLDER_ANSWER_2', 'counter': 0, 'percentValue': 0 },
+          { id: 3, 'answer': 'PLACEHOLDER_ANSWER_3', 'counter': 0, 'percentValue': 0 },
+          { id: 4, 'answer': 'PLACEHOLDER_ANSWER_4', 'counter': 0, 'percentValue': 0 },
         ],
       },
       {
         'id': 3,
         'question': '3. PLACEHOLDER_QUESTION',
-        'multipleAnswers': 'radio',
+        'multipleAnswers': false,
         'answers': [
-          { id: 1, 'enumeration': 'A', 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 0, 'percentValue': 0 },
-          { id: 2, 'enumeration': 'B', 'answer': 'PLACEHOLDER_ANSWER_2', 'counter': 0, 'percentValue': 0 },
-          { id: 3, 'enumeration': 'C', 'answer': 'PLACEHOLDER_ANSWER_3', 'counter': 0, 'percentValue': 0 },
-          { id: 4, 'enumeration': 'D', 'answer': 'PLACEHOLDER_ANSWER_4', 'counter': 0, 'percentValue': 0 },
+          { id: 1, 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 0, 'percentValue': 0 },
+          { id: 2, 'answer': 'PLACEHOLDER_ANSWER_2', 'counter': 0, 'percentValue': 0 },
+          { id: 3, 'answer': 'PLACEHOLDER_ANSWER_3', 'counter': 0, 'percentValue': 0 },
+          { id: 4, 'answer': 'PLACEHOLDER_ANSWER_4', 'counter': 0, 'percentValue': 0 },
         ]
       },
       {
         'id': 4,
         'question': '4. PLACEHOLDER_QUESTION',
-        'multipleAnswers': 'radio',
+        'multipleAnswers': false,
         'answers': [
-          { id: 1, 'enumeration': 'A', 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 0, 'percentValue': 0 },
-          { id: 2, 'enumeration': 'B', 'answer': 'PLACEHOLDER_ANSWER_2', 'counter': 0, 'percentValue': 0 },
-          { id: 3, 'enumeration': 'C', 'answer': 'PLACEHOLDER_ANSWER_3', 'counter': 0, 'percentValue': 0 },
-          { id: 4, 'enumeration': 'D', 'answer': 'PLACEHOLDER_ANSWER_4', 'counter': 0, 'percentValue': 0 },
+          { id: 1, 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 0, 'percentValue': 0 },
+          { id: 2, 'answer': 'PLACEHOLDER_ANSWER_2', 'counter': 0, 'percentValue': 0 },
+          { id: 3, 'answer': 'PLACEHOLDER_ANSWER_3', 'counter': 0, 'percentValue': 0 },
+          { id: 4, 'answer': 'PLACEHOLDER_ANSWER_4', 'counter': 0, 'percentValue': 0 },
         ]
       },
     ],
@@ -76,45 +76,45 @@ export class SetQuestionsServices {
           {
             'id': 1,
             'question': '1. Which date would work best for you?',
-            'multipleAnswers': 'checkbox',
+            'multipleAnswers': true,
             'answers': [
-              {id:1, 'enumeration': 'A', 'answer':'19.09.2025, Friday', 'counter': 27, 'percentValue': 0},
-              {id:2, 'enumeration': 'B', 'answer':'10.10.2025, Friday', 'counter': 44, 'percentValue': 0},
-              {id:3, 'enumeration': 'C', 'answer':'11.10.2025, Saturday', 'counter': 3, 'percentValue': 0},
-              {id:4, 'enumeration': 'D', 'answer':'31.10.2025, Friday', 'counter': 26, 'percentValue': 0},
+              {id:1, 'answer':'19.09.2025, Friday', 'counter': 27, 'percentValue': 0},
+              {id:2, 'answer':'10.10.2025, Friday', 'counter': 44, 'percentValue': 0},
+              {id:3, 'answer':'11.10.2025, Saturday', 'counter': 3, 'percentValue': 0},
+              {id:4, 'answer':'31.10.2025, Friday', 'counter': 26, 'percentValue': 0},
             ],
           },
           {
             'id': 2,
             'question': '2. Choose the activities you prefer',
-            'multipleAnswers': 'checkbox',
+            'multipleAnswers': true,
             'answers': [
-              {id:1, 'enumeration': 'A', 'answer':'Outdoor adventure like kayaking', 'counter': 60, 'percentValue': 0},
-              {id:2, 'enumeration': 'B', 'answer':'Office Costume Party', 'counter': 0, 'percentValue': 0},
-              {id:3, 'enumeration': 'C', 'answer':'Bowling, mini-golf, volleyball', 'counter': 14, 'percentValue': 0},
-              {id:4, 'enumeration': 'D', 'answer':'Beach party, Music & cocktails', 'counter': 26, 'percentValue': 0},
-              {id:5, 'enumeration': 'E', 'answer':'Escape room', 'counter': 0, 'percentValue': 0},
+              {id:1, 'answer':'Outdoor adventure like kayaking', 'counter': 60, 'percentValue': 0},
+              {id:2, 'answer':'Office Costume Party', 'counter': 0, 'percentValue': 0},
+              {id:3, 'answer':'Bowling, mini-golf, volleyball', 'counter': 14, 'percentValue': 0},
+              {id:4, 'answer':'Beach party, Music & cocktails', 'counter': 26, 'percentValue': 0},
+              {id:5, 'answer':'Escape room', 'counter': 0, 'percentValue': 0},
             ]
           },
           {
             'id': 3,
             'question': '3. What\'s most important to you in a team event?',
-            'multipleAnswers': 'radio',
+            'multipleAnswers': false,
             'answers': [
-              {id:1, 'enumeration': 'A', 'answer':'Team bonding', 'counter': 44, 'percentValue': 0},
-              {id:2, 'enumeration': 'B', 'answer':'Food and drinks, Friday', 'counter': 3, 'percentValue': 0},
-              {id:3, 'enumeration': 'C', 'answer':'Trying something new', 'counter': 26, 'percentValue': 0},
-              {id:4, 'enumeration': 'D', 'answer':'Keeping it low-key and stress-free', 'counter': 27, 'percentValue': 0},
+              {id:1, 'answer':'Team bonding', 'counter': 44, 'percentValue': 0},
+              {id:2, 'answer':'Food and drinks, Friday', 'counter': 3, 'percentValue': 0},
+              {id:3, 'answer':'Trying something new', 'counter': 26, 'percentValue': 0},
+              {id:4, 'answer':'Keeping it low-key and stress-free', 'counter': 27, 'percentValue': 0},
             ]
           },
           {
             'id': 4,
             'question': '4. How long would you prefer the event to last?',
-            'multipleAnswers': 'radio',
+            'multipleAnswers': false,
             'answers': [
-              {id:1, 'enumeration': 'A', 'answer':'Half a day', 'counter': 14, 'percentValue': 0},
-              {id:2, 'enumeration': 'B', 'answer':'Full day', 'counter': 86, 'percentValue': 0},
-              {id:3, 'enumeration': 'C', 'answer':'Evening only, Saturday', 'counter': 0, 'percentValue': 0},
+              {id:1, 'answer':'Half a day', 'counter': 14, 'percentValue': 0},
+              {id:2, 'answer':'Full day', 'counter': 86, 'percentValue': 0},
+              {id:3, 'answer':'Evening only, Saturday', 'counter': 0, 'percentValue': 0},
             ]
           },
         ],
@@ -129,22 +129,22 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. What should we improve first?",
-            "multipleAnswers": "radio",
+            "multipleAnswers": false,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"Office equipment","counter":12,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"Communication","counter":34,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Workspace comfort","counter":22,"percentValue":0}
+              {"id":1, "answer":"Office equipment","counter":12,"percentValue":0},
+              {"id":2, "answer":"Communication","counter":34,"percentValue":0},
+              {"id":3, "answer":"Workspace comfort","counter":22,"percentValue":0}
             ]
           },
           {
             "id": 2,
             "question": "2. Which benefits would you like?",
-            "multipleAnswers": "checkbox",
+            "multipleAnswers": true,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"Gym membership","counter":15,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"Remote work options","counter":45,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Free snacks & drinks","counter":30,"percentValue":0},
-              {"id":4,"enumeration":"D","answer":"Learning budget","counter":10,"percentValue":0}
+              {"id":1, "answer":"Gym membership","counter":15,"percentValue":0},
+              {"id":2, "answer":"Remote work options","counter":45,"percentValue":0},
+              {"id":3, "answer":"Free snacks & drinks","counter":30,"percentValue":0},
+              {"id":4, "answer":"Learning budget","counter":10,"percentValue":0}
             ]
           }
         ]
@@ -159,21 +159,21 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. Preferred cuisine?",
-            "multipleAnswers": "checkbox",
+            "multipleAnswers": true,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"Italian","counter":20,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"Asian","counter":35,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Vegan","counter":10,"percentValue":0},
-              {"id":4,"enumeration":"D","answer":"Local cuisine","counter":25,"percentValue":0}
+              {"id":1, "answer":"Italian","counter":20,"percentValue":0},
+              {"id":2, "answer":"Asian","counter":35,"percentValue":0},
+              {"id":3, "answer":"Vegan","counter":10,"percentValue":0},
+              {"id":4, "answer":"Local cuisine","counter":25,"percentValue":0}
             ]
           },
           {
             "id": 2,
             "question": "2. How often should we organize team lunches?",
-            "multipleAnswers": "radio",
+            "multipleAnswers": false,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"Weekly","counter":15,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"Monthly","counter":50,"percentValue":0}
+              {"id":1, "answer":"Weekly","counter":15,"percentValue":0},
+              {"id":2, "answer":"Monthly","counter":50,"percentValue":0}
             ]
           }
         ]
@@ -188,23 +188,23 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. How many days per week do you prefer to work remotely?",
-            "multipleAnswers": "radio",
+            "multipleAnswers": false,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"1-2 days","counter":20,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"3-4 days","counter":40,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Fully remote","counter":25,"percentValue":0}
+              {"id":1, "answer":"1-2 days","counter":20,"percentValue":0},
+              {"id":2, "answer":"3-4 days","counter":40,"percentValue":0},
+              {"id":3, "answer":"Fully remote","counter":25,"percentValue":0}
             ]
           },
           {
             "id": 2,
             "question": "2. What challenges do you face working remotely?",
-            "multipleAnswers": "checkbox",
+            "multipleAnswers": true,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"Communication","counter":30,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"Isolation","counter":15,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Technical issues","counter":10,"percentValue":0},
-              {"id":4,"enumeration":"D","answer":"Work-life balance","counter":20,"percentValue":0},
-              {"id":5,"enumeration":"E","answer":"None","counter":5,"percentValue":0}
+              {"id":1, "answer":"Communication","counter":30,"percentValue":0},
+              {"id":2, "answer":"Isolation","counter":15,"percentValue":0},
+              {"id":3, "answer":"Technical issues","counter":10,"percentValue":0},
+              {"id":4, "answer":"Work-life balance","counter":20,"percentValue":0},
+              {"id":5, "answer":"None","counter":5,"percentValue":0}
             ]
           }
         ]
@@ -219,23 +219,23 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. Which topics interest you most?",
-            "multipleAnswers": "checkbox",
+            "multipleAnswers": true,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"Leadership","counter":18,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"Technical skills","counter":42,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Soft skills","counter":25,"percentValue":0},
-              {"id":4,"enumeration":"D","answer":"Project management","counter":15,"percentValue":0},
-              {"id":5,"enumeration":"E","answer":"Languages","counter":8,"percentValue":0}
+              {"id":1, "answer":"Leadership","counter":18,"percentValue":0},
+              {"id":2, "answer":"Technical skills","counter":42,"percentValue":0},
+              {"id":3, "answer":"Soft skills","counter":25,"percentValue":0},
+              {"id":4, "answer":"Project management","counter":15,"percentValue":0},
+              {"id":5, "answer":"Languages","counter":8,"percentValue":0}
             ]
           },
           {
             "id": 2,
             "question": "2. Preferred learning format?",
-            "multipleAnswers": "radio",
+            "multipleAnswers": false,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"Workshops","counter":30,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"Online courses","counter":40,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Mentoring","counter":20,"percentValue":0}
+              {"id":1, "answer":"Workshops","counter":30,"percentValue":0},
+              {"id":2, "answer":"Online courses","counter":40,"percentValue":0},
+              {"id":3, "answer":"Mentoring","counter":20,"percentValue":0}
             ]
           }
         ]
@@ -250,24 +250,24 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. Which events would you enjoy?",
-            "multipleAnswers": "checkbox",
+            "multipleAnswers": true,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"Holiday parties","counter":35,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"Team dinners","counter":28,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Outdoor picnics","counter":22,"percentValue":0},
-              {"id":4,"enumeration":"D","answer":"Game nights","counter":15,"percentValue":0},
-              {"id":5,"enumeration":"E","answer":"Workshops & talks","counter":10,"percentValue":0},
-              {"id":6,"enumeration":"F","answer":"Charity events","counter":5,"percentValue":0}
+              {"id":1, "answer":"Holiday parties","counter":35,"percentValue":0},
+              {"id":2, "answer":"Team dinners","counter":28,"percentValue":0},
+              {"id":3, "answer":"Outdoor picnics","counter":22,"percentValue":0},
+              {"id":4, "answer":"Game nights","counter":15,"percentValue":0},
+              {"id":5, "answer":"Workshops & talks","counter":10,"percentValue":0},
+              {"id":6, "answer":"Charity events","counter":5,"percentValue":0}
             ]
           },
           {
             "id": 2,
             "question": "2. Preferred timing?",
-            "multipleAnswers": "radio",
+            "multipleAnswers": false,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"During work hours","counter":20,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"After work","counter":50,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Weekend","counter":10,"percentValue":0}
+              {"id":1, "answer":"During work hours","counter":20,"percentValue":0},
+              {"id":2, "answer":"After work","counter":50,"percentValue":0},
+              {"id":3, "answer":"Weekend","counter":10,"percentValue":0}
             ]
           }
         ]
@@ -282,11 +282,11 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. Which activity do you prefer?",
-            "multipleAnswers": "radio",
+            "multipleAnswers": false,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"Escape Room","counter":25,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"Cooking Class","counter":20,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Sports Day","counter":30,"percentValue":0}
+              {"id":1, "answer":"Escape Room","counter":25,"percentValue":0},
+              {"id":2, "answer":"Cooking Class","counter":20,"percentValue":0},
+              {"id":3, "answer":"Sports Day","counter":30,"percentValue":0}
             ]
           }
         ]
@@ -301,21 +301,21 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. Preferred cuisine?",
-            "multipleAnswers": "checkbox",
+            "multipleAnswers": true,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"Italian","counter":20,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"Asian","counter":35,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Vegan","counter":10,"percentValue":0},
-              {"id":4,"enumeration":"D","answer":"Local cuisine","counter":25,"percentValue":0}
+              {"id":1, "answer":"Italian","counter":20,"percentValue":0},
+              {"id":2, "answer":"Asian","counter":35,"percentValue":0},
+              {"id":3, "answer":"Vegan","counter":10,"percentValue":0},
+              {"id":4, "answer":"Local cuisine","counter":25,"percentValue":0}
             ]
           },
           {
             "id": 2,
             "question": "2. How often should we organize team lunches?",
-            "multipleAnswers": "radio",
+            "multipleAnswers": false,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"Weekly","counter":15,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"Monthly","counter":50,"percentValue":0}
+              {"id":1, "answer":"Weekly","counter":15,"percentValue":0},
+              {"id":2, "answer":"Monthly","counter":50,"percentValue":0}
             ]
           }
         ]
@@ -330,11 +330,11 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. Which wellness activities do you use?",
-            "multipleAnswers": "checkbox",
+            "multipleAnswers": true,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"Yoga Classes","counter":18,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"Meditation Sessions","counter":12,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Gym Access","counter":25,"percentValue":0}
+              {"id":1, "answer":"Yoga Classes","counter":18,"percentValue":0},
+              {"id":2, "answer":"Meditation Sessions","counter":12,"percentValue":0},
+              {"id":3, "answer":"Gym Access","counter":25,"percentValue":0}
             ]
           }
         ]
@@ -349,11 +349,11 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. Which game would you play?",
-            "multipleAnswers": "checkbox",
+            "multipleAnswers": true,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"FIFA","counter":20,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"League of Legends","counter":15,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Chess","counter":10,"percentValue":0}
+              {"id":1, "answer":"FIFA","counter":20,"percentValue":0},
+              {"id":2, "answer":"League of Legends","counter":15,"percentValue":0},
+              {"id":3, "answer":"Chess","counter":10,"percentValue":0}
             ]
           }
         ]
@@ -368,11 +368,11 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. What do you prefer?",
-            "multipleAnswers": "radio",
+            "multipleAnswers": false,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"Board Games","counter":15,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"Video Games","counter":25,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Music","counter":10,"percentValue":0}
+              {"id":1, "answer":"Board Games","counter":15,"percentValue":0},
+              {"id":2, "answer":"Video Games","counter":25,"percentValue":0},
+              {"id":3, "answer":"Music","counter":10,"percentValue":0}
             ]
           }
         ]
@@ -387,23 +387,23 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. Which topics interest you most?",
-            "multipleAnswers": "checkbox",
+            "multipleAnswers": true,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"Leadership","counter":18,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"Technical skills","counter":42,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Soft skills","counter":25,"percentValue":0},
-              {"id":4,"enumeration":"D","answer":"Project management","counter":15,"percentValue":0},
-              {"id":5,"enumeration":"E","answer":"Languages","counter":8,"percentValue":0}
+              {"id":1, "answer":"Leadership","counter":18,"percentValue":0},
+              {"id":2, "answer":"Technical skills","counter":42,"percentValue":0},
+              {"id":3, "answer":"Soft skills","counter":25,"percentValue":0},
+              {"id":4, "answer":"Project management","counter":15,"percentValue":0},
+              {"id":5, "answer":"Languages","counter":8,"percentValue":0}
             ]
           },
           {
             "id": 2,
             "question": "2. Preferred learning format?",
-            "multipleAnswers": "radio",
+            "multipleAnswers": false,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"Workshops","counter":30,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"Online courses","counter":40,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Mentoring","counter":20,"percentValue":0}
+              {"id":1, "answer":"Workshops","counter":30,"percentValue":0},
+              {"id":2, "answer":"Online courses","counter":40,"percentValue":0},
+              {"id":3, "answer":"Mentoring","counter":20,"percentValue":0}
             ]
           }
         ]
@@ -418,11 +418,11 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. Which genre do you prefer?",
-            "multipleAnswers": "checkbox",
+            "multipleAnswers": true,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"Fiction","counter":20,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"Non-Fiction","counter":15,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Biographies","counter":10,"percentValue":0}
+              {"id":1, "answer":"Fiction","counter":20,"percentValue":0},
+              {"id":2, "answer":"Non-Fiction","counter":15,"percentValue":0},
+              {"id":3, "answer":"Biographies","counter":10,"percentValue":0}
             ]
           }
         ]
@@ -437,22 +437,22 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. What should we improve first?",
-            "multipleAnswers": "radio",
+            "multipleAnswers": false,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"Office equipment","counter":12,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"Communication","counter":34,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Workspace comfort","counter":22,"percentValue":0}
+              {"id":1, "answer":"Office equipment","counter":12,"percentValue":0},
+              {"id":2, "answer":"Communication","counter":34,"percentValue":0},
+              {"id":3, "answer":"Workspace comfort","counter":22,"percentValue":0}
             ]
           },
           {
             "id": 2,
             "question": "2. Which benefits would you like?",
-            "multipleAnswers": "checkbox",
+            "multipleAnswers": true,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"Gym membership","counter":15,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"Remote work options","counter":45,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Free snacks & drinks","counter":30,"percentValue":0},
-              {"id":4,"enumeration":"D","answer":"Learning budget","counter":10,"percentValue":0}
+              {"id":1, "answer":"Gym membership","counter":15,"percentValue":0},
+              {"id":2, "answer":"Remote work options","counter":45,"percentValue":0},
+              {"id":3, "answer":"Free snacks & drinks","counter":30,"percentValue":0},
+              {"id":4, "answer":"Learning budget","counter":10,"percentValue":0}
             ]
           }
         ]
@@ -467,11 +467,11 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. What helps you most?",
-            "multipleAnswers": "radio",
+            "multipleAnswers": false,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"Flexible Hours","counter":30,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"Home Office","counter":40,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Childcare Support","counter":10,"percentValue":0}
+              {"id":1, "answer":"Flexible Hours","counter":30,"percentValue":0},
+              {"id":2, "answer":"Home Office","counter":40,"percentValue":0},
+              {"id":3, "answer":"Childcare Support","counter":10,"percentValue":0}
             ]
           }
         ]
@@ -486,23 +486,23 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. How many days per week do you prefer to work remotely?",
-            "multipleAnswers": "radio",
+            "multipleAnswers": false,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"1-2 days","counter":20,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"3-4 days","counter":40,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Fully remote","counter":25,"percentValue":0}
+              {"id":1, "answer":"1-2 days","counter":20,"percentValue":0},
+              {"id":2, "answer":"3-4 days","counter":40,"percentValue":0},
+              {"id":3, "answer":"Fully remote","counter":25,"percentValue":0}
             ]
           },
           {
             "id": 2,
             "question": "2. What challenges do you face working remotely?",
-            "multipleAnswers": "checkbox",
+            "multipleAnswers": true,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"Communication","counter":30,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"Isolation","counter":15,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Technical issues","counter":10,"percentValue":0},
-              {"id":4,"enumeration":"D","answer":"Work-life balance","counter":20,"percentValue":0},
-              {"id":5,"enumeration":"E","answer":"None","counter":5,"percentValue":0}
+              {"id":1,"answer":"Communication","counter":30,"percentValue":0},
+              {"id":2,"answer":"Isolation","counter":15,"percentValue":0},
+              {"id":3,"answer":"Technical issues","counter":10,"percentValue":0},
+              {"id":4,"answer":"Work-life balance","counter":20,"percentValue":0},
+              {"id":5,"answer":"None","counter":5,"percentValue":0}
             ]
           }
         ]
@@ -517,11 +517,11 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. Which tool do you need?",
-            "multipleAnswers": "checkbox",
+            "multipleAnswers": true,
             "answers": [
-              {"id":1,"enumeration":"A","answer":"AI Assistant","counter":25,"percentValue":0},
-              {"id":2,"enumeration":"B","answer":"Project Management Software","counter":30,"percentValue":0},
-              {"id":3,"enumeration":"C","answer":"Cloud Storage","counter":20,"percentValue":0}
+              {"id":1, "answer":"AI Assistant","counter":25,"percentValue":0},
+              {"id":2, "answer":"Project Management Software","counter":30,"percentValue":0},
+              {"id":3, "answer":"Cloud Storage","counter":20,"percentValue":0}
             ]
           }
         ]
@@ -536,7 +536,7 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. Your feedback",
-            "multipleAnswers": "checkbox",
+            "multipleAnswers": true,
             "answers": []
           }
         ]
@@ -551,7 +551,7 @@ export class SetQuestionsServices {
           {
             "id": 1,
             "question": "1. Your idea",
-            "multipleAnswers": "radio",
+            "multipleAnswers": false,
             "answers": []
           }
         ]

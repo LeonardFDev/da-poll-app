@@ -10,7 +10,7 @@ import { CheckBox } from "../check-box/check-box";
 export class Answear {
   @Input() spanEnumeration:string ="";
   @Input() spanText:string =""
-  @Input() inputType: 'checkbox' | {'type': 'radio', 'name':string} = 'checkbox';
+  @Input() multipleAnswers: true | {'boolen': false, 'name':string} = true;
 
   isChecked: WritableSignal<boolean> = signal(false);
 
