@@ -2,7 +2,7 @@
     <div class="page__body">
         <header class="view-survey__header">
             <img src="/assets/img/logo-purple-dark.png" alt="icon">
-            <app-primary-button [btnText]="'Create survey'" [withIcon]="{'isWithIcon': true, 'iconUrl': '/assets/img/add_circle_primary-button.png'}"></app-primary-button>
+            <app-primary-button routerLink="/create-question" [btnText]="'Create survey'" [withIcon]="{'isWithIcon': true, 'iconUrl': '/assets/img/add_circle_primary-button.png'}"></app-primary-button>
         </header>
 
         <section class="view-survey__section" [class.view-survey__section--al-it-end]="true"> <!--true / false-->
@@ -18,7 +18,7 @@
                 </div>
                 <div class="view-survey__section__left__questions">
                     @for (item of currentQuesten().questions; track item.id) {
-                        <app-question [question]="item"></app-question>
+                        <app-question [question]="item" [questionNumber]="$index + 1"></app-question>
                     }
                 </div>
                 @if(!isPlaceholder()){
@@ -38,7 +38,7 @@
                 @if(true){ <!--true / false-->
                     <div>
                         @for (item of currentQuesten().questions; track $index) {
-                            <app-results [question]="item"></app-results>
+                            <app-results [question]="item" [questionNumber]="$index + 1"></app-results>
                         }
                     </div>
                 }

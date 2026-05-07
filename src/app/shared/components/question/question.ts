@@ -11,5 +11,6 @@ import { QuestionValuesServices } from '../../services/question-values/question-
 })
 export class Question {
   qvService = inject(QuestionValuesServices);
-  @Input() question!:QuestionInterFace
+  @Input() question!:QuestionInterFace;
+  @Input() questionNumber!:number;
 }

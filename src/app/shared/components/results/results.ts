@@ -12,8 +12,7 @@ export class Results {
   qvService = inject(QuestionValuesServices);
   
   @Input() question!:QuestionInterFace;
-  @Input() questionId!:number;
-  @Input() questionName!:QuestionInterFace[];
+  @Input() questionNumber!:number;
 }
 
 

@@ -1,6 +1,6 @@
 <section class="question">
         <div class="question__h1-span">
-            <h1 class="question__h1-span__h1">{{question.question}}</h1>
+            <h1 class="question__h1-span__h1">{{questionNumber}}. {{question.question}}</h1>
     
             @if (question.multipleAnswers && question.question.length != 0) {
                 <span class="question__h1-span__span">More than one answers are possible.</span>
