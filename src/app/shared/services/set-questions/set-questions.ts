@@ -22,10 +22,10 @@ export class SetQuestionsServices {
         'question': 'PLACEHOLDER_QUESTION',
         'multipleAnswers': true,
         'answers': [
-          { id: 1, 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 0, 'percentValue': 0 },
-          { id: 2, 'answer': 'PLACEHOLDER_ANSWER_2', 'counter': 0, 'percentValue': 0 },
-          { id: 3, 'answer': 'PLACEHOLDER_ANSWER_3', 'counter': 0, 'percentValue': 0 },
-          { id: 4, 'answer': 'PLACEHOLDER_ANSWER_4', 'counter': 0, 'percentValue': 0 },
+          { id: 1, 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 10, 'percentValue': 10 },
+          { id: 2, 'answer': 'PLACEHOLDER_ANSWER_2', 'counter': 20, 'percentValue': 20 },
+          { id: 3, 'answer': 'PLACEHOLDER_ANSWER_3', 'counter': 30, 'percentValue': 30 },
+          { id: 4, 'answer': 'PLACEHOLDER_ANSWER_4', 'counter': 40, 'percentValue': 40 },
         ],
       },
       {
@@ -33,10 +33,10 @@ export class SetQuestionsServices {
         'question': 'PLACEHOLDER_QUESTION',
         'multipleAnswers': true,
         'answers': [
-          { id: 1, 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 0, 'percentValue': 0 },
-          { id: 2, 'answer': 'PLACEHOLDER_ANSWER_2', 'counter': 0, 'percentValue': 0 },
-          { id: 3, 'answer': 'PLACEHOLDER_ANSWER_3', 'counter': 0, 'percentValue': 0 },
-          { id: 4, 'answer': 'PLACEHOLDER_ANSWER_4', 'counter': 0, 'percentValue': 0 },
+          { id: 1, 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 40, 'percentValue': 40 },
+          { id: 2, 'answer': 'PLACEHOLDER_ANSWER_2', 'counter': 30, 'percentValue': 30 },
+          { id: 3, 'answer': 'PLACEHOLDER_ANSWER_3', 'counter': 20, 'percentValue': 20 },
+          { id: 4, 'answer': 'PLACEHOLDER_ANSWER_4', 'counter': 10, 'percentValue': 10 },
         ],
       },
       {
@@ -44,10 +44,10 @@ export class SetQuestionsServices {
         'question': 'PLACEHOLDER_QUESTION',
         'multipleAnswers': false,
         'answers': [
-          { id: 1, 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 0, 'percentValue': 0 },
-          { id: 2, 'answer': 'PLACEHOLDER_ANSWER_2', 'counter': 0, 'percentValue': 0 },
-          { id: 3, 'answer': 'PLACEHOLDER_ANSWER_3', 'counter': 0, 'percentValue': 0 },
-          { id: 4, 'answer': 'PLACEHOLDER_ANSWER_4', 'counter': 0, 'percentValue': 0 },
+          { id: 1, 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 40, 'percentValue': 40 },
+          { id: 2, 'answer': 'PLACEHOLDER_ANSWER_2', 'counter': 20, 'percentValue': 20 },
+          { id: 3, 'answer': 'PLACEHOLDER_ANSWER_3', 'counter': 30, 'percentValue': 30 },
+          { id: 4, 'answer': 'PLACEHOLDER_ANSWER_4', 'counter': 10, 'percentValue': 10 },
         ]
       },
       {
@@ -55,10 +55,10 @@ export class SetQuestionsServices {
         'question': 'PLACEHOLDER_QUESTION',
         'multipleAnswers': false,
         'answers': [
-          { id: 1, 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 0, 'percentValue': 0 },
-          { id: 2, 'answer': 'PLACEHOLDER_ANSWER_2', 'counter': 0, 'percentValue': 0 },
-          { id: 3, 'answer': 'PLACEHOLDER_ANSWER_3', 'counter': 0, 'percentValue': 0 },
-          { id: 4, 'answer': 'PLACEHOLDER_ANSWER_4', 'counter': 0, 'percentValue': 0 },
+          { id: 1, 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 10, 'percentValue': 10 },
+          { id: 2, 'answer': 'PLACEHOLDER_ANSWER_2', 'counter': 30, 'percentValue': 30 },
+          { id: 3, 'answer': 'PLACEHOLDER_ANSWER_3', 'counter': 20, 'percentValue': 20 },
+          { id: 4, 'answer': 'PLACEHOLDER_ANSWER_4', 'counter': 40, 'percentValue': 40 },
         ]
       },
     ],
