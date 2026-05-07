@@ -19,7 +19,7 @@ export class SetQuestionsServices {
     'questions': [
       {
         'id': 1,
-        'question': '1. PLACEHOLDER_QUESTION',
+        'question': 'PLACEHOLDER_QUESTION',
         'multipleAnswers': true,
         'answers': [
           { id: 1, 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 0, 'percentValue': 0 },
@@ -30,7 +30,7 @@ export class SetQuestionsServices {
       },
       {
         'id': 2,
-        'question': '2. PLACEHOLDER_QUESTION',
+        'question': 'PLACEHOLDER_QUESTION',
         'multipleAnswers': true,
         'answers': [
           { id: 1, 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 0, 'percentValue': 0 },
@@ -41,7 +41,7 @@ export class SetQuestionsServices {
       },
       {
         'id': 3,
-        'question': '3. PLACEHOLDER_QUESTION',
+        'question': 'PLACEHOLDER_QUESTION',
         'multipleAnswers': false,
         'answers': [
           { id: 1, 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 0, 'percentValue': 0 },
@@ -52,7 +52,7 @@ export class SetQuestionsServices {
       },
       {
         'id': 4,
-        'question': '4. PLACEHOLDER_QUESTION',
+        'question': 'PLACEHOLDER_QUESTION',
         'multipleAnswers': false,
         'answers': [
           { id: 1, 'answer': 'PLACEHOLDER_ANSWER_1', 'counter': 0, 'percentValue': 0 },
@@ -75,7 +75,7 @@ export class SetQuestionsServices {
         'questions': [
           {
             'id': 1,
-            'question': '1. Which date would work best for you?',
+            'question': 'Which date would work best for you?',
             'multipleAnswers': true,
             'answers': [
               {id:1, 'answer':'19.09.2025, Friday', 'counter': 27, 'percentValue': 0},
@@ -86,7 +86,7 @@ export class SetQuestionsServices {
           },
           {
             'id': 2,
-            'question': '2. Choose the activities you prefer',
+            'question': 'Choose the activities you prefer',
             'multipleAnswers': true,
             'answers': [
               {id:1, 'answer':'Outdoor adventure like kayaking', 'counter': 60, 'percentValue': 0},
@@ -98,7 +98,7 @@ export class SetQuestionsServices {
           },
           {
             'id': 3,
-            'question': '3. What\'s most important to you in a team event?',
+            'question': 'What\'s most important to you in a team event?',
             'multipleAnswers': false,
             'answers': [
               {id:1, 'answer':'Team bonding', 'counter': 44, 'percentValue': 0},
@@ -109,7 +109,7 @@ export class SetQuestionsServices {
           },
           {
             'id': 4,
-            'question': '4. How long would you prefer the event to last?',
+            'question': 'How long would you prefer the event to last?',
             'multipleAnswers': false,
             'answers': [
               {id:1, 'answer':'Half a day', 'counter': 14, 'percentValue': 0},
@@ -128,7 +128,7 @@ export class SetQuestionsServices {
         "questions": [
           {
             "id": 1,
-            "question": "1. What should we improve first?",
+            "question": "What should we improve first?",
             "multipleAnswers": false,
             "answers": [
               {"id":1, "answer":"Office equipment","counter":12,"percentValue":0},
@@ -138,7 +138,7 @@ export class SetQuestionsServices {
           },
           {
             "id": 2,
-            "question": "2. Which benefits would you like?",
+            "question": "Which benefits would you like?",
             "multipleAnswers": true,
             "answers": [
               {"id":1, "answer":"Gym membership","counter":15,"percentValue":0},
@@ -158,7 +158,7 @@ export class SetQuestionsServices {
         "questions": [
           {
             "id": 1,
-            "question": "1. Preferred cuisine?",
+            "question": "Preferred cuisine?",
             "multipleAnswers": true,
             "answers": [
               {"id":1, "answer":"Italian","counter":20,"percentValue":0},
@@ -169,7 +169,7 @@ export class SetQuestionsServices {
           },
           {
             "id": 2,
-            "question": "2. How often should we organize team lunches?",
+            "question": "How often should we organize team lunches?",
             "multipleAnswers": false,
             "answers": [
               {"id":1, "answer":"Weekly","counter":15,"percentValue":0},
@@ -187,7 +187,7 @@ export class SetQuestionsServices {
         "questions": [
           {
             "id": 1,
-            "question": "1. How many days per week do you prefer to work remotely?",
+            "question": "How many days per week do you prefer to work remotely?",
             "multipleAnswers": false,
             "answers": [
               {"id":1, "answer":"1-2 days","counter":20,"percentValue":0},
@@ -197,7 +197,7 @@ export class SetQuestionsServices {
           },
           {
             "id": 2,
-            "question": "2. What challenges do you face working remotely?",
+            "question": "What challenges do you face working remotely?",
             "multipleAnswers": true,
             "answers": [
               {"id":1, "answer":"Communication","counter":30,"percentValue":0},
@@ -218,7 +218,7 @@ export class SetQuestionsServices {
         "questions": [
           {
             "id": 1,
-            "question": "1. Which topics interest you most?",
+            "question": "Which topics interest you most?",
             "multipleAnswers": true,
             "answers": [
               {"id":1, "answer":"Leadership","counter":18,"percentValue":0},
@@ -230,7 +230,7 @@ export class SetQuestionsServices {
           },
           {
             "id": 2,
-            "question": "2. Preferred learning format?",
+            "question": "Preferred learning format?",
             "multipleAnswers": false,
             "answers": [
               {"id":1, "answer":"Workshops","counter":30,"percentValue":0},
@@ -249,7 +249,7 @@ export class SetQuestionsServices {
         "questions": [
           {
             "id": 1,
-            "question": "1. Which events would you enjoy?",
+            "question": "Which events would you enjoy?",
             "multipleAnswers": true,
             "answers": [
               {"id":1, "answer":"Holiday parties","counter":35,"percentValue":0},
@@ -262,7 +262,7 @@ export class SetQuestionsServices {
           },
           {
             "id": 2,
-            "question": "2. Preferred timing?",
+            "question": "Preferred timing?",
             "multipleAnswers": false,
             "answers": [
               {"id":1, "answer":"During work hours","counter":20,"percentValue":0},
@@ -281,41 +281,12 @@ export class SetQuestionsServices {
         "questions": [
           {
             "id": 1,
-            "question": "1. Which activity do you prefer?",
+            "question": "Which activity do you prefer?",
             "multipleAnswers": false,
             "answers": [
               {"id":1, "answer":"Escape Room","counter":25,"percentValue":0},
               {"id":2, "answer":"Cooking Class","counter":20,"percentValue":0},
               {"id":3, "answer":"Sports Day","counter":30,"percentValue":0}
-            ]
-          }
-        ]
-      },
-      {
-        "id": 3,
-        "name": "Company Lunch Preferences",
-        "description": "Tell us what kind of meals you prefer for team lunches.",
-        "endDate": "2028-04-17",
-        "category": "Health & Wellness",
-        "questions": [
-          {
-            "id": 1,
-            "question": "1. Preferred cuisine?",
-            "multipleAnswers": true,
-            "answers": [
-              {"id":1, "answer":"Italian","counter":20,"percentValue":0},
-              {"id":2, "answer":"Asian","counter":35,"percentValue":0},
-              {"id":3, "answer":"Vegan","counter":10,"percentValue":0},
-              {"id":4, "answer":"Local cuisine","counter":25,"percentValue":0}
-            ]
-          },
-          {
-            "id": 2,
-            "question": "2. How often should we organize team lunches?",
-            "multipleAnswers": false,
-            "answers": [
-              {"id":1, "answer":"Weekly","counter":15,"percentValue":0},
-              {"id":2, "answer":"Monthly","counter":50,"percentValue":0}
             ]
           }
         ]
@@ -329,7 +300,7 @@ export class SetQuestionsServices {
         "questions": [
           {
             "id": 1,
-            "question": "1. Which wellness activities do you use?",
+            "question": "Which wellness activities do you use?",
             "multipleAnswers": true,
             "answers": [
               {"id":1, "answer":"Yoga Classes","counter":18,"percentValue":0},
@@ -348,7 +319,7 @@ export class SetQuestionsServices {
         "questions": [
           {
             "id": 1,
-            "question": "1. Which game would you play?",
+            "question": "Which game would you play?",
             "multipleAnswers": true,
             "answers": [
               {"id":1, "answer":"FIFA","counter":20,"percentValue":0},
@@ -367,43 +338,12 @@ export class SetQuestionsServices {
         "questions": [
           {
             "id": 1,
-            "question": "1. What do you prefer?",
+            "question": "What do you prefer?",
             "multipleAnswers": false,
             "answers": [
               {"id":1, "answer":"Board Games","counter":15,"percentValue":0},
               {"id":2, "answer":"Video Games","counter":25,"percentValue":0},
               {"id":3, "answer":"Music","counter":10,"percentValue":0}
-            ]
-          }
-        ]
-      },
-      {
-        "id": 5,
-        "name": "Learning & Development Survey",
-        "description": "Help us shape future training and development opportunities.",
-        "endDate": "2013-04-17",
-        "category": "Education & Learning",
-        "questions": [
-          {
-            "id": 1,
-            "question": "1. Which topics interest you most?",
-            "multipleAnswers": true,
-            "answers": [
-              {"id":1, "answer":"Leadership","counter":18,"percentValue":0},
-              {"id":2, "answer":"Technical skills","counter":42,"percentValue":0},
-              {"id":3, "answer":"Soft skills","counter":25,"percentValue":0},
-              {"id":4, "answer":"Project management","counter":15,"percentValue":0},
-              {"id":5, "answer":"Languages","counter":8,"percentValue":0}
-            ]
-          },
-          {
-            "id": 2,
-            "question": "2. Preferred learning format?",
-            "multipleAnswers": false,
-            "answers": [
-              {"id":1, "answer":"Workshops","counter":30,"percentValue":0},
-              {"id":2, "answer":"Online courses","counter":40,"percentValue":0},
-              {"id":3, "answer":"Mentoring","counter":20,"percentValue":0}
             ]
           }
         ]
@@ -417,42 +357,12 @@ export class SetQuestionsServices {
         "questions": [
           {
             "id": 1,
-            "question": "1. Which genre do you prefer?",
+            "question": "Which genre do you prefer?",
             "multipleAnswers": true,
             "answers": [
               {"id":1, "answer":"Fiction","counter":20,"percentValue":0},
               {"id":2, "answer":"Non-Fiction","counter":15,"percentValue":0},
               {"id":3, "answer":"Biographies","counter":10,"percentValue":0}
-            ]
-          }
-        ]
-      },
-      {
-        "id": 2,
-        "name": "Improve Our Workplace Environment",
-        "description": "Help us understand what changes would make your daily work experience better.",
-        "endDate": "No end date",
-        "category": "Lifestyle & Preferences",
-        "questions": [
-          {
-            "id": 1,
-            "question": "1. What should we improve first?",
-            "multipleAnswers": false,
-            "answers": [
-              {"id":1, "answer":"Office equipment","counter":12,"percentValue":0},
-              {"id":2, "answer":"Communication","counter":34,"percentValue":0},
-              {"id":3, "answer":"Workspace comfort","counter":22,"percentValue":0}
-            ]
-          },
-          {
-            "id": 2,
-            "question": "2. Which benefits would you like?",
-            "multipleAnswers": true,
-            "answers": [
-              {"id":1, "answer":"Gym membership","counter":15,"percentValue":0},
-              {"id":2, "answer":"Remote work options","counter":45,"percentValue":0},
-              {"id":3, "answer":"Free snacks & drinks","counter":30,"percentValue":0},
-              {"id":4, "answer":"Learning budget","counter":10,"percentValue":0}
             ]
           }
         ]
@@ -466,43 +376,12 @@ export class SetQuestionsServices {
         "questions": [
           {
             "id": 1,
-            "question": "1. What helps you most?",
+            "question": "What helps you most?",
             "multipleAnswers": false,
             "answers": [
               {"id":1, "answer":"Flexible Hours","counter":30,"percentValue":0},
               {"id":2, "answer":"Home Office","counter":40,"percentValue":0},
               {"id":3, "answer":"Childcare Support","counter":10,"percentValue":0}
-            ]
-          }
-        ]
-      },
-      {
-        "id": 4,
-        "name": "Remote Work Feedback",
-        "description": "We want to optimize our remote work policy based on your feedback.",
-        "endDate": "2026-07-17",
-        "category": "Technology & Innovation",
-        "questions": [
-          {
-            "id": 1,
-            "question": "1. How many days per week do you prefer to work remotely?",
-            "multipleAnswers": false,
-            "answers": [
-              {"id":1, "answer":"1-2 days","counter":20,"percentValue":0},
-              {"id":2, "answer":"3-4 days","counter":40,"percentValue":0},
-              {"id":3, "answer":"Fully remote","counter":25,"percentValue":0}
-            ]
-          },
-          {
-            "id": 2,
-            "question": "2. What challenges do you face working remotely?",
-            "multipleAnswers": true,
-            "answers": [
-              {"id":1,"answer":"Communication","counter":30,"percentValue":0},
-              {"id":2,"answer":"Isolation","counter":15,"percentValue":0},
-              {"id":3,"answer":"Technical issues","counter":10,"percentValue":0},
-              {"id":4,"answer":"Work-life balance","counter":20,"percentValue":0},
-              {"id":5,"answer":"None","counter":5,"percentValue":0}
             ]
           }
         ]
@@ -516,7 +395,7 @@ export class SetQuestionsServices {
         "questions": [
           {
             "id": 1,
-            "question": "1. Which tool do you need?",
+            "question": "Which tool do you need?",
             "multipleAnswers": true,
             "answers": [
               {"id":1, "answer":"AI Assistant","counter":25,"percentValue":0},
@@ -535,7 +414,7 @@ export class SetQuestionsServices {
         "questions": [
           {
             "id": 1,
-            "question": "1. Your feedback",
+            "question": "Your feedback",
             "multipleAnswers": true,
             "answers": []
           }
@@ -550,31 +429,13 @@ export class SetQuestionsServices {
         "questions": [
           {
             "id": 1,
-            "question": "1. Your idea",
+            "question": "Your idea",
             "multipleAnswers": false,
             "answers": []
           }
         ]
-      },
-      // {
-      //   category: "No category",
-      //   description: "test describing",
-      //   endDate: "No end date",
-      //   id: 100,
-      //   name: "test name",
-      //   questions: [
-      //     {
-      //       answers: [
-      //         {answer: "Answears A", counter: 0, id: 1, percentValue: 0},
-      //         {answer: "Answears B", counter: 0, id: 2, percentValue: 0}
-      //       ],
-      //       id: 1,
-      //       multipleAnswers: false,
-      //       question: "question 1"
-      //     }
-      //   ]
-      // }
-      ]);
+      }
+    ]);
       
     this.calculatePercent();
   }

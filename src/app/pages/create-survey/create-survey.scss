@@ -228,20 +228,19 @@
         align-items: flex-end;
         justify-content: flex-end;
         padding: clamp(48px, 2.22vw + 40px, 72px) clamp(0px, 10.09vw - 36.33px, 109px);
-
         transition: transform 0.3s ease;
         transform: translateX(660px);
-
+        
         &--show{
-            transform: translateX(0);
+            transform: translateX(0px);
         }
 
         &__box{
             border-radius: 5px 50px 5px 5px;
             background-color: #FEE9D4;
-            padding: 13px 141px 13px 24px;
-            width: 24ch;
-            margin-right: 80px;
+            padding: 13px 140px 13px 24px;
+            max-width: 24ch;
+            margin-right: clamp(0px, calc((100vw - 375px) * 0.4), 80px);
             margin-bottom: 32px;
             position: relative;
 

@@ -22,19 +22,26 @@ export class CreateSurvey {
   qvService = inject(QuestionValuesServices);
   setQService = inject(SetQuestionsServices);
 
-  surveyId = 100 //<-- muss noch angepasst werden
+  surveyId = this.createSurveyId();
 
-  questionNumber:number = 0;
+  questionId:number = 0;
   questionNumberList:WritableSignal<{id: number}[]> = signal([]);
 
-  wasSurveyAccepted = false;
+  showOverlay = false;
+  showOverlayBox = signal(false);
 
   get isErrorMessage(): boolean {
     return this.qvService.questionform.invalid && this.qvService.questionform.touched;
   }
 
   constructor(){
+    this.setStartValues();
     this.addQuestion();
+  }
+
+  createSurveyId(){
+    const list = this.setQService.questionsList();
+    return list[list.length -1]?.id +1
   }
 
   listNumber(i:number){
@@ -42,14 +49,14 @@ export class CreateSurvey {
   }
 
   addQuestion(){
-    this.questionNumber++;
+    this.questionId++;
 
     const questions = this.qvService.questionform.get(`questions`) as FormArray;
   
     if(questions){
       questions.push(
         new FormGroup({
-          'id': new FormControl(this.questionNumber),
+          'id': new FormControl(this.questionId),
           'question': new FormControl('', [Validators.required]),
           'multipleAnswers': new FormControl(false),
           'answers': new FormArray([])
@@ -57,7 +64,7 @@ export class CreateSurvey {
       )
     }
     
-    this.questionNumberList.update(current => [...current, { 'id': this.questionNumber }]);
+    this.questionNumberList.update(current => [...current, { 'id': this.questionId }]);
   }
 
   removeQuestion(id:number){
@@ -100,14 +107,30 @@ export class CreateSurvey {
   saveSurvey(){
     if (this.qvService.questionform.invalid) {
       this.qvService.questionform.markAllAsTouched();
+      console.log(this.qvService.questionform.value);
     }
     else{
       if(!this.qvService.nameControl('description').value) this.qvService.nameControl('description').setValue('No description');
       this.qvService.nameControl('id').setValue(this.surveyId);
-      const test = this.qvService.questionform.value
-      this.setQService.questionsList.update(questionsList =>({...questionsList, 19: test}));
+      const newSurvey = this.qvService.questionform.value
+      this.setQService.questionsList.update(questionsList =>([...questionsList, newSurvey]));
+      if(this.qvService.nameControl('description').value == 'No description') this.qvService.questionform.get('description')?.setValue('');
 
-      this.wasSurveyAccepted = true
+      this.showOverlay = true;
+      setTimeout(() => this.showOverlayBox.set(true));
     }
+  }
+
+  setStartValues(){
+    this.qvService.questionform.reset();
+
+    this.qvService.questionform.get('id')?.setValue(0);
+    this.qvService.questionform.get('name')?.setValue('');
+    this.qvService.questionform.get('endDate')?.setValue('No end date');
+    this.qvService.questionform.get('description')?.setValue('');
+    this.qvService.questionform.get('category')?.setValue('No category');
+
+    const questionsArray = this.qvService.questionform.get('questions') as FormArray;
+    questionsArray.clear();
   }
 }

@@ -72,8 +72,8 @@
 
 </section>
 
-<section [class.overlay--show]="wasSurveyAccepted" class="overlay">
-    <div [class.overlay__body--show]="wasSurveyAccepted" class="overlay__body">
+<section [class.overlay--show]="showOverlay" class="overlay">
+    <div [class.overlay__body--show]="showOverlayBox()" class="overlay__body">
         <div class="overlay__body__box">
             <span class="overlay__body__box__span">Your survey is now published</span>
             <img [routerLink]="['/view-survey', surveyId]" class="overlay__body__box__img" src="assets/img/overlay-close.png" alt="close icon">
