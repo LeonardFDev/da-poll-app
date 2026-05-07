@@ -1,8 +1,12 @@
 .results{
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    width: fit-content;
+    gap: 16px;
+    width: 348px;
+
+    @media (max-width:370px){
+        width: fit-content;
+    }
 
     &__h1{
         margin: 0;
@@ -43,6 +47,10 @@
                 border-top-right-radius: 20px;
                 border-bottom-right-radius: 20px;
                 background-color: #EDEDED;
+
+                @media (max-width:370px){
+                    width: 220px;
+                }
 
                 &__bar{
                     height: 14px;
