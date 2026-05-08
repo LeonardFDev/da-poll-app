@@ -8,7 +8,7 @@
             <app-primary-button routerLink="/create-question" [btnText]="'Create survey'" [withIcon]="{'isWithIcon': true, 'iconUrl': '/assets/img/add_circle_primary-button.png'}"></app-primary-button>
         </header>
 
-        <section class="section" [class.section--al-it-end]="true"> <!--true / false-->
+        <section class="section" [class.section--al-it-end]="isSurveySubmitted"> <!--true / false-->
             <article class="section__left">
                 <app-survey-status [statusText]="'Published'"></app-survey-status>
                 <div class="section__left__info">
@@ -25,7 +25,7 @@
                     }
                 </div>
                 @if(!isPlaceholder()){
-                    <app-secondary-button class="section__left__btn" [btnText]="'Complete survey'" [secondColor]="true"></app-secondary-button>
+                    <app-secondary-button (click)="surveySubmitted()" class="section__left__btn" [btnText]="'Complete survey'" [secondColor]="true"></app-secondary-button>
                 }
                 @if(isPlaceholder()) {
                     <div class="button-disable-body">
@@ -36,9 +36,19 @@
 
             </article>
 
-            <article class="section__right" [class.section__right--ma-top200]="false"> <!--true / false-->
+            <article class="section__mobile">
+                <div (click)="openClose()" class="section__mobile__button">
+                    <div [class.section__mobile__button__empty-box--close]="isCloseResultsBox" class="section__mobile__button__empty-box"></div>
+                    <span [class.section__mobile__button__span--see]="!isCloseResultsBox" class="section__mobile__button__span">See results</span>
+                    <span [class.section__mobile__button__span--close]="isCloseResultsBox" class="section__mobile__button__span">Close results</span>
+                    <!-- <img [class.section__mobile__button__img--close]="isCloseResultsBox" class="section__mobile__button__img" src="/assets/img/drop_down_arrow_black.png" alt="drop_down_arrow icon"> -->
+                    <div [class.section__mobile__button__img--close]="isCloseResultsBox" class="section__mobile__button__img"></div>
+                </div>
+            </article>
+                
+            <article [class.section__right--ma-top200]="!isSurveySubmitted" [class.section__right--clsoe]="isCloseResultsBox" class="section__right"> <!--true / false-->
                 <h1 class="section__right__h1">Survey results <span class="section__right__h1__span">LIVE</span></h1>
-                @if(true){ <!--true / false-->
+                @if(isSurveySubmitted){ <!--true / false-->
                     <div class="section__right__results-box">
                         @for (item of currentQuesten().questions; track $index) {
                             <app-results [question]="item" [questionNumber]="$index + 1"></app-results>
