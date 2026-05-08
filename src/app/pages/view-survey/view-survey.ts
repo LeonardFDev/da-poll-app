@@ -16,14 +16,14 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 })
 export class ViewSurvey {
   private route = inject(ActivatedRoute);
+  setQuestion = inject(SetQuestionsServices);
 
   currentId:number | null = 0;
   isPlaceholder = signal(false);
 
-  setQuestion = inject(SetQuestionsServices);
   questionslist = this.setQuestion.questionsList;
-
   currentQuesten = this.setQuestion.placeholder;
+
   isSurveySubmitted = false;
   isCloseResultsBox = false;
 
