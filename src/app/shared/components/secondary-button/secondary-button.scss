@@ -5,11 +5,26 @@
     padding: 8px 12px;
     gap: 10px;
     border: none;
-    background-color: #FFB7704D;
     cursor: pointer;
 
-    &:hover{
-        background-color: #ffb87099;
+    &--primary-bg-color{
+        background-color: #FFB7704D;
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover{
+                background-color: #ffb87099;
+            }
+        }
+    }
+        
+    &--secondary-bg-color{
+        background-color: #FFCFA1;
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover{
+                background-color: #FFB7704D;
+            }
+        }
     }
 
     &__span{
@@ -35,4 +50,8 @@
             display: none;
         }
     }
+}
+
+.display-none{
+    display: none;
 }

@@ -5,12 +5,15 @@
             <div routerLink="" class="header__img-box">
                 <img src="assets/img/logo-purple-dark.png" alt="icon">
             </div>
-            <app-primary-button routerLink="/create-question" [btnText]="'Create survey'" [withIcon]="{'isWithIcon': true, 'iconUrl': '/assets/img/add_circle_primary-button.png'}"></app-primary-button>
+            <app-primary-button routerLink="/create-question" [btnText]="'Create survey'" [withIcon]="{'isWithIcon': true, 'iconUrl': '/assets/img/add_circle_primary-button.png'}" class="header__button"></app-primary-button>
         </header>
 
         <section class="section" [class.section--al-it-end]="isSurveySubmitted"> <!--true / false-->
             <article class="section__left">
-                <app-survey-status [statusText]="'Published'"></app-survey-status>
+                <div class="section__left__header">
+                    <app-survey-status [statusText]="'Published'"></app-survey-status>
+                    <app-secondary-button routerLink="" [btnText]="''" [withoutSpan]="true" [withImg]="true" [bgColorType]="'secondary'" [imgUrl]="'assets/img/x-view-survey.png'" class="section__left__header__btn"></app-secondary-button>
+                </div>
                 <div class="section__left__info">
                     <div class="section__left__info__spans">
                         <span class="section__left__info__spans__span">Ends on {{currentQuesten().endDate}}</span>

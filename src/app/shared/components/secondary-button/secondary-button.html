@@ -1,4 +1,4 @@
-<button class="btn">
-    <span class="btn__span" [class.btn__span--second-color]="secondColor" [class.btn__span--max-width-800]="withoutSpan">{{btnText}}</span>
+<button class="btn btn--{{bgColorType}}-bg-color">
+    <span class="btn__span" [class.display-none]="isEmptyBtnText()" [class.btn__span--second-color]="secondColor" [class.btn__span--max-width-800]="withoutSpan">{{btnText}}</span>
     <img class="btn__img" [class.hidden]="!withImg" src="{{imgUrl}}" alt="icon">
 </button>

@@ -24,6 +24,12 @@
     &__img-box{
         cursor: pointer;
     }
+
+    &__button{
+        @media (max-width:901px){
+            display: none;
+        }
+    }
 }
 
 .section{
@@ -52,9 +58,24 @@
     padding-inline: clamp(16px, calc(0.0565 * 100vw - 5.2px), 40px);
     background-color: #8E70991A;
     
-     @media (max-width:952px){
+    @media (max-width:952px){
         width: fit-content;
-     }
+    }
+
+    &__header{
+        display: flex;
+        align-items: flex-end;
+        position: relative;
+
+        &__btn{
+            position: absolute;
+            right: 64px;
+
+            @media (min-width:901px){
+                display: none;
+            }
+        }
+    }
     
     &__info{
         display: flex;
@@ -111,10 +132,6 @@
             flex-wrap: nowrap;
         }
     }
-    
-    &__btn{
-        justify-items: right;
-    }
 }
     
 .section__right{
@@ -164,6 +181,10 @@
         flex-direction: column;
         gap: 146px;
         margin-top: 8px;
+
+        @media (min-width:1412px){
+            margin-right: -10px;
+        }
     
         &__span{
             font-family: 'Mulish';
