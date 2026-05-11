@@ -65,7 +65,7 @@
             </div>
             <div class="create-survey__footer">
                 <span [class.create-survey__footer__span--error-on]="isErrorMessage" class="create-survey__footer__span">*The fields with the red box must be filled in.</span>
-                <app-primary-button (click)="saveSurvey()" [btnText]="'Publish'" [withIcon]="{'isWithIcon':true, 'iconUrl':'/assets/img/check.png'}"></app-primary-button>
+                <app-primary-button (click)="saveSurvey()" [btnText]="'Publish'" [withIcon]="{'isWithIcon': true, 'icon': '✓', 'iconWidth':18}"></app-primary-button>
             </div>
         </div>
     </div>

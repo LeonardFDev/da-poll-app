@@ -9,31 +9,20 @@ import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 })
 export class PrimaryButton {
   @Input() btnText:string = "";
-  @Input() withIcon:{'isWithIcon':boolean, 'iconUrl':string} = {'isWithIcon':false, 'iconUrl':''};
-  @ViewChild('btn') btnRef!:ElementRef<HTMLButtonElement>;
+  @Input() withIcon:{'isWithIcon':true, 'icon': '✓' | '⊕', iconWidth: 18 | 24} | {'isWithIcon':false, 'icon': '', iconWidth: 0} = {'isWithIcon':false, 'icon': '', iconWidth: 0};
+  @ViewChild('img') imgRef!:ElementRef<HTMLImageElement>;
 
   ngAfterViewInit() {
-    if(this.withIcon.isWithIcon) this.findOutImageSize();
-  }
-
-  findOutImageSize(){
-    const img = document.createElement("img");
-    if(!this.withIcon.iconUrl) return;
-    img.src = this.withIcon.iconUrl;
-
-    img.onload = () =>{
-      let btnStyle = this.btnRef.nativeElement.style
-      btnStyle.setProperty('--img-width', img.width + 'px');
-      btnStyle.setProperty('--img-height', img.height + 'px');
-      btnStyle.setProperty('--img-url', `url('${this.withIcon.iconUrl}')`);
-  
-      const btn:HTMLButtonElement = this.btnRef.nativeElement;
-      const btnWidth = btn.getBoundingClientRect().width;
-      btn.style.setProperty('--btn-width', btnWidth  + 'px');
-      btn.style.setProperty('--btn-width-hover', (btnWidth + img.width + 10)  + 'px');
+    if(this.withIcon.icon == '⊕'){
+      this.withIcon.iconWidth = 24;
+      this.imgRef.nativeElement.src ='/assets/img/add_circle_primary-button.png';
+    } 
+    else if(this.withIcon.icon == '✓'){
+      this.withIcon.iconWidth = 18;
+      this.imgRef.nativeElement.src ='/assets/img/check.png';
     }
   }
 }
 
 
-// html template: <app-primary-button [btnText]="'New survey'" [withIcon]="{'isWithIcon':true, 'iconUrl':'/assets/img/check.png'}"></app-primary-button>
+// html template: <app-primary-button [btnText]="'New survey'" [withIcon]="{'isWithIcon': true, 'icon': '⊕', 'iconWidth':24}"></app-primary-button>

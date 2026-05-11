@@ -5,7 +5,7 @@
             <div routerLink="" class="header__img-box">
                 <img src="assets/img/logo-purple-dark.png" alt="icon">
             </div>
-            <app-primary-button routerLink="/create-question" [btnText]="'Create survey'" [withIcon]="{'isWithIcon': true, 'iconUrl': '/assets/img/add_circle_primary-button.png'}" class="header__button"></app-primary-button>
+            <app-primary-button routerLink="/create-question" [btnText]="'Create survey'" [withIcon]="{'isWithIcon': true, 'icon': '⊕', 'iconWidth':24}" class="header__button"></app-primary-button>
         </header>
 
         <section class="section" [class.section--al-it-end]="isSurveySubmitted"> <!--true / false-->
