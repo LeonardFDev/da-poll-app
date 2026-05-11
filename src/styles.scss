@@ -9,6 +9,10 @@ h1, h2, span, img{
   -ms-user-select: none;
 }
 
+.display-none{
+    display: none;
+}
+
 @font-face {
   font-family: "Nokora";
   src: url("../public/assets/fonts/Nokora-VariableFont_wght.ttf") format("truetype");
