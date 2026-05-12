@@ -1,5 +1,5 @@
 import { Component, computed, EventEmitter, inject, Input, Output, signal } from '@angular/core';
-import { QuestionValuesServices } from '../../services/question-values/question-values';
+import { CreateSurveyService } from '../../services/create-survey/create-survey';
 
 @Component({
   selector: 'app-drop-down-menu',
@@ -8,7 +8,7 @@ import { QuestionValuesServices } from '../../services/question-values/question-
   styleUrl: './drop-down-menu.scss',
 })
 export class DropDownMenu {
-  qvService = inject(QuestionValuesServices);
+  csService = inject(CreateSurveyService);
 
   @Input() dropDownText='';
   @Input() isPartOfCreateSurvey:boolean = false;
@@ -72,8 +72,8 @@ export class DropDownMenu {
 
   getCategory(){
     if(this.isPartOfCreateSurvey){
-      if(!this.selectedMenu) this.qvService.questionform.value.category = this.qvService.questionform.get('category')?.setValue('No category');
-      else this.qvService.questionform.get('category')?.setValue(this.selectedMenu);
+      if(!this.selectedMenu) this.csService.questionform.value.category = this.csService.questionform.get('category')?.setValue('No category');
+      else this.csService.questionform.get('category')?.setValue(this.selectedMenu);
     }
   }
 

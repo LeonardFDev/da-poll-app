@@ -1,6 +1,6 @@
 import { Component, computed, inject, Input, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { QuestionValuesServices } from '../../services/question-values/question-values';
+import { CreateSurveyService } from '../../services/create-survey/create-survey';
 
 @Component({
   selector: 'app-input-field',
@@ -9,7 +9,7 @@ import { QuestionValuesServices } from '../../services/question-values/question-
   styleUrl: './input-field.scss',
 })
 export class InputField {
-  qvService = inject(QuestionValuesServices);
+  csService = inject(CreateSurveyService);
 
   @Input() type:'inputText' | 'textarea' | 'inputDate'= 'inputText';
   @Input() nameControl!:FormControl;
@@ -19,7 +19,7 @@ export class InputField {
   }
   
   calendarValueChange(){
-    const FormControlEndDate = this.qvService.nameControl('endDate');
+    const FormControlEndDate = this.csService.nameControl('endDate');
     if(!FormControlEndDate.value) FormControlEndDate.setValue('No end date');
   }
 

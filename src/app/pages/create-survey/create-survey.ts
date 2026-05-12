@@ -8,8 +8,8 @@ import { InputField } from "../../shared/components/input-field/input-field";
 import { CreateQuestion } from "../../shared/components/create-question/create-question";
 import { PrimaryButton } from "../../shared/components/primary-button/primary-button";
 import { DropDownMenu } from "../../shared/components/drop-down-menu/drop-down-menu";
-import { QuestionValuesServices } from '../../shared/services/question-values/question-values';
-import { SetQuestionsServices } from '../../shared/services/set-questions/set-questions';
+import { GetSurveyDatabaseService } from '../../shared/services/get-survey-database/get-survey-database';
+import { CreateSurveyService } from '../../shared/services/create-survey/create-survey';
 import { AnswerInterface } from '../../shared/interfaces/answer';
 
 @Component({
@@ -19,8 +19,8 @@ import { AnswerInterface } from '../../shared/interfaces/answer';
   styleUrl: './create-survey.scss',
 })
 export class CreateSurvey {
-  qvService = inject(QuestionValuesServices);
-  setQService = inject(SetQuestionsServices);
+  csService = inject(CreateSurveyService);
+  gsdService = inject(GetSurveyDatabaseService);
 
   surveyId = this.createSurveyId();
 
@@ -31,7 +31,7 @@ export class CreateSurvey {
   showOverlayBox = signal(false);
 
   get isErrorMessage(): boolean {
-    return this.qvService.questionform.invalid && this.qvService.questionform.touched;
+    return this.csService.questionform.invalid && this.csService.questionform.touched;
   }
 
   constructor(){
@@ -40,7 +40,7 @@ export class CreateSurvey {
   }
 
   createSurveyId(){
-    const list = this.setQService.questionsList();
+    const list = this.gsdService.questionsList();
     return list[list.length -1]?.id +1
   }
 
@@ -51,7 +51,7 @@ export class CreateSurvey {
   addQuestion(){
     this.questionId++;
 
-    const questions = this.qvService.questionform.get(`questions`) as FormArray;
+    const questions = this.csService.questionform.get(`questions`) as FormArray;
   
     if(questions){
       questions.push(
@@ -68,10 +68,10 @@ export class CreateSurvey {
   }
 
   removeQuestion(id:number){
-    const question = this.qvService.getNameControlFromArray('questions', id, 'question');
-    const multipleAnswers =this.qvService.getNameControlFromArray('questions', id, 'multipleAnswers');
+    const question = this.csService.getNameControlFromArray('questions', id, 'question');
+    const multipleAnswers =this.csService.getNameControlFromArray('questions', id, 'multipleAnswers');
 
-    const answers = this.qvService.getFromArray('questions', id, 'answers');
+    const answers = this.csService.getFromArray('questions', id, 'answers');
     const isAnyAnswers = answers.value.some((group: AnswerInterface) => !!group.answer);
 
     if(question.value || multipleAnswers.value || isAnyAnswers) this.resetFields(question, multipleAnswers, answers);
@@ -90,31 +90,31 @@ export class CreateSurvey {
   }
 
   deleteFields(id:number){
-    const questionsArray = this.qvService.questionform.get('questions') as FormArray;
-    const index = this.qvService.findOutIndex('questions',id);
+    const questionsArray = this.csService.questionform.get('questions') as FormArray;
+    const index = this.csService.findOutIndex('questions',id);
     questionsArray.removeAt(index);
 
     this.questionNumberList.update(current => current.filter(item => item.id != id));
   }
 
   deleteInputField(value:string){
-    if(this.qvService.nameControl(value).value){
-      if(value == 'endDate') this.qvService.nameControl(value).setValue('No end date');
-      else this.qvService.nameControl(value).setValue('');
+    if(this.csService.nameControl(value).value){
+      if(value == 'endDate') this.csService.nameControl(value).setValue('No end date');
+      else this.csService.nameControl(value).setValue('');
     }
   }
 
   saveSurvey(){
-    if (this.qvService.questionform.invalid) {
-      this.qvService.questionform.markAllAsTouched();
-      console.log(this.qvService.questionform.value);
+    if (this.csService.questionform.invalid) {
+      this.csService.questionform.markAllAsTouched();
+      console.log(this.csService.questionform.value);
     }
     else{
-      if(!this.qvService.nameControl('description').value) this.qvService.nameControl('description').setValue('No description');
-      this.qvService.nameControl('id').setValue(this.surveyId);
-      const newSurvey = this.qvService.questionform.value
-      this.setQService.questionsList.update(questionsList =>([...questionsList, newSurvey]));
-      if(this.qvService.nameControl('description').value == 'No description') this.qvService.questionform.get('description')?.setValue('');
+      if(!this.csService.nameControl('description').value) this.csService.nameControl('description').setValue('No description');
+      this.csService.nameControl('id').setValue(this.surveyId);
+      const newSurvey = this.csService.questionform.value
+      this.gsdService.questionsList.update(questionsList =>([...questionsList, newSurvey]));
+      if(this.csService.nameControl('description').value == 'No description') this.csService.questionform.get('description')?.setValue('');
 
       this.showOverlay = true;
       setTimeout(() => this.showOverlayBox.set(true));
@@ -122,15 +122,15 @@ export class CreateSurvey {
   }
 
   setStartValues(){
-    this.qvService.questionform.reset();
+    this.csService.questionform.reset();
 
-    this.qvService.questionform.get('id')?.setValue(0);
-    this.qvService.questionform.get('name')?.setValue('');
-    this.qvService.questionform.get('endDate')?.setValue('No end date');
-    this.qvService.questionform.get('description')?.setValue('');
-    this.qvService.questionform.get('category')?.setValue('No category');
+    this.csService.questionform.get('id')?.setValue(0);
+    this.csService.questionform.get('name')?.setValue('');
+    this.csService.questionform.get('endDate')?.setValue('No end date');
+    this.csService.questionform.get('description')?.setValue('');
+    this.csService.questionform.get('category')?.setValue('No category');
 
-    const questionsArray = this.qvService.questionform.get('questions') as FormArray;
+    const questionsArray = this.csService.questionform.get('questions') as FormArray;
     questionsArray.clear();
   }
 }

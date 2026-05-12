@@ -4,7 +4,7 @@ import { InputField } from "../input-field/input-field";
 import { CheckBox } from "../check-box/check-box";
 import { TertiaryButton } from "../tertiary-button/tertiary-button";
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { QuestionValuesServices } from '../../services/question-values/question-values';
+import { CreateSurveyService } from '../../services/create-survey/create-survey';
 
 @Component({
   selector: 'app-create-question',
@@ -13,7 +13,7 @@ import { QuestionValuesServices } from '../../services/question-values/question-
   styleUrl: './create-question.scss',
 })
 export class CreateQuestion {
-  qvService = inject(QuestionValuesServices);
+  csService = inject(CreateSurveyService);
 
   @Input() questionId:number = NaN;
   @Input() questionNumber:number = NaN;
@@ -36,9 +36,9 @@ export class CreateQuestion {
   addAnswear(){
     this.answerId++;
 
-    const questions = this.qvService.questionform.get('questions') as FormArray;
+    const questions = this.csService.questionform.get('questions') as FormArray;
 
-    const question = questions.at(this.qvService.findOutIndex('questions', this.questionId)) as FormGroup;
+    const question = questions.at(this.csService.findOutIndex('questions', this.questionId)) as FormGroup;
     const answers = question.get('answers') as FormArray;
 
     answers.push(
@@ -54,9 +54,9 @@ export class CreateQuestion {
   }
 
   removeAnswear(id:number){
-    const questionArray = this.qvService.getFromArray('questions', this.questionId, 'answers');
-    const answersArray = this.qvService.getFromNestedArray('questions', this.questionId, 'answers', id) as FormArray;
-    const index = this.qvService.findOutIndexFromNestedArray('questions', this.questionId, 'answers', id)
+    const questionArray = this.csService.getFromArray('questions', this.questionId, 'answers');
+    const answersArray = this.csService.getFromNestedArray('questions', this.questionId, 'answers', id) as FormArray;
+    const index = this.csService.findOutIndexFromNestedArray('questions', this.questionId, 'answers', id)
 
     if(answersArray.get('answer')?.value){
       answersArray.get('answer')?.setValue('');

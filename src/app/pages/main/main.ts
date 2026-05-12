@@ -6,7 +6,7 @@ import { HighlightsCard } from "../../shared/components/highlights-card/highligh
 import { DropDownMenu } from "../../shared/components/drop-down-menu/drop-down-menu";
 import { FilterButton } from "../../shared/components/filter-button/filter-button";
 import { SurveyView } from "../../shared/components/survey-view/survey-view";
-import { SetQuestionsServices } from '../../shared/services/set-questions/set-questions';
+import { GetSurveyDatabaseService } from '../../shared/services/get-survey-database/get-survey-database';
 import { SurveyQuestionInterFace } from '../../shared/interfaces/survey-question';
 
 @Component({
@@ -17,7 +17,7 @@ import { SurveyQuestionInterFace } from '../../shared/interfaces/survey-question
 })
 export class Main {
   router = inject(Router);
-  setQuestion = inject(SetQuestionsServices);
+  gsdService = inject(GetSurveyDatabaseService);
 
   fullList = signal<SurveyQuestionInterFace[]>([]);
   threeEndNextList = signal<SurveyQuestionInterFace[]>([]);
@@ -60,7 +60,7 @@ export class Main {
 
     this.threeEndingSoon();
 
-    this.fullList.set(this.setQuestion.questionsList());
+    this.fullList.set(this.gsdService.questionsList());
     this.filterList.set(this.fullList());
   }
 
@@ -178,7 +178,7 @@ export class Main {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    this.threeEndNextList.set([...this.setQuestion.questionsList()]
+    this.threeEndNextList.set([...this.gsdService.questionsList()]
     .filter(question => new Date(question.endDate) >= today || question.endDate.toLocaleLowerCase() == 'no end date')
     .sort((a, b) => {
       if (a.endDate.toLocaleLowerCase() == 'no end date') return 1;

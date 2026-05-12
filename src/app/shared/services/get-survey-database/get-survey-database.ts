@@ -6,7 +6,7 @@ import { QuestionInterFace } from '../../interfaces/question';
 @Injectable({
   providedIn: 'root',
 })
-export class SetQuestionsServices {
+export class GetSurveyDatabaseService {
   questionsList = signal<SurveyQuestionInterFace[]>([]);
 
   placeholder:WritableSignal<SurveyQuestionInterFace> = signal(

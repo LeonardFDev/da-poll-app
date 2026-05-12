@@ -4,7 +4,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 @Injectable({
   providedIn: 'root',
 })
-export class QuestionValuesServices {
+export class CreateSurveyService {
   questionform:FormGroup = new FormGroup({
     id: new FormControl(0),
     name: new FormControl('', [Validators.required]),
