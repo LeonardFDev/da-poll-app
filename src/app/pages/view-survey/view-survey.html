@@ -1,14 +1,13 @@
 <section class="page">
     <div class="page__body">
         <header class="header">
-            <!-- <img src="/assets/img/logo-purple-dark.png" alt="icon"> -->
             <div routerLink="" class="header__img-box">
                 <img src="assets/img/logo-purple-dark.png" alt="icon">
             </div>
             <app-primary-button routerLink="/create-question" [btnText]="'Create survey'" [withIcon]="{'isWithIcon': true, 'icon': '⊕', 'iconWidth':24}" class="header__button"></app-primary-button>
         </header>
 
-        <section class="section" [class.section--al-it-end]="isSurveySubmitted"> <!--true / false-->
+        <section class="section" [class.section--al-it-end]="isSurveySubmitted">
             <article class="section__left">
                 <div class="section__left__header">
                     <app-survey-status [statusText]="'Published'"></app-survey-status>
@@ -24,19 +23,23 @@
                 </div>
                 <div class="section__left__questions">
                     @for (item of currentQuesten().questions; track item.id) {
-                        <app-question [question]="item" [questionNumber]="$index + 1"></app-question>
+                        <app-question [class.section__left__questions__question--error]="answersCheckList.controls[$index]?.get('hasQuestionAnyAnswered')?.value == false" [question]="item" [questionNumber]="$index + 1" class="section__left__questions__question"></app-question>
                     }
                 </div>
-                @if(!isPlaceholder()){
-                    <app-secondary-button (click)="surveySubmitted()" class="section__left__btn" [btnText]="'Complete survey'" [secondColor]="true"></app-secondary-button>
-                }
-                @if(isPlaceholder()) {
-                    <div class="button-disable-body">
-                        <app-secondary-button class="section__left__btn" [btnText]="'Complete survey'" [secondColor]="true"></app-secondary-button>
-                        <div class="button-disable-body__box"></div>
-                    </div>
-                }
 
+                <div class="section__left__footer">
+                    @if(!isPlaceholder()){
+                        <app-secondary-button (click)="surveySubmitted()" class="section__left__footer__btn" [btnText]="'Complete survey'" [secondColor]="true"></app-secondary-button>
+                    }
+                    @if(isPlaceholder()) {
+                        <div class="section__left__footer__btn-disable-body">
+                            <app-secondary-button class="section__left__footer__btn" [btnText]="'Complete survey'" [secondColor]="true"></app-secondary-button>
+                            <div class="section__left__footer__btn-disable-body__box"></div>
+                        </div>
+                    }
+    
+                    <span [class.section__left__footer__error-message--show]="answersCheckList.controls.some(item => item.get('hasQuestionAnyAnswered')?.value == false)" class="section__left__footer__error-message">*At least one answer must be selected</span>
+                </div>
             </article>
 
             <article class="section__mobile">
@@ -44,14 +47,13 @@
                     <div [class.section__mobile__button__empty-box--close]="isCloseResultsBox" class="section__mobile__button__empty-box"></div>
                     <span [class.section__mobile__button__span--see]="!isCloseResultsBox" class="section__mobile__button__span">See results</span>
                     <span [class.section__mobile__button__span--close]="isCloseResultsBox" class="section__mobile__button__span">Close results</span>
-                    <!-- <img [class.section__mobile__button__img--close]="isCloseResultsBox" class="section__mobile__button__img" src="/assets/img/drop_down_arrow_black.png" alt="drop_down_arrow icon"> -->
                     <div [class.section__mobile__button__img--close]="isCloseResultsBox" class="section__mobile__button__img"></div>
                 </div>
             </article>
                 
-            <article [class.section__right--ma-top200]="!isSurveySubmitted" [class.section__right--clsoe]="isCloseResultsBox" class="section__right"> <!--true / false-->
+            <article [class.section__right--ma-top200]="!isSurveySubmitted" [class.section__right--clsoe]="isCloseResultsBox" class="section__right">
                 <h1 class="section__right__h1">Survey results <span class="section__right__h1__span">LIVE</span></h1>
-                @if(isSurveySubmitted){ <!--true / false-->
+                @if(isSurveySubmitted){
                     <div class="section__right__results-box">
                         @for (item of currentQuesten().questions; track $index) {
                             <app-results [question]="item" [questionNumber]="$index + 1"></app-results>
