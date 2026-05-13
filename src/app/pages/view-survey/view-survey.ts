@@ -56,12 +56,16 @@ export class ViewSurvey {
   }
 
   surveySubmitted(){
+    this.checkHasQuestionAnyAnswered();
+
     if(!this.isSurveySubmitted && this.answersCheckList().controls.some(item => item.get('hasQuestionAnyAnswered')?.value == false)){
       console.log('no');
+      console.log(this.answersCheckList().value);
     }
     else if(!this.isSurveySubmitted){
       this.isSurveySubmitted = true;
       console.log('yes');
+      console.log(this.answersCheckList().value);
     }
   }
 
@@ -92,11 +96,13 @@ export class ViewSurvey {
 
     // (this.answersCheckList().controls[0].get('answears') as FormArray).controls[1].get('checked')?.setValue(true);
     // (this.answersCheckList().controls[1].get('answears') as FormArray).controls[1].get('checked')?.setValue(true);
-    // (this.answersCheckList.controls[2].get('answears') as FormArray).controls[1].get('checked')?.setValue(true);
+    // (this.answersCheckList().controls[2].get('answears') as FormArray).controls[1].get('checked')?.setValue(true);
     // (this.answersCheckList().controls[3].get('answears') as FormArray).controls[0].get('checked')?.setValue(true);
 
-    this.answersCheckList().controls.filter(item => item.get('hasQuestionAnyAnswered')?.setValue((item.get('answears') as FormArray).controls.some(item => item.get('checked')?.value == true)));
-
     console.log(this.answersCheckList().value);
+  }
+
+  checkHasQuestionAnyAnswered(){
+    this.answersCheckList().controls.filter(item => item.get('hasQuestionAnyAnswered')?.setValue((item.get('answears') as FormArray).controls.some(item => item.get('checked')?.value == true)));
   }
 }

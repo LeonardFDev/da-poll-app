@@ -2,6 +2,9 @@
   @if(isPartOfCreateSurvey){
     <input #customCheckboxInput class="custom-checkbox__input" [formControl]="nameControl">
   }
+  @else if(isPartOfViewSurvey){
+    <input #customCheckboxInput class="custom-checkbox__input" [formControl]="answersView" [checked]="checkedComputed()">
+  }
   @else {
     <input #customCheckboxInput class="custom-checkbox__input" [formControl]="isChecked" [checked]="checkedComputed()">
   }

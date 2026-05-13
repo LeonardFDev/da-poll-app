@@ -10,10 +10,15 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 export class CheckBox {
   isChecked = new FormControl(false);
   @Input() nameControl!:FormControl;
+  @Input() answersView!:FormControl
+
   @Input() multipleAnswers: true | {'boolen': false, 'name':string} = true;
+  @Input() checkedSignal!: WritableSignal<boolean>;
+
   @Input() isPartOfAnswear:boolean = false;
   @Input() isPartOfCreateSurvey:boolean = false;
-  @Input() checkedSignal!: WritableSignal<boolean>;
+  @Input() isPartOfViewSurvey:boolean = false;
+  
   @Input() whiteBorder:boolean = false;
 
   @ViewChild('customCheckboxInput') inputRef!:ElementRef<HTMLInputElement>;
@@ -26,6 +31,8 @@ export class CheckBox {
     else this.inputRef.nativeElement.type = 'checkbox';
 
     if(this.nameControl) this.nameControl.valueChanges.subscribe(() => this.setValueNameControl());
+    
+    // if(this.isPartOfViewSurvey && this.answersView) this.answersView.valueChanges.subscribe(() =>this.setValueAnswersView());
   }
 
   setValueNameControl(){
@@ -33,9 +40,21 @@ export class CheckBox {
     else this.nameControl.setValue(this.inputRef.nativeElement.checked, {emitEvent: false});
   }
 
+  // setValueAnswersView(){
+  //   if(this.answersView.value == true) this.inputRef.nativeElement.checked = true;
+  //   else this.answersView.setValue(this.inputRef.nativeElement.checked, {emitEvent: false});
+  //   console.log(this.inputRef.nativeElement.checked);
+    
+  // }
+
   checkedComputed = computed(() =>{
-    if(this.isPartOfAnswear) return this.checkedSignal();
-    else return this.checkedSignal;
+    if(this.isPartOfViewSurvey && this.answersView){
+      if(this.inputRef?.nativeElement.checked == false) this.answersView.setValue(true);
+      
+      else this.answersView.setValue(false);
+    }
+
+    return this.checkedSignal();
   });
 }
 
