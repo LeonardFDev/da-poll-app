@@ -17,31 +17,37 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
 })
 export class ViewSurvey {
   private route = inject(ActivatedRoute);
-  setQuestion = inject(GetSurveyDatabaseService);
+  gsdService = inject(GetSurveyDatabaseService);
 
   currentId:number | null = 0;
   isPlaceholder = signal(false);
 
-  questionslist = this.setQuestion.questionsList;
-  currentQuesten = this.setQuestion.placeholder;
+  questionslist = this.gsdService.questionsList;
+  currentQuesten = this.gsdService.placeholder;
 
   isCloseResultsBox = false;
   isSurveySubmitted = false;
 
-  answersCheckList = new FormArray<FormGroup>([]);
+  answersCheckList = signal(new FormArray<FormGroup>([]));
 
   @HostListener('window:resize')
   onResize() {
     if (window.innerWidth >= 1412 && this.isCloseResultsBox) this.isCloseResultsBox = false;
   }
 
-  ngOnInit(){
+  constructor(){
     this.currentId = Number(this.route.snapshot.paramMap.get('id'));
     this.isPlaceholder.set(!this.questionslist().some(item => item.id == this.currentId));
 
     this.questionslist().find(item => {
       if(item.id == this.currentId) this.currentQuesten.set(item);
     });
+
+    this.createAnswersCheckList();
+  }
+
+  questionAnswersView(index:number){
+    return this.answersCheckList().controls[index];
   }
 
   openClose(){
@@ -50,8 +56,7 @@ export class ViewSurvey {
   }
 
   surveySubmitted(){
-    if(!this.isSurveySubmitted) this.test();
-    if(!this.isSurveySubmitted && this.answersCheckList.controls.some(item => item.get('hasQuestionAnyAnswered')?.value == false)){
+    if(!this.isSurveySubmitted && this.answersCheckList().controls.some(item => item.get('hasQuestionAnyAnswered')?.value == false)){
       console.log('no');
     }
     else if(!this.isSurveySubmitted){
@@ -60,11 +65,11 @@ export class ViewSurvey {
     }
   }
 
-  test(){
-    this.answersCheckList = new FormArray<FormGroup>([])
+  createAnswersCheckList(){
+    this.answersCheckList.set(new FormArray<FormGroup>([]));
     
     this.currentQuesten().questions.find(question => {
-      this.answersCheckList.push(
+      this.answersCheckList().push(
         new FormGroup({
           'questionId': new FormControl(question.id),
           'answears': new FormArray<FormGroup>([]),
@@ -73,7 +78,7 @@ export class ViewSurvey {
       );
 
       question.answers.find(answer => {
-        this.answersCheckList.controls.filter(item => item.get('questionId')?.value == question.id).find(item =>{
+        this.answersCheckList().controls.filter(item => item.get('questionId')?.value == question.id).find(item =>{
           const answearsFormArray = item.get('answears') as FormArray
           answearsFormArray.push(
             new FormGroup({
@@ -85,13 +90,13 @@ export class ViewSurvey {
       });
     });
 
-    (this.answersCheckList.controls[0].get('answears') as FormArray).controls[1].get('checked')?.setValue(true);
-    (this.answersCheckList.controls[1].get('answears') as FormArray).controls[1].get('checked')?.setValue(true);
-    (this.answersCheckList.controls[2].get('answears') as FormArray).controls[1].get('checked')?.setValue(true);
-    (this.answersCheckList.controls[3].get('answears') as FormArray).controls[0].get('checked')?.setValue(true);
+    // (this.answersCheckList().controls[0].get('answears') as FormArray).controls[1].get('checked')?.setValue(true);
+    // (this.answersCheckList().controls[1].get('answears') as FormArray).controls[1].get('checked')?.setValue(true);
+    // (this.answersCheckList.controls[2].get('answears') as FormArray).controls[1].get('checked')?.setValue(true);
+    // (this.answersCheckList().controls[3].get('answears') as FormArray).controls[0].get('checked')?.setValue(true);
 
-    this.answersCheckList.controls.filter(item => item.get('hasQuestionAnyAnswered')?.setValue((item.get('answears') as FormArray).controls.some(item => item.get('checked')?.value == true)));
+    this.answersCheckList().controls.filter(item => item.get('hasQuestionAnyAnswered')?.setValue((item.get('answears') as FormArray).controls.some(item => item.get('checked')?.value == true)));
 
-    // console.log(this.answersCheckList.value);
+    console.log(this.answersCheckList().value);
   }
 }
