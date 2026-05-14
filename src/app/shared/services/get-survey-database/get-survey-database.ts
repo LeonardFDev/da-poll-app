@@ -444,15 +444,18 @@ export class GetSurveyDatabaseService {
     this.questionsList.update(questionsList =>
       questionsList.map(question => ({
         ...question,
-        questions: question.questions.map(question =>({
-          ...question,
-          answers: question.answers.map(answer => ({
+        questions: question.questions.map(answers =>({
+          ...answers,
+          answers: answers.answers.map(answer => ({
             ...answer,
-              percentValue: this.resultConditions(answer, question)
+              percentValue: this.resultConditions(answer, answers)
           }))
         }))
       }))
     );
+
+    // console.log('hier');
+    // console.log(this.questionsList()[2].questions);
   }
 
   resultConditions(answer:AnswerInterface, question:QuestionInterFace){
