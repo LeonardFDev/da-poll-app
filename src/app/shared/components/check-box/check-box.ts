@@ -1,5 +1,5 @@
-import { Component, computed, ElementRef, Input, ViewChild, WritableSignal } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { Component, computed, ElementRef, Input, signal, ViewChild, WritableSignal } from '@angular/core';
+import { FormArray, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-check-box',
@@ -8,9 +8,10 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './check-box.scss',
 })
 export class CheckBox {
-  isChecked = new FormControl(false);
   @Input() nameControl!:FormControl;
-  @Input() answersView!:FormControl
+  @Input() answerView!:FormControl
+
+  @Input() answersFormArray!:FormArray;
 
   @Input() multipleAnswers: true | {'boolen': false, 'name':string} = true;
   @Input() checkedSignal!: WritableSignal<boolean>;
@@ -32,7 +33,10 @@ export class CheckBox {
 
     if(this.nameControl) this.nameControl.valueChanges.subscribe(() => this.setValueNameControl());
     
-    // if(this.isPartOfViewSurvey && this.answersView) this.answersView.valueChanges.subscribe(() =>this.setValueAnswersView());
+    if(this.isPartOfViewSurvey && this.answerView){
+      this.answerView.valueChanges.subscribe(() => this.setValueAnswersView());
+    }
+    if(this.isPartOfViewSurvey && this.answerView) this.answerView.valueChanges.subscribe(() =>this.setValueAnswersView());
   }
 
   setValueNameControl(){
@@ -40,18 +44,14 @@ export class CheckBox {
     else this.nameControl.setValue(this.inputRef.nativeElement.checked, {emitEvent: false});
   }
 
-  // setValueAnswersView(){
-  //   if(this.answersView.value == true) this.inputRef.nativeElement.checked = true;
-  //   else this.answersView.setValue(this.inputRef.nativeElement.checked, {emitEvent: false});
-  //   console.log(this.inputRef.nativeElement.checked);
-    
-  // }
+  setValueAnswersView(){
+    if(typeof this.multipleAnswers == "object") this.answersFormArray.controls.find(answer => answer.get('checked')?.setValue(false, {emitEvent: false}));
+    this.answerView.setValue(!this.inputRef.nativeElement.checked, {emitEvent: false});
+  }
 
   checkedComputed = computed(() =>{
-    if(this.isPartOfViewSurvey && this.answersView){
-      if(this.inputRef?.nativeElement.checked == false) this.answersView.setValue(true);
-      
-      else this.answersView.setValue(false);
+    if(this.isPartOfViewSurvey && this.answerView){
+      this.answerView.setValue(this.checkedSignal());
     }
 
     return this.checkedSignal();

@@ -1,6 +1,6 @@
 import { Component, Input, signal, WritableSignal } from '@angular/core';
 import { CheckBox } from "../check-box/check-box";
-import { FormControl } from '@angular/forms';
+import { FormArray, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-answear',
@@ -13,7 +13,8 @@ export class Answear {
   @Input() spanText:string =""
   @Input() multipleAnswers: true | {'boolen': false, 'name':string} = true;
 
-  @Input() answersView!:FormControl;
+  @Input() answerView!:FormControl;
+  @Input() answersFormArray!:FormArray
 
   isChecked: WritableSignal<boolean> = signal(false);
 

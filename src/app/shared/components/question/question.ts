@@ -16,7 +16,11 @@ export class Question {
   @Input() questionNumber!:number;
   @Input() questionAnswersView!:FormGroup;
 
-  answersView(index:number){
-    return (this.questionAnswersView.get('answears') as FormArray).controls[index].get('checked') as FormControl
+  answersFormArray(){
+    return this.questionAnswersView.get('answers') as FormArray;
+  }
+  
+  answerView(index:number){
+    return (this.questionAnswersView.get('answers') as FormArray).controls[index].get('checked') as FormControl
   }
 }

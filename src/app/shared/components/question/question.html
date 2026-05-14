@@ -9,10 +9,10 @@
         <div class="question__answear">
             @for(item of question.answers; track item.id){
                 @if (!question.multipleAnswers) {
-                    <app-answear [answersView]="answersView($index)" [spanEnumeration]="csService.convertToChar($index) + '.'" [spanText]="item.answer" [multipleAnswers]="{'boolen':false, name: `${question.id}`}"></app-answear>
+                    <app-answear [answersFormArray]="answersFormArray()" [answerView]="answerView($index)" [spanEnumeration]="csService.convertToChar($index) + '.'" [spanText]="item.answer" [multipleAnswers]="{'boolen':false, name: `${question.id}`}"></app-answear>
                 }
                 @else {
-                    <app-answear [answersView]="answersView($index)" [spanEnumeration]="csService.convertToChar($index) + '.'" [spanText]="item.answer" [multipleAnswers]="true"></app-answear>
+                    <app-answear [answerView]="answerView($index)" [spanEnumeration]="csService.convertToChar($index) + '.'" [spanText]="item.answer" [multipleAnswers]="true"></app-answear>
                 }
             }
             @empty {

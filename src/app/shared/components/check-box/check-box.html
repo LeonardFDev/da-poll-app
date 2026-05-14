@@ -3,10 +3,10 @@
     <input #customCheckboxInput class="custom-checkbox__input" [formControl]="nameControl">
   }
   @else if(isPartOfViewSurvey){
-    <input #customCheckboxInput class="custom-checkbox__input" [formControl]="answersView" [checked]="checkedComputed()">
+    <input #customCheckboxInput class="custom-checkbox__input" [formControl]="answerView" [checked]="checkedComputed()">
   }
   @else {
-    <input #customCheckboxInput class="custom-checkbox__input" [formControl]="isChecked" [checked]="checkedComputed()">
+    <input #customCheckboxInput class="custom-checkbox__input" [checked]="checkedComputed()">
   }
   <span class="custom-checkbox__checkmark" [class.custom-checkbox__checkmark--border-color-white]="whiteBorder"></span>
 </label>

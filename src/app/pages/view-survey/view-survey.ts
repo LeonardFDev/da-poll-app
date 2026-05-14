@@ -60,12 +60,45 @@ export class ViewSurvey {
 
     if(!this.isSurveySubmitted && this.answersCheckList().controls.some(item => item.get('hasQuestionAnyAnswered')?.value == false)){
       console.log('no');
-      console.log(this.answersCheckList().value);
+      // console.log(this.answersCheckList().value);
     }
     else if(!this.isSurveySubmitted){
       this.isSurveySubmitted = true;
       console.log('yes');
-      console.log(this.answersCheckList().value);
+
+      // console.log(this.currentQuesten().questions);
+        this.currentQuesten.update(updateCounter => {
+          const questions = [...updateCounter.questions];
+
+          for (let qIndex = 0; qIndex < questions.length; qIndex++) {
+            const answersFormArray = this.answersCheckList().controls[qIndex].get('answers') as FormArray;
+            const question = questions[qIndex];
+            const answers = [...question.answers];
+
+            for (let aIndex = 0; aIndex < answers.length; aIndex++) {
+              const isChecked = answersFormArray.controls[aIndex].get('checked')?.value;
+
+              if(isChecked){
+                answers[aIndex] = {
+                  ...answers[aIndex],
+                  'counter': answers[aIndex].counter +1
+                };
+              }
+            }
+
+            questions[qIndex]= {
+              ...question,
+              'answers': answers
+            };
+          }
+          
+          return {
+            ...updateCounter,
+            'questions': questions
+          };
+        });
+
+      this.gsdService.calculatePercent();
     }
   }
 
@@ -76,33 +109,28 @@ export class ViewSurvey {
       this.answersCheckList().push(
         new FormGroup({
           'questionId': new FormControl(question.id),
-          'answears': new FormArray<FormGroup>([]),
-          'hasQuestionAnyAnswered': new FormControl(false),
+          'answers': new FormArray<FormGroup>([]),
+          'hasQuestionAnyAnswered': new FormControl(null),
         })
       );
 
       question.answers.find(answer => {
         this.answersCheckList().controls.filter(item => item.get('questionId')?.value == question.id).find(item =>{
-          const answearsFormArray = item.get('answears') as FormArray
+          const answearsFormArray = item.get('answers') as FormArray
           answearsFormArray.push(
             new FormGroup({
-              'answearId': new FormControl(answer.id),
-              'checked': new FormControl(false)
+              'answerId': new FormControl(answer.id),
+              'checked': new FormControl(null)
             })
           );
         });
       });
     });
 
-    // (this.answersCheckList().controls[0].get('answears') as FormArray).controls[1].get('checked')?.setValue(true);
-    // (this.answersCheckList().controls[1].get('answears') as FormArray).controls[1].get('checked')?.setValue(true);
-    // (this.answersCheckList().controls[2].get('answears') as FormArray).controls[1].get('checked')?.setValue(true);
-    // (this.answersCheckList().controls[3].get('answears') as FormArray).controls[0].get('checked')?.setValue(true);
-
-    console.log(this.answersCheckList().value);
+    // console.log(this.answersCheckList().value);
   }
 
   checkHasQuestionAnyAnswered(){
-    this.answersCheckList().controls.filter(item => item.get('hasQuestionAnyAnswered')?.setValue((item.get('answears') as FormArray).controls.some(item => item.get('checked')?.value == true)));
+    this.answersCheckList().controls.filter(item => item.get('hasQuestionAnyAnswered')?.setValue((item.get('answers') as FormArray).controls.some(item => item.get('checked')?.value == true)));
   }
 }
