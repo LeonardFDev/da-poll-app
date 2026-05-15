@@ -415,8 +415,15 @@ export class GetSurveyDatabaseService {
           {
             "id": 1,
             "question": "Your feedback",
-            "multipleAnswers": true,
-            "answers": []
+            "multipleAnswers": false,
+            "answers": [
+              {"id":1, "answer":"Everything worked well.","counter":25,"percentValue":0},
+              {"id":2, "answer":"Could be improved.","counter":25,"percentValue":0},
+              {"id":3, "answer":"Loved it!","counter":25,"percentValue":0},
+              {"id":4, "answer":"The process was clear.","counter":25,"percentValue":0},
+              {"id":5, "answer":"Pretty smooth experience.","counter":25,"percentValue":0},
+              {"id":6, "answer":"I would recommend it.","counter":25,"percentValue":0},
+            ]
           }
         ]
       },
@@ -431,10 +438,70 @@ export class GetSurveyDatabaseService {
             "id": 1,
             "question": "Your idea",
             "multipleAnswers": false,
-            "answers": []
+            "answers": [
+              {"id":1, "answer":"Add a dark mode option.","counter":25,"percentValue":0},
+              {"id":2, "answer":"Improve the mobile experience.","counter":25,"percentValue":0},
+              {"id":3, "answer":"More customization would be great.","counter":25,"percentValue":0},
+              {"id":4, "answer":"Make navigation simpler.","counter":25,"percentValue":0},
+              {"id":5, "answer":"Add more tutorials or tips.","counter":25,"percentValue":0},
+              {"id":6, "answer":"Faster loading times would help.","counter":25,"percentValue":0},
+            ]
           }
         ]
-      }
+      },
+      {
+        'id': 16,
+        'name':'Let’s Plan the Next Team Event Together',
+        'description': 'We want to create team activities that everyone will enjoy – share your preferences and ideas in our survey to help us plan better experiences together.',
+        'endDate': `${new Intl.DateTimeFormat('en-CA').format(new Date())}`,
+        'category': 'Team Activities',
+        'questions': [
+          {
+            'id': 1,
+            'question': 'Which date would work best for you?',
+            'multipleAnswers': true,
+            'answers': [
+              {id:1, 'answer':'19.09.2025, Friday', 'counter': 0, 'percentValue': 0},
+              {id:2, 'answer':'10.10.2025, Friday', 'counter': 0, 'percentValue': 0},
+              {id:3, 'answer':'11.10.2025, Saturday', 'counter': 0, 'percentValue': 0},
+              {id:4, 'answer':'31.10.2025, Friday', 'counter': 0, 'percentValue': 0},
+            ],
+          },
+          {
+            'id': 2,
+            'question': 'Choose the activities you prefer',
+            'multipleAnswers': true,
+            'answers': [
+              {id:1, 'answer':'Outdoor adventure like kayaking', 'counter': 0, 'percentValue': 0},
+              {id:2, 'answer':'Office Costume Party', 'counter': 0, 'percentValue': 0},
+              {id:3, 'answer':'Bowling, mini-golf, volleyball', 'counter': 0, 'percentValue': 0},
+              {id:4, 'answer':'Beach party, Music & cocktails', 'counter': 0, 'percentValue': 0},
+              {id:5, 'answer':'Escape room', 'counter': 0, 'percentValue': 0},
+            ]
+          },
+          {
+            'id': 3,
+            'question': 'What\'s most important to you in a team event?',
+            'multipleAnswers': false,
+            'answers': [
+              {id:1, 'answer':'Team bonding', 'counter': 0, 'percentValue': 0},
+              {id:2, 'answer':'Food and drinks, Friday', 'counter': 0, 'percentValue': 0},
+              {id:3, 'answer':'Trying something new', 'counter': 0, 'percentValue': 0},
+              {id:4, 'answer':'Keeping it low-key and stress-free', 'counter': 0, 'percentValue': 0},
+            ]
+          },
+          {
+            'id': 4,
+            'question': 'How long would you prefer the event to last?',
+            'multipleAnswers': false,
+            'answers': [
+              {id:1, 'answer':'Half a day', 'counter': 0, 'percentValue': 0},
+              {id:2, 'answer':'Full day', 'counter': 0, 'percentValue': 0},
+              {id:3, 'answer':'Evening only, Saturday', 'counter': 0, 'percentValue': 0},
+            ]
+          },
+        ],
+      },
     ]);
       
     this.calculatePercent();
@@ -453,9 +520,6 @@ export class GetSurveyDatabaseService {
         }))
       }))
     );
-
-    // console.log('hier');
-    // console.log(this.questionsList()[2].questions);
   }
 
   resultConditions(answer:AnswerInterface, question:QuestionInterFace){
