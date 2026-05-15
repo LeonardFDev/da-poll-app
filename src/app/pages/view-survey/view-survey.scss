@@ -160,12 +160,49 @@
             width: fit-content;
             align-self: flex-end;
             cursor: no-drop;
+
+            &:hover{
+                .section__left__footer__btn-disable-body__message-box {
+                    display: flex;
+                }
+            }
     
             &__box{
                 position: absolute;
                 inset: 0;
                 background-color: #80808054;
                 border-radius: 10px;
+            }
+
+            &__message-box{
+                display: none;
+                position: absolute;
+                top: -16px;
+                padding: 12px;
+                background-color: #b3b1b4;
+                left: 190px;
+                border-radius: 0px 8px 8px 0px;
+                
+                &::after{
+                    content: "";
+                    width: 46.4px;
+                    height: 46.4px;
+                    rotate: 45deg;
+                    position: absolute;
+                    align-self: center;
+                    left: -24px;
+                    background-color: rgba(128, 128, 128, 0.5607843137);
+                    border-radius: 0px 0px 0px 8px;
+                    z-index: -1;
+                }
+
+                &__span{
+                    width: 22ch;
+                    font-family: "Nokora";
+                    font-weight: 500;
+                    font-size: 16px;
+                    color: #FEFDFF;
+                }
             }
         }
     }

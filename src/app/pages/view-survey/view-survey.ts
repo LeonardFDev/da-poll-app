@@ -7,6 +7,8 @@ import { SecondaryButton } from "../../shared/components/secondary-button/second
 import { Results } from "../../shared/components/results/results";
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { AnswerInterface } from '../../shared/interfaces/answer';
+import { QuestionInterFace } from '../../shared/interfaces/question';
 
 
 @Component({
@@ -46,65 +48,19 @@ export class ViewSurvey {
     this.createAnswersCheckList();
   }
 
-  questionAnswersView(index:number){
-    return this.answersCheckList().controls[index];
-  }
-
-  openClose(){
-    if(this.isCloseResultsBox) this.isCloseResultsBox = false;
-    else this.isCloseResultsBox = true;
-  }
-
-  surveySubmitted(){
-    this.checkHasQuestionAnyAnswered();
-
-    if(!this.isSurveySubmitted && this.answersCheckList().controls.some(item => item.get('hasQuestionAnyAnswered')?.value == false)){
-      console.log('no');
-      // console.log(this.answersCheckList().value);
-    }
-    else if(!this.isSurveySubmitted){
-      this.isSurveySubmitted = true;
-      console.log('yes');
-
-      // console.log(this.currentQuesten().questions);
-        this.currentQuesten.update(updateCounter => {
-          const questions = [...updateCounter.questions];
-
-          for (let qIndex = 0; qIndex < questions.length; qIndex++) {
-            const answersFormArray = this.answersCheckList().controls[qIndex].get('answers') as FormArray;
-            const question = questions[qIndex];
-            const answers = [...question.answers];
-
-            for (let aIndex = 0; aIndex < answers.length; aIndex++) {
-              const isChecked = answersFormArray.controls[aIndex].get('checked')?.value;
-
-              if(isChecked){
-                answers[aIndex] = {
-                  ...answers[aIndex],
-                  'counter': answers[aIndex].counter +1
-                };
-              }
-            }
-
-            questions[qIndex]= {
-              ...question,
-              'answers': answers
-            };
-          }
-          
-          return {
-            ...updateCounter,
-            'questions': questions
-          };
-        });
-
-      this.gsdService.calculatePercent();
-    }
+  isEndDateExceeded(){
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    
+    return new Date(this.currentQuesten().endDate) < today
   }
 
   createAnswersCheckList(){
     this.answersCheckList.set(new FormArray<FormGroup>([]));
-    
+    this.createAddQuesten();
+  }
+
+  createAddQuesten(){
     this.currentQuesten().questions.find(question => {
       this.answersCheckList().push(
         new FormGroup({
@@ -113,24 +69,113 @@ export class ViewSurvey {
           'hasQuestionAnyAnswered': new FormControl(null),
         })
       );
+      this.createAddAnswers(question);
+    });
+  }
 
-      question.answers.find(answer => {
-        this.answersCheckList().controls.filter(item => item.get('questionId')?.value == question.id).find(item =>{
-          const answearsFormArray = item.get('answers') as FormArray
-          answearsFormArray.push(
-            new FormGroup({
-              'answerId': new FormControl(answer.id),
-              'checked': new FormControl(null)
-            })
-          );
-        });
+  createAddAnswers(question:QuestionInterFace){
+    question.answers.find(answer => {
+      this.answersCheckList().controls.filter(item => item.get('questionId')?.value == question.id).find(item =>{
+        const answearsFormArray = item.get('answers') as FormArray
+        answearsFormArray.push(
+          new FormGroup({
+            'answerId': new FormControl(answer.id),
+            'checked': new FormControl(null)
+          })
+        );
       });
     });
+  }
 
-    // console.log(this.answersCheckList().value);
+  surveySubmitted(){
+    this.checkHasQuestionAnyAnswered();
+
+    if(!this.isSurveySubmitted && this.answersCheckList().controls.some(item => item.get('hasQuestionAnyAnswered')?.value == false)){
+      console.log('no');
+      this.checkHasQuestionAnyAnswered();
+    }
+    else if(!this.isSurveySubmitted){
+      this.isSurveySubmitted = true;
+      console.log('yes');
+
+      this.currentQuestenUpdate('counter');
+      this.currentQuestenUpdate('percent');
+    }
   }
 
   checkHasQuestionAnyAnswered(){
     this.answersCheckList().controls.filter(item => item.get('hasQuestionAnyAnswered')?.setValue((item.get('answers') as FormArray).controls.some(item => item.get('checked')?.value == true)));
+  }
+
+  currentQuestenUpdate(valueUpdate: 'percent' | 'counter' | null = null){
+    if(valueUpdate == null) return;
+
+    this.currentQuesten.update(updateCounter => {
+      const questions = [...updateCounter.questions];
+      this.validateQuestions(valueUpdate, questions);
+
+      return {
+        ...updateCounter,
+        'questions': questions
+      };
+    });
+  }
+
+  validateQuestions(valueUpdate: 'percent' | 'counter', questions: QuestionInterFace[]){
+    for (let qIndex = 0; qIndex < questions.length; qIndex++) {
+      const question = questions[qIndex];
+      const answers = [...question.answers];
+
+      this.validateAnswers(question, answers, qIndex, valueUpdate)
+      questions[qIndex]= {
+        ...question,
+        'answers': answers
+      };
+    }
+  }
+
+  validateAnswers(question: QuestionInterFace, answers: AnswerInterface[], qIndex: number, valueUpdate: 'percent' | 'counter'){
+    const answersFormArray = this.answersCheckList().controls[qIndex].get('answers') as FormArray;
+    
+    for (let aIndex = 0; aIndex < answers.length; aIndex++) {
+      const isChecked = answersFormArray.controls[aIndex].get('checked')?.value;
+  
+      this.counterUpdate(isChecked, valueUpdate, answers, aIndex);
+      this.percentValueUpdate(isChecked, valueUpdate, answers, aIndex, question)
+    }
+  }
+
+  counterUpdate(isChecked:FormArray, valueUpdate: 'percent' | 'counter', answers: AnswerInterface[], aIndex:number){
+    if(isChecked && valueUpdate == 'counter'){
+      answers[aIndex] = {
+        ...answers[aIndex],
+        'counter': answers[aIndex].counter +1,
+      };
+    }
+  }
+
+  percentValueUpdate(isChecked:FormArray, valueUpdate: 'percent' | 'counter', answers: AnswerInterface[], aIndex:number, question: QuestionInterFace){
+    if(valueUpdate == 'percent'){
+      answers[aIndex] = {
+        ...answers[aIndex],
+        'percentValue' : this.resultConditions(answers[aIndex].counter, question.answers)
+      };
+    }
+  }
+
+  resultConditions(counter:number, answers:AnswerInterface[]){
+    if(counter == 0) return 0;
+    const value = (counter / answers.reduce((sum, i) => sum + i.counter, 0) * 100);
+    if(value == 0) return value;
+    else return Number(value.toFixed(1));
+  }
+
+  questionAnswersView(index:number){
+    return this.answersCheckList().controls[index];
+  }
+
+  openClose(){
+    if(this.isCloseResultsBox) this.isCloseResultsBox = false;
+    else this.isCloseResultsBox = true;
   }
 }

@@ -28,13 +28,21 @@
                 </div>
 
                 <div class="section__left__footer">
-                    @if(!isPlaceholder()){
+                    @if(!isPlaceholder() && !isEndDateExceeded()){
                         <app-secondary-button (click)="surveySubmitted()" class="section__left__footer__btn" [btnText]="'Complete survey'" [secondColor]="true"></app-secondary-button>
                     }
-                    @if(isPlaceholder()) {
+                    @if(isPlaceholder() || isEndDateExceeded()) {
                         <div class="section__left__footer__btn-disable-body">
                             <app-secondary-button class="section__left__footer__btn" [btnText]="'Complete survey'" [secondColor]="true"></app-secondary-button>
                             <div class="section__left__footer__btn-disable-body__box"></div>
+                            <div class="section__left__footer__btn-disable-body__message-box">
+                                @if(isEndDateExceeded() && !isPlaceholder()){
+                                    <span class="section__left__footer__btn-disable-body__message-box__span">This survey has ended and cannot be submitted.</span>
+                                }
+                                @else{
+                                    <span class="section__left__footer__btn-disable-body__message-box__span">This is just an example and cannot be submitted.</span>
+                                }
+                            </div>
                         </div>
                     }
     
@@ -51,9 +59,9 @@
                 </div>
             </article>
                 
-            <article [class.section__right--ma-top200]="!isSurveySubmitted" [class.section__right--clsoe]="isCloseResultsBox" class="section__right">
+            <article [class.section__right--ma-top200]="!isSurveySubmitted && !isEndDateExceeded()" [class.section__right--clsoe]="isCloseResultsBox" class="section__right">
                 <h1 class="section__right__h1">Survey results <span class="section__right__h1__span">LIVE</span></h1>
-                @if(isSurveySubmitted){
+                @if(isSurveySubmitted || isEndDateExceeded()){
                     <div class="section__right__results-box">
                         @for (item of currentQuesten().questions; track $index) {
                             <app-results [question]="item" [questionNumber]="$index + 1"></app-results>
