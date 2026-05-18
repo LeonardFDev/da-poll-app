@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, inject, signal, ViewChild, WritableSignal } from '@angular/core';
+import { Component, effect, ElementRef, HostListener, inject, signal, ViewChild, WritableSignal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { PrimaryButton } from "../../shared/components/primary-button/primary-button";
 import { HeroImage } from "../../shared/components/hero-image/hero-image";
@@ -46,6 +46,15 @@ export class Main {
     this.highlightsCards.style.removeProperty('transform');
   }
 
+  constructor(){
+    effect(() => {
+      this.threeEndingSoon();
+
+      this.fullList.set(this.gsdService.questionsList());
+      this.filterList.set(this.fullList());
+    });
+  }
+  
   ngOnInit(){
     this.heroSwitch.set(this.mqMaxW1312.matches);
     this.scrollActiv.set(this.mqMaxW1440.matches);
@@ -57,11 +66,6 @@ export class Main {
     this.mqMaxW1440.addEventListener('change', e => {
       this.scrollActiv.set(e.matches);
     });
-
-    this.threeEndingSoon();
-
-    this.fullList.set(this.gsdService.questionsList());
-    this.filterList.set(this.fullList());
   }
 
   ngAfterViewInit(){
