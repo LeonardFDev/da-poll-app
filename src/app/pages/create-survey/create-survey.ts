@@ -22,7 +22,7 @@ export class CreateSurvey {
   csService = inject(CreateSurveyService);
   gsdService = inject(GetSurveyDatabaseService);
 
-  surveyId = this.createSurveyId();
+  surveyId!:number
 
   questionId:number = 0;
   questionNumberList:WritableSignal<{id: number}[]> = signal([]);
@@ -39,20 +39,19 @@ export class CreateSurvey {
     this.addQuestion();
   }
 
-  createSurveyId(){
-    const list = this.gsdService.questionsList();
-    return list[list.length -1]?.id +1
-  }
-
   listNumber(i:number){
     return i+1;
   }
 
   addQuestion(){
     this.questionId++;
-
     const questions = this.csService.questionform.get(`questions`) as FormArray;
-  
+    this.pushIntoFormArray(questions);
+    
+    this.questionNumberList.update(current => [...current, { 'id': this.questionId }]);
+  }
+
+  pushIntoFormArray(questions:FormArray){
     if(questions){
       questions.push(
         new FormGroup({
@@ -63,8 +62,6 @@ export class CreateSurvey {
         })
       )
     }
-    
-    this.questionNumberList.update(current => [...current, { 'id': this.questionId }]);
   }
 
   removeQuestion(id:number){
@@ -104,21 +101,25 @@ export class CreateSurvey {
     }
   }
 
-  saveSurvey(){
-    if (this.csService.questionform.invalid) {
-      this.csService.questionform.markAllAsTouched();
-      console.log(this.csService.questionform.value);
-    }
-    else{
-      if(!this.csService.nameControl('description').value) this.csService.nameControl('description').setValue('No description');
-      this.csService.nameControl('id').setValue(this.surveyId);
-      const newSurvey = this.csService.questionform.value
-      this.gsdService.questionsList.update(questionsList =>([...questionsList, newSurvey]));
-      if(this.csService.nameControl('description').value == 'No description') this.csService.questionform.get('description')?.setValue('');
+  async saveSurvey(){
+    if (this.csService.questionform.invalid) this.cannotBeSavedYet();
+    else await this.canBeSaved();
+  }
 
-      this.showOverlay = true;
-      setTimeout(() => this.showOverlayBox.set(true));
-    }
+  cannotBeSavedYet(){
+    this.csService.questionform.markAllAsTouched();
+  }
+
+  async canBeSaved(){
+    if(!this.csService.nameControl('description').value) this.csService.nameControl('description').setValue('No description');
+    const newSurvey = this.csService.questionform.value
+
+    this.surveyId = await this.gsdService.addSurvey(newSurvey)
+
+    if(this.csService.nameControl('description').value == 'No description') this.csService.questionform.get('description')?.setValue('');
+
+    this.showOverlay = true;
+    setTimeout(() => this.showOverlayBox.set(true));
   }
 
   setStartValues(){
