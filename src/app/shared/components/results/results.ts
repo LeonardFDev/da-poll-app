@@ -13,6 +13,11 @@ export class Results {
   
   @Input() question!:QuestionInterFace;
   @Input() questionNumber!:number;
+
+  valueOutput(value:number){
+    if(value) return value
+    else return 0
+  }
 }
 
 
