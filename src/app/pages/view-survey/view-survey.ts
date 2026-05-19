@@ -1,4 +1,4 @@
-import { Component, HostListener, inject, signal} from '@angular/core';
+import { Component, effect, HostListener, inject, signal} from '@angular/core';
 import { PrimaryButton } from "../../shared/components/primary-button/primary-button";
 import { SurveyStatus } from "../../shared/components/survey-status/survey-status";
 import { Question } from "../../shared/components/question/question";
@@ -39,13 +39,16 @@ export class ViewSurvey {
 
   constructor(){
     this.currentId = Number(this.route.snapshot.paramMap.get('id'));
-    this.isPlaceholder.set(!this.questionslist().some(item => item.id == this.currentId));
 
-    this.questionslist().find(item => {
-      if(item.id == this.currentId) this.currentQuesten.set(item);
-    });
+    effect(() =>{
+      this.isPlaceholder.set(!this.questionslist().some(item => item.id == this.currentId));
 
-    this.createAnswersCheckList();
+      this.questionslist().find(item => {
+        if(item.id == this.currentId)this.currentQuesten.set(item);
+      });
+      
+      this.createAnswersCheckList();
+    })
   }
 
   isEndDateExceeded(){
@@ -88,18 +91,16 @@ export class ViewSurvey {
   }
 
   surveySubmitted(){
-    this.checkHasQuestionAnyAnswered();
+    if(!this.isSurveySubmitted) this.checkHasQuestionAnyAnswered();
+    const hasQuestionsAnyAnswered = (this.answersCheckList().controls.every(item => item.get('hasQuestionAnyAnswered')?.value == true));
 
-    if(!this.isSurveySubmitted && this.answersCheckList().controls.some(item => item.get('hasQuestionAnyAnswered')?.value == false)){
-      console.log('no');
-      this.checkHasQuestionAnyAnswered();
-    }
-    else if(!this.isSurveySubmitted){
+    if(!this.isSurveySubmitted && hasQuestionsAnyAnswered){
       this.isSurveySubmitted = true;
-      console.log('yes');
 
       this.currentQuestenUpdate('counter');
       this.currentQuestenUpdate('percent');
+
+      this.gsdService.updateSurvey(this.currentId as number, this.currentQuesten().questions)
     }
   }
 
@@ -141,7 +142,7 @@ export class ViewSurvey {
       const isChecked = answersFormArray.controls[aIndex].get('checked')?.value;
   
       this.counterUpdate(isChecked, valueUpdate, answers, aIndex);
-      this.percentValueUpdate(isChecked, valueUpdate, answers, aIndex, question)
+      this.percentValueUpdate(valueUpdate, answers, aIndex, question)
     }
   }
 
@@ -154,7 +155,7 @@ export class ViewSurvey {
     }
   }
 
-  percentValueUpdate(isChecked:FormArray, valueUpdate: 'percent' | 'counter', answers: AnswerInterface[], aIndex:number, question: QuestionInterFace){
+  percentValueUpdate(valueUpdate: 'percent' | 'counter', answers: AnswerInterface[], aIndex:number, question: QuestionInterFace){
     if(valueUpdate == 'percent'){
       answers[aIndex] = {
         ...answers[aIndex],
