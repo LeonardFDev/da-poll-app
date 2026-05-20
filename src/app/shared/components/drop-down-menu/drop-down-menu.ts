@@ -22,6 +22,15 @@ export class DropDownMenu {
 
   selectedMenu:string = '';
 
+  sinlgeMenuList:{'title':string, 'isSelected': boolean}[] = [
+    {'title':"Team Activities", 'isSelected': false}, 
+    {'title':"Health & Wellness", 'isSelected': false}, 
+    {'title':"Gaming & Entertainment", 'isSelected': false}, 
+    {'title':"Education & Learning", 'isSelected': false}, 
+    {'title':"Lifestyle & Preferences", 'isSelected': false}, 
+    {'title':"Technology & Innovation", 'isSelected': false}
+  ];
+
   ngAfterViewInit(){
     window.addEventListener('click', () => this.closeMenu());
   }
@@ -39,15 +48,6 @@ export class DropDownMenu {
     if(this.isOpen()) this.isOpen.set(false);
     else this.isOpen.set(true);
   }
-
-  sinlgeMenuList:{'title':string, 'isSelected': boolean}[] = [
-    {'title':"Team Activities", 'isSelected': false}, 
-    {'title':"Health & Wellness", 'isSelected': false}, 
-    {'title':"Gaming & Entertainment", 'isSelected': false}, 
-    {'title':"Education & Learning", 'isSelected': false}, 
-    {'title':"Lifestyle & Preferences", 'isSelected': false}, 
-    {'title':"Technology & Innovation", 'isSelected': false}
-  ];
   
   selected(index:number){
     if(this.sinlgeMenuList[index].isSelected == true){

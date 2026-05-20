@@ -41,9 +41,13 @@ export class CreateQuestion {
 
   addAnswear(){
     this.answerId++;
+    this.createAnswer();
 
+    this.answersList.update(current => [...current, { 'id': this.answerId }]);
+  }
+
+  createAnswer(){
     const questions = this.csService.questionform.get('questions') as FormArray;
-
     const question = questions.at(this.csService.findOutIndex('questions', this.questionId)) as FormGroup;
     const answers = question.get('answers') as FormArray;
 
@@ -55,8 +59,6 @@ export class CreateQuestion {
         'percentValue': new FormControl(0)
       })
     );
-
-    this.answersList.update(current => [...current, { 'id': this.answerId }]);
   }
 
   removeAnswear(id:number){
@@ -64,15 +66,18 @@ export class CreateQuestion {
     const answersArray = this.csService.getFromNestedArray('questions', this.questionId, 'answers', id) as FormArray;
     const index = this.csService.findOutIndexFromNestedArray('questions', this.questionId, 'answers', id)
 
-    if(answersArray.get('answer')?.value){
-      answersArray.get('answer')?.setValue('');
-      answersArray.get('answer')?.markAsUntouched();
-    }
+    if(answersArray.get('answer')?.value) this.removeContentAnswear(answersArray);
+    else if(this.answersList().length >2) this.removeInputAnswear(questionArray, index, id);
+  }
 
-    else if(this.answersList().length >2){
-      questionArray.removeAt(index)
-      this.answersList.update(current => current.filter(item => item.id != id));
-    }
+  removeContentAnswear(answersArray: FormArray){
+    answersArray.get('answer')?.setValue('');
+    answersArray.get('answer')?.markAsUntouched();
+  }
+
+  removeInputAnswear(questionArray:FormArray, index: number, id: number){
+    questionArray.removeAt(index)
+    this.answersList.update(current => current.filter(item => item.id != id));
   }
 
   removeQuestion(){

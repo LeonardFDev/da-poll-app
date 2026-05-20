@@ -12,6 +12,7 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
 })
 export class Question {
   csService = inject(CreateSurveyService);
+
   @Input() question!:QuestionInterFace;
   @Input() questionNumber!:number;
   @Input() questionAnswersView!:FormGroup;

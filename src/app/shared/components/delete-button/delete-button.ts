@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   templateUrl: './delete-button.html',
   styleUrl: './delete-button.scss',
 })
-export class DeleteButton {
-  
-}
+export class DeleteButton {}
