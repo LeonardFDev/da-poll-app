@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, Output, signal, WritableSignal } from '@angular/core';
+import { Component, inject, Input, output, signal, WritableSignal } from '@angular/core';
 import { DeleteButton } from "../delete-button/delete-button";
 import { InputField } from "../input-field/input-field";
 import { CheckBox } from "../check-box/check-box";
@@ -18,10 +18,16 @@ export class CreateQuestion {
   @Input() questionId:number = NaN;
   @Input() questionNumber:number = NaN;
 
-  @Output() action = new EventEmitter<number>();
+  outputQuestionId = output<number>();
 
   answerId:number = 0;
   answersList:WritableSignal<{'id':number}[]> = signal([]);
+
+  isErrorOutput = output<boolean>();
+
+  fromInputFieldsToCreateSurvey(value:boolean){
+    this.isErrorOutput.emit(value);
+  }
 
   ngAfterViewInit(){
     while (this.answersList().length < 2){
@@ -70,6 +76,6 @@ export class CreateQuestion {
   }
 
   removeQuestion(){
-    this.action.emit(this.questionId);
+    this.outputQuestionId.emit(this.questionId);
   }
 }

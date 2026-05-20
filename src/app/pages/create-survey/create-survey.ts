@@ -30,8 +30,25 @@ export class CreateSurvey {
   showOverlay = false;
   showOverlayBox = signal(false);
 
-  get isErrorMessage(): boolean {
-    return this.csService.questionform.invalid && this.csService.questionform.touched;
+  isErrorTrue = signal(false);
+
+  get isError(): boolean {
+    return this.outputError();
+  }
+
+  outputError(){
+    let error = false
+    if(this.isErrorTrue()){
+      queueMicrotask(() => this.isErrorTrue = signal(false));
+      error = true
+    } 
+    return error
+  }
+
+  fromInputFieldsToCreateSurvey(value:boolean){
+    if(value && !this.isErrorTrue()){
+      this.isErrorTrue.set(true);
+    }
   }
 
   constructor(){

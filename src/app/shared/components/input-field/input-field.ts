@@ -1,4 +1,4 @@
-import { Component, computed, inject, Input, signal } from '@angular/core';
+import { Component, inject, Input, output } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CreateSurveyService } from '../../services/create-survey/create-survey';
 
@@ -14,8 +14,13 @@ export class InputField {
   @Input() type:'inputText' | 'textarea' | 'inputDate'= 'inputText';
   @Input() nameControl!:FormControl;
 
+  isErrorOutput = output<boolean>();
+
   get dateInvalid(): boolean {
-    return this.nameControl.invalid && this.nameControl.touched;
+    const isError = this.nameControl.invalid && this.nameControl.touched;
+    
+    this.isErrorOutput.emit(isError);
+    return isError;
   }
   
   calendarValueChange(){
