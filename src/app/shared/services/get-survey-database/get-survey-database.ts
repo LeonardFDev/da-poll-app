@@ -153,10 +153,10 @@ export class GetSurveyDatabaseService {
 
   async updateSurvey(currentId:number, updateSurvey:QuestionInterFace[]){
     const response = await this.supabase
-      .from('surveys-list')
-      .update({ questions: updateSurvey })
-      .eq('id', currentId)
-      .select()
+    .from('surveys-list')
+    .update({ questions: updateSurvey })
+    .eq('id', currentId)
+    .select()
   }
 
   async addSurvey(survey:SurveyQuestionInterFace){

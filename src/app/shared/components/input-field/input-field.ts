@@ -27,5 +27,4 @@ export class InputField {
     const FormControlEndDate = this.csService.nameControl('endDate');
     if(!FormControlEndDate.value) FormControlEndDate.setValue('No end date');
   }
-
 }
