@@ -15,11 +15,11 @@ export class PrimaryButton {
   ngAfterViewInit() {
     if(this.withIcon.icon == '⊕'){
       this.withIcon.iconWidth = 24;
-      this.imgRef.nativeElement.src ='/assets/img/add_circle_primary-button.png';
+      this.imgRef.nativeElement.src ='assets/img/add_circle_primary-button.png';
     } 
     else if(this.withIcon.icon == '✓'){
       this.withIcon.iconWidth = 18;
-      this.imgRef.nativeElement.src ='/assets/img/check.png';
+      this.imgRef.nativeElement.src ='assets/img/check.png';
     }
   }
 }

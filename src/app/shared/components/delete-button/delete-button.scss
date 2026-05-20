@@ -1,11 +1,13 @@
 .btn{
     cursor: pointer;
-    background-image: url('/assets/img/trash.png');
+    // background-image: url('/assets/img/trash.png');
+    background-image: url('/angular-projects/poll-app/assets/img/trash.png'); //für den Server
     background-repeat: no-repeat;
     height: 26px;
     aspect-ratio: 1 / 1;
 
     &:hover{
-        background-image: url('/assets/img/trash-hover.png');
+        // background-image: url('/assets/img/trash-hover.png');
+        background-image: url('/angular-projects/poll-app/assets/img/trash-hover.png'); //für den Server
     }
 }

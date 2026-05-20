@@ -25,16 +25,19 @@
     }
 
     &__icon{
-        background-image: url('/assets/img/drop_down_arrow_down-white.png');
+        // background-image: url('/assets/img/drop_down_arrow_down-white.png');
+        background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_down-white.png'); //für den Server
         height: 24px;
         aspect-ratio: 1/1;
         
         &--selected{
-            background-image: url('/assets/img/drop_down_arrow_down-orange.png');
+            // background-image: url('/assets/img/drop_down_arrow_down-orange.png');
+            background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_down-orange.png'); //für den Server
         }
         
         &--open{
-            background-image: url('/assets/img/drop_down_arrow_up-orange.png');
+            // background-image: url('/assets/img/drop_down_arrow_up-orange.png');
+            background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_up-orange.png'); //für den Server
         }
     }
 
@@ -42,7 +45,8 @@
         background-color: #D9D9D91F;
 
         >.drop-down__icon:not(.drop-down__icon--open){
-            background-image: url('/assets/img/drop_down_arrow_down-orange.png');
+            // background-image: url('/assets/img/drop_down_arrow_down-orange.png');
+            background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_down-orange.png'); //für den Server
         }
     }
 }
