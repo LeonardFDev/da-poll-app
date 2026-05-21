@@ -30,6 +30,9 @@ export class ViewSurvey {
   isCloseResultsBox = false;
   isSurveySubmitted = false;
 
+  isAlreadyVotes = false;
+  loadingWindowHidden = false;
+
   answersCheckList = signal(new FormArray<FormGroup>([]));
 
   @HostListener('window:resize')
@@ -46,9 +49,19 @@ export class ViewSurvey {
       this.questionslist().find(item => {
         if(item.id == this.currentId)this.currentQuesten.set(item);
       });
-      
+
+      this.alreadyVotes();
       this.createAnswersCheckList();
     })
+  }
+  
+  ngOnInit(){
+    this.loadingWindowHidden = true;
+  }
+
+  alreadyVotes(){
+    this.isAlreadyVotes = this.currentQuesten().questions
+    .some(question => question.answers.some(answer => answer.counter > 0));
   }
 
   isEndDateExceeded(){
