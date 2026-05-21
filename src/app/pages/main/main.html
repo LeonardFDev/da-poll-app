@@ -33,7 +33,7 @@
             <div class="section__center__highlights-cards">
                 <div #highlightsCards class="section__center__highlights-cards__inner">
                     @for (item of threeEndNextList(); track item.id) {
-                        <app-highlights-card [routerLink]="['/view-survey', item.id]" [highlightsCardText]="item.category" [highlightsCardH1]="item.name" [surveyStatus]="item.endDate"></app-highlights-card>
+                        <app-highlights-card [surveyId]="item.id" [highlightsCardText]="item.category" [highlightsCardH1]="item.name" [surveyStatus]="item.endDate"></app-highlights-card>
                     }
                 </div>
             </div>

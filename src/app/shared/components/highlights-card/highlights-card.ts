@@ -11,6 +11,7 @@ export class HighlightsCard {
   @Input() highlightsCardText:string ="";
   @Input() highlightsCardH1:string = "";
   @Input() surveyStatus:string ='';
+  @Input() surveyId!:number;
 
   hover = signal(false);
   endingInOutput:string =''

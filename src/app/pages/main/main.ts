@@ -137,7 +137,7 @@ export class Main {
   }
 
   onPointerUp(e: PointerEvent){
-    if(this.velocity == 0 && e.button == 0){
+    if(this.velocity == 0 && e.button == 0 && this.dragging){
       let id = (e.target as HTMLElement).closest('.highlights-card')?.id
       if(id) this.router.navigate(['/view-survey', id]);
     }
