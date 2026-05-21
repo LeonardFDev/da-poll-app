@@ -1,4 +1,4 @@
-import { Component, computed, ElementRef, Input, ViewChild, WritableSignal } from '@angular/core';
+import { Component, computed, ElementRef, Input, output, ViewChild, WritableSignal } from '@angular/core';
 import { FormArray, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -33,10 +33,7 @@ export class CheckBox {
 
     if(this.nameControl) this.nameControl.valueChanges.subscribe(() => this.setValueNameControl());
     
-    if(this.isPartOfViewSurvey && this.answerView){
-      this.answerView.valueChanges.subscribe(() => this.setValueAnswersView());
-    }
-    if(this.isPartOfViewSurvey && this.answerView) this.answerView.valueChanges.subscribe(() =>this.setValueAnswersView());
+    if(this.isPartOfViewSurvey && this.answerView) this.answerView.valueChanges.subscribe(() => this.setValueAnswersView());
   }
 
   setValueNameControl(){
