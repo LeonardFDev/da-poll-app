@@ -1,4 +1,4 @@
-import { Component, computed, ElementRef, Input, output, ViewChild, WritableSignal } from '@angular/core';
+import { Component, ElementRef, Input, signal, ViewChild } from '@angular/core';
 import { FormArray, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -9,20 +9,22 @@ import { FormArray, FormControl, ReactiveFormsModule } from '@angular/forms';
 })
 export class CheckBox {
   @Input() nameControl!:FormControl;
-  @Input() answerView!:FormControl
 
+  @Input() answerView!:FormControl
   @Input() answersFormArray!:FormArray;
 
   @Input() multipleAnswers: true | {'boolen': false, 'name':string} = true;
-  @Input() checkedSignal!: WritableSignal<boolean>;
-
-  @Input() isPartOfAnswear:boolean = false;
-  @Input() isPartOfCreateSurvey:boolean = false;
-  @Input() isPartOfViewSurvey:boolean = false;
   
   @Input() whiteBorder:boolean = false;
+  @Input() withInputHover:boolean = false
+
+  @Input() isWithText:boolean = false;
+  @Input() spanEnumeration:string ="";
+  @Input() spanText:string =""
 
   @ViewChild('customCheckboxInput') inputRef!:ElementRef<HTMLInputElement>;
+
+  isChecked = signal(false);
 
   ngAfterViewInit(){
     if(typeof this.multipleAnswers == "object"){
@@ -30,29 +32,20 @@ export class CheckBox {
       this.inputRef.nativeElement.name = this.multipleAnswers.name;
     }
     else this.inputRef.nativeElement.type = 'checkbox';
-
-    if(this.nameControl) this.nameControl.valueChanges.subscribe(() => this.setValueNameControl());
-    
-    if(this.isPartOfViewSurvey && this.answerView) this.answerView.valueChanges.subscribe(() => this.setValueAnswersView());
   }
 
-  setValueNameControl(){
-    if(this.nameControl.value == false) this.inputRef.nativeElement.checked = false;
-    else this.nameControl.setValue(this.inputRef.nativeElement.checked, {emitEvent: false});
-  }
-
-  setValueAnswersView(){
-    if(typeof this.multipleAnswers == "object") this.answersFormArray.controls.find(answer => answer.get('checked')?.setValue(false, {emitEvent: false}));
-    this.answerView.setValue(!this.inputRef.nativeElement.checked, {emitEvent: false});
-  }
-
-  checkedComputed = computed(() =>{
-    if(this.isPartOfViewSurvey && this.answerView){
-      this.answerView.setValue(this.checkedSignal());
+  onToggle() {
+    this.isChecked.set(!this.isChecked());
+    if(this.answerView){
+      if(typeof this.multipleAnswers == "object") this.answersFormArray.controls.find(answer => answer?.get('checked')?.setValue(false))
+      this.answerView.setValue(this.inputRef.nativeElement.checked)
+      console.log(this.answersFormArray.value);
     }
 
-    return this.checkedSignal();
-  });
+    if(this.nameControl){
+      this.nameControl.setValue(this.isChecked());
+    }
+  }
 }
 
 //html template: <app-check-box [changeType]="{'type':'radio', 'name':'Test'}"></app-check-box>

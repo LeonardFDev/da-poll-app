@@ -9,7 +9,7 @@
     <div class="question__h2-checkbox-wiht-text">
         <h2 class="question__h2-checkbox-wiht-text__h2">{{'Answears'}}</h2>
         <div class="question__h2-checkbox-wiht-text__checkbox-wiht-text">
-            <app-check-box [whiteBorder]="true" [isPartOfCreateSurvey]="true" [nameControl]="csService.getNameControlFromArray(`questions`, questionId, 'multipleAnswers')"></app-check-box>
+            <app-check-box [whiteBorder]="true" [nameControl]="csService.getNameControlFromArray(`questions`, questionId, 'multipleAnswers')"></app-check-box>
             <span class="question__h2-checkbox-wiht-text__checkbox-wiht-text__text">{{'Allow multiple answers.'}}</span>
         </div>
     </div>

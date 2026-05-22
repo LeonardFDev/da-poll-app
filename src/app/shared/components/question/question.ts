@@ -1,12 +1,12 @@
 import { Component, inject, Input } from '@angular/core';
-import { Answear } from "../answear/answear";
 import { QuestionInterFace } from '../../interfaces/question';
 import { CreateSurveyService } from '../../services/create-survey/create-survey';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { CheckBox } from "../check-box/check-box";
 
 @Component({
   selector: 'app-question',
-  imports: [Answear],
+  imports: [CheckBox],
   templateUrl: './question.html',
   styleUrl: './question.scss',
 })

@@ -1,20 +1,44 @@
 .custom-checkbox{
     display: flex;
+    flex-direction: row-reverse;
     align-items: center;
     cursor: pointer;
     position: relative;
     width: fit-content;
+  
+    align-items: flex-start;
 
-    &--no-pointer-events{
-        pointer-events: none;
+    &:hover:not(:has(.custom-checkbox__input:checked)){
+        background-color: #FFCFA166;
+    }
+
+    &__spans{
+        display: flex;
+        gap: 4px;
+
+        font-family: 'Mulish';
+        font-size: 16px;
+        color: #35273A;
+
+        &__enumeration{
+            font-weight: 700;
+            white-space: nowrap;
+            margin-left: 16px;
+            margin-right: 4px;
+        }
+    
+        &__text{
+            font-weight: 400;
+        }
     }
 
     &__input{
         display: none;
-
-        &:not(&:checked):hover + .custom-checkbox__checkmark {
-            background-color: #FFCFA199;
-            border-color: #FAF5FE;
+        &--hover{
+            &:not(&:checked):hover + .custom-checkbox__checkmark {
+                background-color: #FFCFA199;
+                border-color: #FAF5FE;
+            }
         }
 
         &:checked + .custom-checkbox__checkmark {
@@ -26,7 +50,7 @@
             display: flex;
         }
     }
-
+    
     &__checkmark {
         width: 15px;
         height: 15px;

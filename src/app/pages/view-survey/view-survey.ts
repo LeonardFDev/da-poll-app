@@ -96,7 +96,7 @@ export class ViewSurvey {
         answearsFormArray.push(
           new FormGroup({
             'answerId': new FormControl(answer.id),
-            'checked': new FormControl(null)
+            'checked': new FormControl<boolean>(false, {nonNullable: true}) //null
           })
         );
       });
