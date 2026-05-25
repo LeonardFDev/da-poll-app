@@ -36,6 +36,11 @@ export class CreateSurvey {
     return this.outputError();
   }
 
+  constructor(){
+    this.setStartValues();
+    this.addQuestion();
+  }
+
   outputError(){
     let error = false
     if(this.isErrorTrue()){
@@ -49,11 +54,6 @@ export class CreateSurvey {
     if(value && !this.isErrorTrue()){
       this.isErrorTrue.set(true);
     }
-  }
-
-  constructor(){
-    this.setStartValues();
-    this.addQuestion();
   }
 
   listNumber(i:number){
@@ -96,10 +96,10 @@ export class CreateSurvey {
     question.setValue('');
     question.markAsUntouched();
     multipleAnswers.setValue(false);
-      
-    answers.controls.forEach(item => {
-      item.get('answer')?.setValue('');
-      item.get('answer')?.markAsUntouched();
+
+    answers.controls.forEach(answer => {
+      answer.get('answer')?.setValue('');
+      answer.get('answer')?.markAsUntouched();
     });
   }
 
