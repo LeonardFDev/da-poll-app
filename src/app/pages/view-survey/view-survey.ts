@@ -39,17 +39,17 @@ export class ViewSurvey {
   onResize() {
     if (window.innerWidth >= 1412 && this.isCloseResultsBox) this.isCloseResultsBox = false;
   }
-
+  
   constructor(){
     this.currentId = Number(this.route.snapshot.paramMap.get('id'));
-
+    
     effect(() =>{
       this.isPlaceholder.set(!this.questionslist().some(item => item.id == this.currentId));
-
+      
       this.questionslist().find(item => {
         if(item.id == this.currentId)this.currentQuesten.set(item);
       });
-
+      
       this.alreadyVotes();
       this.createAnswersCheckList();
     })
@@ -57,6 +57,10 @@ export class ViewSurvey {
   
   ngOnInit(){
     this.loadingWindowHidden = true;
+  }
+
+  hasQuestionAnyAnswered(index:number){
+    return this.answersCheckList().controls[index]?.get('hasQuestionAnyAnswered')?.value == false
   }
 
   alreadyVotes(){
@@ -115,6 +119,8 @@ export class ViewSurvey {
 
       this.gsdService.updateSurvey(this.currentId as number, this.currentQuesten().questions)
     }
+
+    console.log(this.answersCheckList().value);
   }
 
   checkHasQuestionAnyAnswered(){

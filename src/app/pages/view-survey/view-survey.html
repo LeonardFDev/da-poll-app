@@ -24,7 +24,7 @@
                 </div>
                 <div class="section__left__questions">
                     @for (item of currentQuesten().questions; track item.id) {
-                        <app-question [questionAnswersView]="questionAnswersView($index)" [class.section__left__questions__question--error]="answersCheckList().controls[$index]?.get('hasQuestionAnyAnswered')?.value == false" [question]="item" [questionNumber]="$index + 1" class="section__left__questions__question"></app-question>
+                        <app-question [questionAnswersView]="questionAnswersView($index)" [class.section__left__questions__question--error]="hasQuestionAnyAnswered($index)" [question]="item" [questionNumber]="$index + 1" class="section__left__questions__question"></app-question>
                     }
                 </div>
 
