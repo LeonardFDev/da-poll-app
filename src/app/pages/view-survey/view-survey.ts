@@ -48,7 +48,7 @@ export class ViewSurvey {
     if(localStorage.getItem(`${this.currentId}`)) this.isSurveySubmitted = true;
     
     effect(() =>{
-      this. reactToChange();
+      this.reactToChange();
     })
   }
 
