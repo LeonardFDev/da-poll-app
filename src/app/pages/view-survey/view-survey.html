@@ -29,10 +29,10 @@
                 </div>
 
                 <div class="section__left__footer">
-                    @if(!isPlaceholder() && !isEndDateExceeded()){
+                    @if(!isPlaceholder() && !isEndDateExceeded() && !isSurveySubmitted){
                         <app-secondary-button (click)="surveySubmitted()" class="section__left__footer__btn" [btnText]="'Complete survey'" [secondColor]="true"></app-secondary-button>
                     }
-                    @if(isPlaceholder() || isEndDateExceeded()) {
+                    @if(isPlaceholder() || isEndDateExceeded() || isSurveySubmitted) {
                         <div class="section__left__footer__btn-disable-body">
                             <app-secondary-button class="section__left__footer__btn" [btnText]="'Complete survey'" [secondColor]="true"></app-secondary-button>
                             <div class="section__left__footer__btn-disable-body__box"></div>
@@ -40,6 +40,11 @@
                                 @if(isEndDateExceeded() && !isPlaceholder()){
                                     <span class="section__left__footer__btn-disable-body__message-box__span">This survey has ended and cannot be submitted.</span>
                                 }
+                                
+                                @else if(isSurveySubmitted){
+                                    <span class="section__left__footer__btn-disable-body__message-box__span">This survey has already been submitted.</span>
+                                }
+                                
                                 @else{
                                     <span class="section__left__footer__btn-disable-body__message-box__span">This is just an example and cannot be submitted.</span>
                                 }
@@ -49,9 +54,12 @@
     
                     <span [class.section__left__footer__error-message--show]="answersCheckList().controls.some(item => item.get('hasQuestionAnyAnswered')?.value == false)" class="section__left__footer__error-message">*At least one answer must be selected</span>
                 </div>
+                        <div [class.overlay--show]="showOverlay()" class="overlay">
+                            <span class="overlay__span">Survey has been submitted.</span>
+                        </div>
             </article>
 
-            <article class="section__mobile">
+            <article #results class="section__mobile">
                 <div (click)="openClose()" class="section__mobile__button">
                     <div [class.section__mobile__button__empty-box--close]="isCloseResultsBox" class="section__mobile__button__empty-box"></div>
                     <span [class.section__mobile__button__span--see]="!isCloseResultsBox" class="section__mobile__button__span">See results</span>

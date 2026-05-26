@@ -1,3 +1,5 @@
+@use '../../shared/styles/abstracts/mixins';
+
 .page{
     display: flex;
     flex-direction: column;
@@ -73,6 +75,8 @@
     padding: 40px;
     padding-inline: clamp(16px, calc(0.0565 * 100vw - 5.2px), 40px);
     background-color: #8E70991A;
+    position: relative;
+    overflow: hidden;
 
     &__header{
         display: flex;
@@ -103,20 +107,15 @@
             flex-wrap: wrap;
     
             &__span{
-                font-family: 'Mulish';
-                font-weight: 500;
-                font-size: 14px;
-                color: #35273A;
                 margin-right: 14px;
+
+                @include mixins.font('Mulish', 14px, #35273A, 500);
             }
         }
     
         &__h1{
             margin: 0;
-            font-family: 'Nerko One';
-            font-weight: 400;
-            font-size: clamp(48px, 2.82vw + 37.44px, 56px);
-            color: #EE9236;
+            @include mixins.font('Nerko One', clamp(48px, 2.82vw + 37.44px, 56px), #EE9236, 400);
     
             @media (max-width:952px){
                 line-height: clamp(42px, 2.43vw + 32.9px, 56px);
@@ -124,10 +123,7 @@
         }
     
         &__span{
-            font-family: 'Mulish';
-            font-weight: 500;
-            font-size: 16px;
-            color: #35273A;
+            @include mixins.font("Mulish", 16px, #35273A, 500);
         }
     }
     
@@ -162,10 +158,7 @@
 
         &__error-message{
             opacity: 0;
-            font-family: "Mulish";
-            font-size: 16px;
-            color: red;
-            font-weight: 600;
+            @include mixins.font("Mulish", 16px, red, 600);
     
             &--show{
                 opacity: 1;
@@ -199,6 +192,12 @@
                 background-color: #b3b1b4;
                 left: 190px;
                 border-radius: 0px 8px 8px 0px;
+
+                @media (max-width:480px) {
+                    top: 44px;
+                    left: 0px;
+                    border-radius: 8px
+                }
                 
                 &::after{
                     content: "";
@@ -211,19 +210,22 @@
                     background-color: rgba(128, 128, 128, 0.5607843137);
                     border-radius: 0px 0px 0px 8px;
                     z-index: -1;
+
+                    @media (max-width:480px) {
+                        top: 2px;
+                        left: 68px;
+                        rotate: 135deg;
+                        border-radius: 0px 0px 0px 2px;
+                    }
                 }
 
                 &__span{
                     width: 22ch;
-                    font-family: "Nokora";
-                    font-weight: 500;
-                    font-size: 16px;
-                    color: #FEFDFF;
+                    @include mixins.font("Nokora", 16px, #FEFDFF, 500);
                 }
             }
         }
     }
-
 }
     
 .section__right{
@@ -240,11 +242,8 @@
     }
     
     &__h1{
-        font-family: 'Nerko One';
-        font-weight: 400;
-        font-size: 32px;
-        color: #221227;
         margin: 0;
+        @include mixins.font('Nerko One', 32px, #221227, 400);
     
         &__span{
             color: #FFB770;
@@ -279,10 +278,7 @@
         }
     
         &__span{
-            font-family: 'Mulish';
-            font-weight: 700;
-            font-size: 18px;
-            color: #35273A;
+            @include mixins.font('Mulish', 18px, #35273A, 700);
     
             &--al-se-ce{
                 align-self: center;
@@ -314,8 +310,7 @@
             background-color: rgba(0, 0, 0, 0.02);
     
             >.section__mobile__button__img{
-                // background-image: url('/assets/img/drop_down_arrow_black-hover.png');
-                background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_black-hover.png'); //für den Server
+                background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_black-hover.png');
             }
         }
     
@@ -334,25 +329,16 @@
             transition: 0.3s opacity ease-out;
             width: 0;
             white-space: nowrap;
-            font-family: 'Mulish';
-            font-weight: 700;
-            font-size: 18px;
-    
-    
-            &--see{
-                opacity: 1;
-            }
-    
-            &--close{
+            @include mixins.font('Mulish', 18px, #35273A, 700);
+
+            &--see, &--close{
                 opacity: 1;
             }
         }
     
         &__img{
             transition: transform 0.3s ease-out;
-            
-            // background-image: url('/assets/img/drop_down_arrow_black.png');
-            background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_black.png'); //für den Server
+            background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_black.png');
             height: 24px;
             aspect-ratio: 1 / 1;
     
@@ -360,5 +346,38 @@
                 transform: rotate(-180deg);
             }
         }
+    }
+}
+
+.overlay{
+    display: flex;
+    transition: transform 0.3s ease;
+    transform: translateX(300px);
+    position: absolute;
+    bottom: 34px;
+    right: 24px;
+    border-radius: 5px 50px 5px 5px;
+    background-color: #FEE9D4;
+    padding: 16px 20px 16px 16px;
+    box-shadow: 0px 0px 4px 0.25px black;
+
+    @media (max-width:528px) {
+        bottom: 64px;
+    }
+
+    @media (max-width:500px) {
+        bottom: 9px;
+    }
+
+    &--show{
+        transform: translateX(0px);
+
+        @media (max-width:500px) {
+            transform: translateX(13px);
+        }
+    }
+ 
+    &__span{
+        @include mixins.font('Nerko One', 20px, #35273A, 400);
     }
 }

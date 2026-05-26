@@ -1,4 +1,4 @@
-import { Component, effect, HostListener, inject, signal} from '@angular/core';
+import { Component, effect, ElementRef, HostListener, inject, signal, ViewChild} from '@angular/core';
 import { PrimaryButton } from "../../shared/components/primary-button/primary-button";
 import { SurveyStatus } from "../../shared/components/survey-status/survey-status";
 import { Question } from "../../shared/components/question/question";
@@ -21,11 +21,12 @@ export class ViewSurvey {
   private route = inject(ActivatedRoute);
   gsdService = inject(GetSurveyDatabaseService);
 
-  currentId:number | null = 0;
-  isPlaceholder = signal(false);
-
   questionslist = this.gsdService.questionsList;
   currentQuesten = this.gsdService.placeholder;
+
+  currentId:number | null = 0;
+  isPlaceholder = signal(false);
+  showOverlay = signal(false);
 
   isCloseResultsBox = false;
   isSurveySubmitted = false;
@@ -35,6 +36,8 @@ export class ViewSurvey {
 
   answersCheckList = signal(new FormArray<FormGroup>([]));
 
+  @ViewChild('results') results!: ElementRef;
+
   @HostListener('window:resize')
   onResize() {
     if (window.innerWidth >= 1412 && this.isCloseResultsBox) this.isCloseResultsBox = false;
@@ -42,17 +45,22 @@ export class ViewSurvey {
   
   constructor(){
     this.currentId = Number(this.route.snapshot.paramMap.get('id'));
+    if(localStorage.getItem(`${this.currentId}`)) this.isSurveySubmitted = true;
     
     effect(() =>{
-      this.isPlaceholder.set(!this.questionslist().some(item => item.id == this.currentId));
-      
-      this.questionslist().find(item => {
-        if(item.id == this.currentId)this.currentQuesten.set(item);
-      });
-      
-      this.alreadyVotes();
-      this.createAnswersCheckList();
+      this. reactToChange();
     })
+  }
+
+  reactToChange(){
+    this.isPlaceholder.set(!this.questionslist().some(item => item.id == this.currentId));
+      
+    this.questionslist().find(item => {
+      if(item.id == this.currentId)this.currentQuesten.set(item);
+    });
+      
+    this.alreadyVotes();
+    this.createAnswersCheckList();
   }
   
   ngOnInit(){
@@ -100,7 +108,7 @@ export class ViewSurvey {
         answearsFormArray.push(
           new FormGroup({
             'answerId': new FormControl(answer.id),
-            'checked': new FormControl<boolean>(false, {nonNullable: true}) //null
+            'checked': new FormControl<boolean>(false, {nonNullable: true})
           })
         );
       });
@@ -111,16 +119,26 @@ export class ViewSurvey {
     if(!this.isSurveySubmitted) this.checkHasQuestionAnyAnswered();
     const hasQuestionsAnyAnswered = (this.answersCheckList().controls.every(item => item.get('hasQuestionAnyAnswered')?.value == true));
 
-    if(!this.isSurveySubmitted && hasQuestionsAnyAnswered){
-      this.isSurveySubmitted = true;
+    if(!this.isSurveySubmitted && hasQuestionsAnyAnswered) this.canSubmit();
+  }
 
-      this.currentQuestenUpdate('counter');
-      this.currentQuestenUpdate('percent');
+  canSubmit(){
+    this.isSurveySubmitted = true;
+  
+    this.currentQuestenUpdate('counter');
+    this.currentQuestenUpdate('percent');
+  
+    this.gsdService.updateSurvey(this.currentId as number, this.currentQuesten().questions);
+    this.showAndHideAgain();
+  
+    this.results?.nativeElement.scrollIntoView({behavior: 'smooth'});
 
-      this.gsdService.updateSurvey(this.currentId as number, this.currentQuesten().questions)
-    }
+    localStorage.setItem(`${this.currentId}`, 'true');
+  }
 
-    console.log(this.answersCheckList().value);
+  showAndHideAgain(){
+    this.showOverlay.set(true);
+    setTimeout(() => this.showOverlay.set(false),3000);
   }
 
   checkHasQuestionAnyAnswered(){
