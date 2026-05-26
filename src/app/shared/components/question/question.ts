@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, output } from '@angular/core';
 import { QuestionInterFace } from '../../interfaces/question';
 import { CreateSurveyService } from '../../services/create-survey/create-survey';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
@@ -16,6 +16,8 @@ export class Question {
   @Input() question!:QuestionInterFace;
   @Input() questionNumber!:number;
   @Input() questionAnswersView!:FormGroup;
+
+  errorCheckingOutput = output<void>();
 
   answersFormArray(){
     return this.questionAnswersView.get('answers') as FormArray;

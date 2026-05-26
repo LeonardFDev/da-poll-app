@@ -1,4 +1,4 @@
-import { Component, DestroyRef, ElementRef, inject, Input, signal, ViewChild } from '@angular/core';
+import { Component, DestroyRef, ElementRef, inject, Input, output, signal, ViewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormArray, FormControl, ReactiveFormsModule } from '@angular/forms';
 
@@ -23,7 +23,9 @@ export class CheckBox {
 
   @Input() isWithText:boolean = false;
   @Input() spanEnumeration:string ="";
-  @Input() spanText:string =""
+  @Input() spanText:string ="";
+
+  errorCheckingOutput = output<void>();
 
   @ViewChild('customCheckboxInput') inputRef!:ElementRef<HTMLInputElement>;
 
@@ -60,6 +62,7 @@ export class CheckBox {
     if(this.answerView){
       if(typeof this.multipleAnswers == "object") this.answersFormArray.controls.find(answer => answer?.get('checked')?.setValue(false));
       this.answerView.setValue(this.inputRef.nativeElement.checked);
+      this.errorCheckingOutput.emit();
     }
 
     if(this.nameControl)this.nameControl.setValue(this.isChecked());

@@ -33,6 +33,7 @@ export class ViewSurvey {
 
   isAlreadyVotes = false;
   loadingWindowHidden = false;
+  shouldExamined = false;
 
   answersCheckList = signal(new FormArray<FormGroup>([]));
 
@@ -116,6 +117,7 @@ export class ViewSurvey {
   }
 
   surveySubmitted(){
+    this.shouldExamined = true;
     if(!this.isSurveySubmitted) this.checkHasQuestionAnyAnswered();
     const hasQuestionsAnyAnswered = (this.answersCheckList().controls.every(item => item.get('hasQuestionAnyAnswered')?.value == true));
 
@@ -142,7 +144,11 @@ export class ViewSurvey {
   }
 
   checkHasQuestionAnyAnswered(){
-    this.answersCheckList().controls.filter(item => item.get('hasQuestionAnyAnswered')?.setValue((item.get('answers') as FormArray).controls.some(item => item.get('checked')?.value == true)));
+    if(this.shouldExamined){
+      this.answersCheckList()
+      .controls.filter(item => item.get('hasQuestionAnyAnswered')?.setValue((item.get('answers') as FormArray)
+      .controls.some(item => item.get('checked')?.value == true)));
+    }
   }
 
   currentQuestenUpdate(valueUpdate: 'percent' | 'counter' | null = null){
