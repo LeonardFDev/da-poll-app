@@ -1,4 +1,4 @@
-@mixin font($fFamily, $fSize, $fColor, $fWeight: 400) {
+@mixin font($fFamily, $fSize: 16px, $fColor:black, $fWeight: 400) {
   font-family: $fFamily;
   font-weight: $fWeight;
   font-size: $fSize;
