@@ -1,13 +1,39 @@
 .btn{
     cursor: pointer;
-    // background-image: url('/assets/img/trash.png');
-    background-image: url('/angular-projects/poll-app/assets/img/trash.png'); //für den Server
+    background-image: url('/angular-projects/poll-app/assets/img/trash.png');
     background-repeat: no-repeat;
     height: 26px;
     aspect-ratio: 1 / 1;
+    position: relative;
 
     &:hover{
-        // background-image: url('/assets/img/trash-hover.png');
-        background-image: url('/angular-projects/poll-app/assets/img/trash-hover.png'); //für den Server
+        background-image: url('/angular-projects/poll-app/assets/img/trash-hover.png');
+        &::after{
+            display: flex;
+        }
+    }
+
+    &::after{
+        display: none;
+        content: "If at least one field contains content, the entire block content will be deleted.\A\AIf all fields are empty, the block will be removed.";
+        white-space: pre-line;
+        background-color: #FEE9D4;
+        border-radius: 12px;
+        width: 22ch;
+        font-family: "Mulish";
+        font-weight: 400;
+        font-size: 16px;
+        color: #35273A;
+        position: absolute;
+        justify-self: center;
+        padding: 8px;
+        top: 32px;
+        z-index: 1;
+        pointer-events: none;
+        text-align: justify;
+
+        @media (max-width: 800px) {
+            right: 0;
+        }
     }
 }
