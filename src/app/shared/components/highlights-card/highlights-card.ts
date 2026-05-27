@@ -17,7 +17,7 @@ export class HighlightsCard {
   endingInOutput:string =''
 
   ngOnInit(){
-    if(this.surveyStatus.toLocaleLowerCase() == 'no end date') this.endingInOutput = '∞';
+    if(this.surveyStatus.toLocaleLowerCase() == 'no end date') this.endingInOutput = '360';
     else this.calculateRemainingDays();
   }
 
