@@ -1,3 +1,5 @@
+@use '../../../shared/styles/abstracts/mixins';
+
 .results{
     display: flex;
     flex-direction: column;
@@ -10,10 +12,7 @@
 
     &__h1{
         margin: 0;
-        font-family: 'Mulish';
-        font-weight: 700;
-        font-size: 18px;
-        color: #35273A;
+        @include mixins.font('Mulish', 18px, #35273A, 700);
     }
 
     &__answers{
@@ -26,18 +25,13 @@
             gap: 6px;
 
             &__span{
-                font-family: 'Mulish';
-                font-size: 12px;
-                
                 &--enumeration{
-                    font-weight: 700;
-                    color: #35273A;
+                    @include mixins.font('Mulish', 12px, #35273A, 700);
                     width: 15.2px;
                 }
 
                 &--percentValue{
-                    font-weight: 800;
-                    color: #D79451;
+                    @include mixins.font('Mulish', 12px, #D79451, 800);
                 }
             }
 

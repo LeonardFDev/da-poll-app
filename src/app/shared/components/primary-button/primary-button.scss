@@ -1,3 +1,5 @@
+@use '../../../shared/styles/abstracts/mixins';
+
 .btn{
     display: flex;
     background-color: #FFCFA1;
@@ -44,11 +46,8 @@
     }
 
     &__text{
-        font-family: 'Nokora';
-        font-weight: 700;
-        font-size: 18px;
+        @include mixins.font('Nokora', 18px, #221227, 700);
         position: relative;
-        color: #221227;
     }
 
     &__img{

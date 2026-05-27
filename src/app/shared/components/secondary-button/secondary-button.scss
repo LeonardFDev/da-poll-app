@@ -1,3 +1,5 @@
+@use '../../../shared/styles/abstracts/mixins';
+
 .btn{
     display: flex;
     align-items: center;
@@ -28,10 +30,7 @@
     }
 
     &__span{
-        font-family: 'Nokora';
-        font-weight: 700;
-        font-size: 16px;
-        color: #FEFDFF;
+        @include mixins.font('Nokora', 16px, #FEFDFF, 700);
 
         &--second-color{
             color: #35273A;

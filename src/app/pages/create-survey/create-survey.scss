@@ -1,3 +1,5 @@
+@use '../../shared/styles/abstracts/mixins';
+
 app-secondary-button{
     height: fit-content;
     width: fit-content;
@@ -54,10 +56,7 @@ app-secondary-button{
         margin-bottom: 32px;
 
         &__h1{
-            font-family: 'Nerko One';
-            font-weight: 400;
-            font-size: 56px;
-            color: #EE9236;
+            @include mixins.font('Nerko One', 56px, #EE9236, 400);
             margin: 0;
 
             @media (max-width:512px) {
@@ -86,10 +85,7 @@ app-secondary-button{
         }
 
         &__span{
-            font-family: 'Mulish';
-            font-size: 16px;
-            color: red;
-            font-weight: 600;
+            @include mixins.font("Mulish", 16px, red, 600);
             opacity: 0;
 
             &--error-on{
@@ -168,10 +164,7 @@ app-secondary-button{
         align-items: center;
 
         &__span{
-            font-family: 'Mulish';
-            font-weight: 700;
-            font-size: 18px;
-            color: #FEFDFF;
+            @include mixins.font("Mulish", 18px, #FEFDFF, 700);
         }
 
         &__button{
@@ -263,10 +256,7 @@ app-secondary-button{
             }
             
             &__span{
-                font-family: 'Nerko One';
-                font-weight: 400;
-                font-size: 24px;
-                color: #35273A;
+                @include mixins.font('Nerko One', 24px, #35273A, 400);
             }
         }
     }

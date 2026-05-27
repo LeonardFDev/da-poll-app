@@ -1,3 +1,5 @@
+@use '../../shared/styles/abstracts/mixins';
+
 .page{
     display: flex;
     flex-direction: column;
@@ -17,7 +19,6 @@
         clamp(16px, 8.48vw - 11.1px, 111px) 
         clamp(40px, calc(50.29px - 0.7143vw), 48px) 
         clamp(16px, 8.48vw - 11.1px, 111px);
-        
     }
 }
 
@@ -38,7 +39,6 @@
     @media (max-width:1312px) {
         flex-direction: column;
         align-items: center;
-        
     }
     
     &__h1-span-btn {
@@ -54,18 +54,12 @@
     
         &__h1{
             margin: 0;
-            font-family: 'Nerko One';
-            font-weight: 400;
-            font-size: clamp(62px, 3.39vw + 51.1px, 100px);
-            color: #FFB770;
+            @include mixins.font('Nerko One', clamp(62px, 3.39vw + 51.1px, 100px), #FFB770, 400);
             line-height: clamp(50px, 3.48vw + 38.9px, 89px);
         }
     
         &__span{
-            font-family: 'Mulish';
-            font-weight: 600;
-            font-size: 24px;
-            color: white;
+            @include mixins.font('Mulish', 24px, white, 600);
             width: calc(100% - 5ch);
 
             @media (max-width:1312px) {
@@ -112,10 +106,7 @@
 
     &__h1{
         margin: 0;
-        font-family: 'Nerko One';
-        font-weight: 400;
-        font-size: clamp(54px, 1.61vw + 48.9px, 72px);
-        color: #FFB770;
+        @include mixins.font('Nerko One', clamp(54px, 1.61vw + 48.9px, 72px), #FFB770, 400);
         align-self: center;
         
          @media (max-width:343px) {
@@ -125,10 +116,7 @@
 
     &__span{
         margin-top: clamp(48px, 2.86vw + 38.9px, 80px);
-        font-family: 'Mulish';
-        font-weight: 500;
-        font-size: clamp(24px, 0.71vw + 21.7px, 32px);
-        color: white;
+        @include mixins.font('Mulish', clamp(24px, 0.71vw + 21.7px, 32px), white, 500);
         margin-bottom: clamp(16px, 1.43vw + 11.4px, 32px);
     }
     
@@ -210,10 +198,7 @@
                 background-color: #ffffff3b;
                 padding: 16px;
                 border-radius: 16px;
-                font-family: "Mulish";
-                font-weight: 600;
-                font-size: 24px;
-                color: white;
+                @include mixins.font("Mulish", 24px, white, 600);
             }
         }
 

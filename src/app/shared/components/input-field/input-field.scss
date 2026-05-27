@@ -1,12 +1,11 @@
+@use '../../../shared/styles/abstracts/mixins';
+
 .input-field{
     display: flex;
     gap: 10px;
     border-radius: 5px 20px 5px 5px;
     padding: 7px 13px;
-    font-family: 'Mulish';
-    font-weight: 400;
-    font-size: 16px;
-    color: #35273A;
+    @include mixins.font('Mulish', 16px, #35273A, 400);
     width: 100%;
     box-sizing: border-box;
     border: none;

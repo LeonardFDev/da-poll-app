@@ -1,3 +1,5 @@
+@use '../../../shared/styles/abstracts/mixins';
+
 .btn{
     display: flex;
     flex-direction: column;
@@ -16,10 +18,7 @@
         white-space: nowrap;
 
         &__text{
-            font-family: 'Nokora';
-            font-weight: 700;
-            font-size: 16px;
-            color: #FEFDFF;
+            @include mixins.font('Nokora', 16px, #FEFDFF, 700);
         }
 
         &__icon{

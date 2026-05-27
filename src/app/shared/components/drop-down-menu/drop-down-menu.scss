@@ -1,3 +1,5 @@
+@use '../../../shared/styles/abstracts/mixins';
+
 .drop-down-body{
     display: flex;
     flex-direction: column;
@@ -18,26 +20,20 @@
     }
 
     &__span{
-        font-family: 'Mulish';
-        font-weight: 700;
-        font-size: 18px;
-        color: white;
+        @include mixins.font('Mulish', 18px, white, 700);
     }
 
     &__icon{
-        // background-image: url('/assets/img/drop_down_arrow_down-white.png');
-        background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_down-white.png'); //für den Server
+        background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_down-white.png');
         height: 24px;
         aspect-ratio: 1/1;
         
         &--selected{
-            // background-image: url('/assets/img/drop_down_arrow_down-orange.png');
-            background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_down-orange.png'); //für den Server
+            background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_down-orange.png');
         }
         
         &--open{
-            // background-image: url('/assets/img/drop_down_arrow_up-orange.png');
-            background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_up-orange.png'); //für den Server
+            background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_up-orange.png');
         }
     }
 
@@ -45,8 +41,7 @@
         background-color: #D9D9D91F;
 
         >.drop-down__icon:not(.drop-down__icon--open){
-            // background-image: url('/assets/img/drop_down_arrow_down-orange.png');
-            background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_down-orange.png'); //für den Server
+            background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_down-orange.png');
         }
     }
 }
@@ -56,7 +51,6 @@
     top: 36px;
     left: 0;
     right: 0;
-
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -75,10 +69,7 @@
         }
         
         &__span{
-            font-family: 'Mulish';
-            font-weight: 400;
-            font-size: 14px;
-            color: #35273A;
+            @include mixins.font('Mulish', 14px, #35273A, 400);
         }
     }
 }
@@ -86,8 +77,5 @@
 .selected-menu{
     border-radius: 6px;
     padding: 4px 4px 4px 10px;
-    font-family: 'Mulish';
-    font-weight: 400;
-    font-size: 14px;
-    color: #FFB770;
+    @include mixins.font('Mulish', 14px, #FFB770, 400);
 }

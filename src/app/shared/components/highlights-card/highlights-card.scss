@@ -1,3 +1,5 @@
+@use '../../../shared/styles/abstracts/mixins';
+
 .highlights-card {
     display: flex;
     border-top-right-radius: 80px;
@@ -18,17 +20,12 @@
 
     &__text-h1{
         &__text{
-            font-family: 'Mulish';
-            font-weight: 600;
-            font-size: 14px;
-            color: #35273A;
+            @include mixins.font('Mulish', 14px, #35273A, 600);
         }
 
         &__h1{
             margin-top: 8px;
-            font-family: 'Mulish';
-            font-weight: 700;
-            font-size: clamp(24px, 0.18vw + 23.4px, 26px);
+            @include mixins.font('Mulish', clamp(24px, 0.18vw + 23.4px, 26px), #35273A, 700);
             margin-bottom: 0px;
             width: 14ch;
         }

@@ -1,3 +1,5 @@
+@use '../../../shared/styles/abstracts/mixins';
+
 .status{
     border-top-right-radius: 14px;
     padding: 3px 12px 3px 10px;
@@ -25,10 +27,7 @@
     }
 
     &__text{
-        font-family: 'Mulish';
-        font-weight: 600;
-        font-size: 16px;
-        color: #221227;
+        @include mixins.font('Mulish', 16px, #221227, 600);
 
         &--fs12{
             font-size: 12px;

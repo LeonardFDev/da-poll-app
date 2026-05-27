@@ -1,3 +1,5 @@
+@use '../../../shared/styles/abstracts/mixins';
+
 .question{
     display: flex;
     flex-direction: column;
@@ -21,10 +23,7 @@
 
         &__h1{
             margin: 0;
-            font-family: 'Mulish';
-            font-weight: 700;
-            font-size: 18px;
-            color: #FEFDFF;
+            @include mixins.font('Mulish', 18px, #FEFDFF, 700);
         }
     }
 
@@ -44,10 +43,7 @@
 
         &__h2{
             margin: 0;
-            font-family: 'Mulish';
-            font-weight: 700;
-            font-size: 18px;
-            color: #FEFDFF;
+            @include mixins.font('Mulish', 18px, #FEFDFF, 700);
         }
 
         &__checkbox-wiht-text{
@@ -56,10 +52,7 @@
             gap: 4px;
 
             &__text{
-                font-family: 'Mulish';
-                font-weight: 400;
-                font-size: 12px;
-                color: white;
+                @include mixins.font('Mulish', 12px, white, 400);
             }
         }
     }
@@ -88,10 +81,7 @@
                 width: 100%;
         
                 &__span{
-                    font-family: 'Mulish';
-                    font-weight: 700;
-                    font-size: 18px;
-                    color: #FEFDFF;
+                    @include mixins.font('Mulish', 18px, #FEFDFF, 700);
                 }
         
                 &__button{
@@ -105,10 +95,7 @@
                 display: none;
             }
 
-            font-family: 'Mulish';
-            font-weight: 700;
-            font-size: 18px;
-            color: #FEFDFF;
+            @include mixins.font('Mulish', 18px, #FEFDFF, 700);
         }
         
         &__input{
@@ -141,10 +128,7 @@
         }
 
         &__span{
-            font-family: 'Mulish';
-            font-weight: 400;
-            font-size: 12px;
-            color: white;
+            @include mixins.font('Mulish', 12px, white, 400);
         }
     }
 }

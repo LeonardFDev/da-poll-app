@@ -1,3 +1,5 @@
+@use '../../../shared/styles/abstracts/mixins';
+
 .custom-checkbox{
     display: flex;
     flex-direction: row-reverse;
@@ -5,7 +7,6 @@
     cursor: pointer;
     position: relative;
     width: fit-content;
-  
     align-items: flex-start;
 
     &:hover:not(:has(.custom-checkbox__input:checked)){
@@ -15,10 +16,7 @@
     &__spans{
         display: flex;
         gap: 4px;
-
-        font-family: 'Mulish';
-        font-size: 16px;
-        color: #35273A;
+        @include mixins.font('Mulish', 16px, #35273A, 400);
 
         &__enumeration{
             font-weight: 700;

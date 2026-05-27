@@ -1,3 +1,5 @@
+@use '../../../shared/styles/abstracts/mixins';
+
 .btn{
     cursor: pointer;
     background-image: url('/angular-projects/poll-app/assets/img/trash.png');
@@ -20,10 +22,7 @@
         background-color: #FEE9D4;
         border-radius: 12px;
         width: 22ch;
-        font-family: "Mulish";
-        font-weight: 400;
-        font-size: 16px;
-        color: #35273A;
+        @include mixins.font('Mulish', 16px, #35273A, 400);
         position: absolute;
         justify-self: center;
         padding: 8px;

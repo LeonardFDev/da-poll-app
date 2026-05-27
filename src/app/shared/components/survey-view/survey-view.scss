@@ -1,3 +1,5 @@
+@use '../../../shared/styles/abstracts/mixins';
+
 .view{
     display: flex;
     flex-direction: column;
@@ -15,17 +17,11 @@
     }
 
     &__span{
-        font-family: 'Mulish';
-        font-weight: 500;
-        font-size: 16px;
-        color: #FFCFA1;
+        @include mixins.font('Mulish', 16px, #FFCFA1, 500);
     }
 
     &__h1{
-        font-family: 'Mulish';
-        font-weight: 700;
-        font-size: clamp(20px, 0.36vw + 18.86px, 24px);
-        color: white;
+        @include mixins.font('Mulish', clamp(20px, 0.36vw + 18.86px, 24px), white, 700);
         margin: 0;
         margin-top: 8px;
     }
