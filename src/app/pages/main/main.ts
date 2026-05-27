@@ -24,7 +24,7 @@ export class Main {
   filterList = signal<SurveyQuestionInterFace[]>([]);
   heroSwitch:WritableSignal<boolean> = signal(false);
   scrollActiv:WritableSignal<boolean> = signal(false);
-  activeFilterBtn = signal<'active_survey' | 'past_survey' | 'all'>('all');
+  activeFilterBtn = signal<'active_survey' | 'past_survey' | 'all'>('active_survey');
   currentCategory = signal<string>('');
 
   @ViewChild('highlightsCards') highlightsCardsRef!: ElementRef<HTMLElement>;

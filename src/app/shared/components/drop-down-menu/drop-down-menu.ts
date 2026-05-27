@@ -32,6 +32,8 @@ export class DropDownMenu {
   ];
 
   ngAfterViewInit(){
+    if(this.isPartOfMainPage)this.sinlgeMenuList.unshift({'title':"Sort all", 'isSelected': false});
+    if(this.isPartOfCreateSurvey)this.sinlgeMenuList.unshift({'title':"No category", 'isSelected': false})
     window.addEventListener('click', () => this.closeMenu());
   }
 
@@ -56,18 +58,31 @@ export class DropDownMenu {
       this.isSelected.set(false);
     }
 
-    else{
-      this.sinlgeMenuList.forEach(menu => {
-        menu.isSelected = false;
-      });
-
-      this.sinlgeMenuList[index].isSelected = true;
-      this.selectedMenu = this.sinlgeMenuList[index].title;
-      this.isSelected.set(true);
-    }
+    else this.newSelected(index); 
 
     this.getCategory();
     this.passOnSelectedMenu();
+  }
+
+  newSelected(index:number){
+    this.sinlgeMenuList.forEach(menu => {
+      menu.isSelected = false;
+    });
+  
+    this.sinlgeMenuList[index].isSelected = true;
+    this.selectedMenu = this.sinlgeMenuList[index].title;
+    this.isSelected.set(true);
+  
+    this.ifSpecialSelected(index, "Sort all");
+    this.ifSpecialSelected(index, "No category");
+  }
+
+  ifSpecialSelected(index:number, special:string){
+    if(this.sinlgeMenuList[index].title == special){
+      this.selectedMenu = '';
+      this.sinlgeMenuList[index].isSelected = false;
+      this.isSelected.set(false);
+    }
   }
 
   getCategory(){
