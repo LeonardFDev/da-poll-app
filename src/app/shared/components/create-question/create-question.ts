@@ -5,6 +5,7 @@ import { CheckBox } from "../check-box/check-box";
 import { TertiaryButton } from "../tertiary-button/tertiary-button";
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CreateSurveyService } from '../../services/create-survey/create-survey';
+import { noWhitespaceValidator } from '../../validators/no-whitespace';
 
 @Component({
   selector: 'app-create-question',
@@ -54,7 +55,7 @@ export class CreateQuestion {
     answers.push(
       new FormGroup({
         'id': new FormControl(this.answerId),
-        'answer': new FormControl('', [Validators.required]),
+        'answer': new FormControl('', [Validators.required, noWhitespaceValidator]),
         'counter': new FormControl(0),
         'percentValue': new FormControl(0)
       })

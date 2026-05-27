@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { noWhitespaceValidator } from '../../validators/no-whitespace';
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +8,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 export class CreateSurveyService {
   questionform:FormGroup = new FormGroup({
     id: new FormControl(0),
-    name: new FormControl('', [Validators.required]),
+    name: new FormControl('', [Validators.required, noWhitespaceValidator]),
     endDate: new FormControl('No end date'),
     description: new FormControl(''),
     category: new FormControl('No category'),

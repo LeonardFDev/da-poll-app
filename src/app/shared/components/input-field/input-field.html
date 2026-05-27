@@ -1,11 +1,11 @@
 @if(type == 'inputText'){
-    <input [class.input-field--error]="dateInvalid" [formControl]="nameControl" class="input-field" type="text">
+    <input (blur)="noWhitespace()" [class.input-field--error]="dateInvalid" [formControl]="nameControl" class="input-field" type="text">
 }
 
 @else if(type == 'textarea'){
-    <textarea [formControl]="nameControl" class="input-field input-field--textarea"></textarea>
+    <textarea (blur)="noWhitespace()" [formControl]="nameControl" class="input-field input-field--textarea"></textarea>
 }
 
 @else if(type == 'inputDate'){
-    <input [formControl]="nameControl" (input)="calendarValueChange()" class="input-field input-field--date" type="date">
+    <input (blur)="noWhitespace()" [formControl]="nameControl" (input)="calendarValueChange()" class="input-field input-field--date" type="date">
 }

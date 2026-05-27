@@ -11,6 +11,7 @@ import { DropDownMenu } from "../../shared/components/drop-down-menu/drop-down-m
 import { GetSurveyDatabaseService } from '../../shared/services/get-survey-database/get-survey-database';
 import { CreateSurveyService } from '../../shared/services/create-survey/create-survey';
 import { AnswerInterface } from '../../shared/interfaces/answer';
+import { noWhitespaceValidator } from '../../shared/validators/no-whitespace';
 
 @Component({
   selector: 'app-create-survey',
@@ -73,7 +74,7 @@ export class CreateSurvey {
       questions.push(
         new FormGroup({
           'id': new FormControl(this.questionId),
-          'question': new FormControl('', [Validators.required]),
+          'question': new FormControl('', [Validators.required, noWhitespaceValidator]),
           'multipleAnswers': new FormControl(false),
           'answers': new FormArray([])
         })
