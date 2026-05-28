@@ -9,7 +9,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { AnswerInterface } from '../../shared/interfaces/answer';
 import { QuestionInterFace } from '../../shared/interfaces/question';
-
+import { SurveyVotingService } from '../../shared/services/survey-voting/survey-voting';
 
 @Component({
   selector: 'app-view-survey',
@@ -20,6 +20,7 @@ import { QuestionInterFace } from '../../shared/interfaces/question';
 export class ViewSurvey {
   private route = inject(ActivatedRoute);
   gsdService = inject(GetSurveyDatabaseService);
+  svService = inject(SurveyVotingService);
 
   questionslist = this.gsdService.questionsList;
   currentQuesten = this.gsdService.placeholder;
@@ -46,7 +47,10 @@ export class ViewSurvey {
   
   constructor(){
     this.currentId = Number(this.route.snapshot.paramMap.get('id'));
-    if(localStorage.getItem(`${this.currentId}`)) this.isSurveySubmitted = true;
+    if(localStorage.getItem(`${this.currentId}`)){
+      this.isSurveySubmitted = true;
+      this.svService.isSurveySubmitted = true;
+    }
     
     effect(() =>{
       this.reactToChange();
@@ -62,6 +66,9 @@ export class ViewSurvey {
       
     this.alreadyVotes();
     this.createAnswersCheckList();
+    
+    this.svService.surveyQuestion = this.currentQuesten();
+    this.svService.answersCheckList = this.answersCheckList();
   }
   
   ngOnInit(){
@@ -126,6 +133,8 @@ export class ViewSurvey {
 
   canSubmit(){
     this.isSurveySubmitted = true;
+    this.svService.isSurveySubmitted = true;
+    this.shouldExamined = false;
   
     this.currentQuestenUpdate('counter');
     this.currentQuestenUpdate('percent');

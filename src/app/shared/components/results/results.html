@@ -5,9 +5,9 @@
             <div class="results__answers__answer">
                 <span class="results__answers__answer__span results__answers__answer__span--enumeration">{{csService.convertToChar($index)}}</span>
                 <div class="results__answers__answer__bar-body">
-                    <div class="results__answers__answer__bar-body__bar" [style.width.%]="valueOutput(item.percentValue)"></div>
+                    <div class="results__answers__answer__bar-body__bar" [style.width.%]="valueOutput(item.percentValue, $index)"></div>
                 </div>
-                <span class="results__answers__answer__span results__answers__answer__span--percentValue">{{valueOutput(item.percentValue)}}%</span>
+                <span class="results__answers__answer__span results__answers__answer__span--percentValue">{{valueOutput(item.percentValue, $index)}}%</span>
             </div>
          }
      </div>

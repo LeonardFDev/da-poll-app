@@ -1,6 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 import { QuestionInterFace } from '../../interfaces/question';
 import { CreateSurveyService } from '../../services/create-survey/create-survey';
+import { SurveyVotingService } from '../../services/survey-voting/survey-voting';
 
 @Component({
   selector: 'app-results',
@@ -10,12 +11,15 @@ import { CreateSurveyService } from '../../services/create-survey/create-survey'
 })
 export class Results {
   csService = inject(CreateSurveyService);
+  svService = inject(SurveyVotingService);
   
   @Input() question!:QuestionInterFace;
   @Input() questionNumber!:number;
 
-  valueOutput(value:number){
-    if(value) return value
+  valueOutput(value:number, index:number){
+    const test = this.svService.outputPercentValue(this.questionNumber -1, index);
+    if(test) return test;
+    else if(value) return value
     else return 0
   }
 }

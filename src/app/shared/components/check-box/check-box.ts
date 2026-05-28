@@ -1,6 +1,7 @@
 import { Component, DestroyRef, ElementRef, inject, Input, output, signal, ViewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormArray, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { SurveyVotingService } from '../../services/survey-voting/survey-voting';
 
 @Component({
   selector: 'app-check-box',
@@ -10,6 +11,7 @@ import { FormArray, FormControl, ReactiveFormsModule } from '@angular/forms';
 })
 export class CheckBox {
   destroyRef = inject(DestroyRef);
+  svService = inject(SurveyVotingService);
 
   @Input() nameControl!:FormControl;
 
@@ -74,6 +76,7 @@ export class CheckBox {
     else this.answerView.setValue(this.inputRef.nativeElement.checked);
       
     this.errorCheckingOutput.emit();
+    this.svService.liveCalculation();
   }
 }
 
