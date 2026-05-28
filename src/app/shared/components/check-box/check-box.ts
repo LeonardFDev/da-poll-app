@@ -59,13 +59,21 @@ export class CheckBox {
     this.isChecked.set(!this.isChecked());
     this.inputRef.nativeElement.checked = this.isChecked();
 
-    if(this.answerView){
-      if(typeof this.multipleAnswers == "object") this.answersFormArray.controls.find(answer => answer?.get('checked')?.setValue(false));
-      this.answerView.setValue(this.inputRef.nativeElement.checked);
-      this.errorCheckingOutput.emit();
-    }
+    if(this.answerView) this.ifAnswerView();
 
     if(this.nameControl)this.nameControl.setValue(this.isChecked());
+  }
+
+  ifAnswerView(){
+    if(typeof this.multipleAnswers == "object"){
+      const currentValue = this.answerView.value;
+      this.answersFormArray.controls.find(answer => answer?.get('checked')?.setValue(false));
+      if(!currentValue) this.answerView.setValue(true);
+      this.inputRef.nativeElement.checked = this.answerView.value;
+    }
+    else this.answerView.setValue(this.inputRef.nativeElement.checked);
+      
+    this.errorCheckingOutput.emit();
   }
 }
 
