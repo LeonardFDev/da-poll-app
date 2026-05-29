@@ -52,6 +52,8 @@ export class Main {
 
       this.fullList.set(this.gsdService.questionsList());
       this.filterList.set(this.fullList());
+
+      this.outputList();
     });
   }
   
@@ -174,8 +176,6 @@ export class Main {
   changeActive(btn: 'active_survey' | 'past_survey' | 'all') {
     if(btn == this.activeFilterBtn()) this.activeFilterBtn.set('all');
     else this.activeFilterBtn.set(btn);
-
-    this.outputList();
   }
 
   threeEndingSoon(){
@@ -216,6 +216,5 @@ export class Main {
 
   processDataSelectedMenu(data:string){
     this.currentCategory.set(data);
-    this.outputList();
   }
 }

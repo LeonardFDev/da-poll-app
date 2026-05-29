@@ -7,5 +7,5 @@
 }
 
 @else if(type == 'inputDate'){
-    <input (blur)="noWhitespace()" [formControl]="nameControl" (input)="calendarValueChange()" class="input-field input-field--date" type="date">
+    <input [min]="earliestPossibleDate()" (blur)="noWhitespace()" [formControl]="nameControl" (input)="calendarValueChange()" class="input-field input-field--date" type="date">
 }
