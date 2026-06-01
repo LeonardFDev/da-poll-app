@@ -28,16 +28,16 @@
     }
 
     &__icon{
-        background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_down-white.png');
+        background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_down-white.svg');
         height: 24px;
         aspect-ratio: 1/1;
         
         &--selected{
-            background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_down-orange.png');
+            background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_down-orange.svg');
         }
         
         &--open{
-            background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_up-orange.png');
+            background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_up-orange.svg');
         }
     }
 
@@ -45,7 +45,7 @@
         background-color: #D9D9D91F;
 
         >.drop-down__icon:not(.drop-down__icon--open){
-            background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_down-orange.png');
+            background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_down-orange.svg');
         }
     }
 }

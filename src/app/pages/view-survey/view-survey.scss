@@ -310,7 +310,7 @@
             background-color: rgba(0, 0, 0, 0.02);
     
             >.section__mobile__button__img{
-                background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_black-hover.png');
+                background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_black-hover.svg');
             }
         }
     
@@ -338,7 +338,7 @@
     
         &__img{
             transition: transform 0.3s ease-out;
-            background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_black.png');
+            background-image: url('/angular-projects/poll-app/assets/img/drop_down_arrow_black.svg');
             height: 24px;
             aspect-ratio: 1 / 1;
     

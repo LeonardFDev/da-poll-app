@@ -2,14 +2,14 @@
 
 .btn{
     cursor: pointer;
-    background-image: url('/angular-projects/poll-app/assets/img/trash.png');
+    background-image: url('/angular-projects/poll-app/assets/img/trash.svg');
     background-repeat: no-repeat;
     height: 26px;
     aspect-ratio: 1 / 1;
     position: relative;
 
     &:hover{
-        background-image: url('/angular-projects/poll-app/assets/img/trash-hover.png');
+        background-image: url('/angular-projects/poll-app/assets/img/trash-hover.svg');
         &::after{
             display: flex;
         }
