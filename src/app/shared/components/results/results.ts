@@ -17,8 +17,8 @@ export class Results {
   @Input() questionNumber!:number;
 
   valueOutput(value:number, index:number){
-    const test = this.svService.outputPercentValue(this.questionNumber -1, index);
-    if(test) return test;
+    const percentValue = this.svService.outputPercentValue(this.questionNumber -1, index);
+    if(percentValue) return percentValue;
     else if(value) return value
     else return 0
   }

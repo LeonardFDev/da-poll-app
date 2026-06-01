@@ -93,7 +93,7 @@ export class SurveyVotingService {
   }
 
   outputPercentValue(questionIndex:number, answerIndex:number){
-    const percentValue = this.surveyQuestionSignal().questions[questionIndex].answers[answerIndex].percentValue;
+    const percentValue = this.surveyQuestionSignal().questions[questionIndex].answers[answerIndex]?.percentValue;
 
     if(percentValue) return percentValue;
     else return 0;
