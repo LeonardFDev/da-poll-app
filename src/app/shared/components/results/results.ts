@@ -18,7 +18,7 @@ export class Results {
 
   valueOutput(value:number, index:number){
     const percentValue = this.svService.outputPercentValue(this.questionNumber -1, index);
-    if(percentValue) return percentValue;
+    if(percentValue && this.svService.isFirstChecked) return percentValue;
     else if(value) return value
     else return 0
   }

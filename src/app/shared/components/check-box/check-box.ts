@@ -76,6 +76,7 @@ export class CheckBox {
     else this.answerView.setValue(this.inputRef.nativeElement.checked);
       
     this.errorCheckingOutput.emit();
+    this.svService.isFirstChecked = true;
     this.svService.liveCalculation();
     this.svService.alreadyVotes();
   }

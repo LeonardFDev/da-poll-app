@@ -46,6 +46,7 @@ export class ViewSurvey {
   }
   
   constructor(){
+    this.svService.isFirstChecked = false;
     this.currentId = Number(this.route.snapshot.paramMap.get('id'));
     if(localStorage.getItem(`${this.currentId}`)){
       this.isSurveySubmitted = true;

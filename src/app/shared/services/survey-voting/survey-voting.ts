@@ -20,6 +20,8 @@ export class SurveyVotingService {
   isSurveySubmitted = false;
   isAlreadyVotes = signal(false);
 
+  isFirstChecked = false;
+
   liveCalculation(){
     if(this.isSurveySubmitted) return;
     this.surveyQuestionSignal = signal(this.surveyQuestion);
