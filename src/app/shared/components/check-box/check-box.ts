@@ -77,6 +77,7 @@ export class CheckBox {
       
     this.errorCheckingOutput.emit();
     this.svService.liveCalculation();
+    this.svService.alreadyVotes();
   }
 }
 

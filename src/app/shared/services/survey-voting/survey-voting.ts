@@ -18,6 +18,7 @@ export class SurveyVotingService {
   answersCheckListSignal!:WritableSignal<FormArray<FormGroup>>;
 
   isSurveySubmitted = false;
+  isAlreadyVotes = signal(false);
 
   liveCalculation(){
     if(this.isSurveySubmitted) return;
@@ -92,9 +93,15 @@ export class SurveyVotingService {
   }
 
   outputPercentValue(questionIndex:number, answerIndex:number){
-    const test = this.surveyQuestionSignal().questions[questionIndex].answers[answerIndex].percentValue;
-    
-    if(test) return test;
+    const percentValue = this.surveyQuestionSignal().questions[questionIndex].answers[answerIndex].percentValue;
+
+    if(percentValue) return percentValue;
     else return 0;
+  }
+
+  alreadyVotes(){
+    this.isAlreadyVotes.set(this.surveyQuestionSignal().questions
+    .some(question => question.answers
+    .some(answer => answer.counter > 0)));
   }
 }

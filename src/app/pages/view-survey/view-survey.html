@@ -2,17 +2,17 @@
     <div class="page__body">
         <header class="header">
             <div routerLink="" class="header__img-box">
-                <img src="assets/img/logo-purple-dark.png" alt="icon">
+                <img src="assets/img/logo-purple-dark.svg" alt="icon">
             </div>
             <app-primary-button routerLink="/create-question" [btnText]="'Create survey'" [withIcon]="{'isWithIcon': true, 'icon': '⊕', 'iconWidth':24}" class="header__button"></app-primary-button>
         </header>
 
-        <section class="section" [class.section--al-it-end]="isAlreadyVotes">
+        <section class="section" [class.section--al-it-end]="isAlreadyVotes || svService.isAlreadyVotes()">
             <div class="section__loading-window" [class.section__loading-window--hidden]="loadingWindowHidden"></div>
             <article class="section__left">
                 <div class="section__left__header">
                     <app-survey-status [statusText]="'Published'"></app-survey-status>
-                    <app-secondary-button routerLink="" [btnText]="''" [withoutSpan]="true" [withImg]="true" [bgColorType]="'secondary'" [imgUrl]="'assets/img/x-view-survey.png'" class="section__left__header__btn"></app-secondary-button>
+                    <app-secondary-button routerLink="" [btnText]="''" [withoutSpan]="true" [withImg]="true" [bgColorType]="'secondary'" [imgUrl]="'assets/img/x-view-survey.svg'" class="section__left__header__btn"></app-secondary-button>
                 </div>
                 <div class="section__left__info">
                     <div class="section__left__info__spans">
@@ -68,9 +68,9 @@
                 </div>
             </article>
                 
-            <article [class.section__right--ma-top200]="!isAlreadyVotes && !isEndDateExceeded()" [class.section__right--clsoe]="isCloseResultsBox" class="section__right">
+            <article [class.section__right--ma-top200]="!isAlreadyVotes && !svService.isAlreadyVotes() && !isEndDateExceeded()" [class.section__right--clsoe]="isCloseResultsBox" class="section__right">
                 <h1 class="section__right__h1">Survey results <span class="section__right__h1__span">LIVE</span></h1>
-                @if(isAlreadyVotes || isEndDateExceeded()){
+                @if(isAlreadyVotes || svService.isAlreadyVotes() || isEndDateExceeded()){
                     <div class="section__right__results-box">
                         @for (item of currentQuesten().questions; track $index) {
                             <app-results [question]="item" [questionNumber]="$index + 1"></app-results>
