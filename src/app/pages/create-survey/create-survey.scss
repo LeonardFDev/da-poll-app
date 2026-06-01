@@ -55,6 +55,10 @@ app-secondary-button{
         align-items: flex-end;
         margin-bottom: 32px;
 
+        @media (max-width:512px) {
+            margin-top: 12px;
+        }
+
         &__h1{
             @include mixins.font('Nerko One', 56px, #EE9236, 400);
             margin: 0;

@@ -76,7 +76,7 @@ export class ViewSurvey {
   }
 
   hasQuestionAnyAnswered(index:number){
-    return this.answersCheckList().controls[index]?.get('hasQuestionAnyAnswered')?.value == false
+    return this.answersCheckList().controls[index]?.get('hasQuestionAnyAnswered')?.value == false;
   }
 
   alreadyVotes(){
